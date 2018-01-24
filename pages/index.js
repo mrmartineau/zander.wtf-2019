@@ -1,36 +1,38 @@
 import React, { Component, Fragment } from 'react'
+import Head from 'next/head'
 import { injectGlobal } from 'styled-components'
 import { ds } from '../designsystem'
 import BigType from '../components/BigType'
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
 import WorkFeed from '../components/WorkFeed'
-import { Container } from '../components/common/Layout'
+import { Container, Spacer } from '../components/common/Layout'
 import { initApi } from '../utils/prismic'
 import Prismic from 'prismic-javascript'
 
 const baseline = ds.multiply('type.modularscale.base', 1.4)
 
 injectGlobal`
-	html {
-		box-sizing: border-box;
-		font-size: ${ds.get('type.baseFontSize')};
-		text-size-adjust: 100%;
-		text-rendering: optimizeLegibility;
-		color: ${ds.color('text')};
-		font-family: ${ds.get('type.fontFamilyBase')};
-		line-height: ${ds.get('type.lineHeight.base')};
-	}
+  html {
+    box-sizing: border-box;
+    font-size: ${ds.get('type.baseFontSize')};
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    color: ${ds.color('bright')};
+    background-color: ${ds.color('dark')};
+    font-family: ${ds.get('type.fontFamilyBase')};
+    line-height: ${ds.get('type.lineHeight.base')};
+  }
 
-	*,
-	*::before,
-	*::after {
-		box-sizing: inherit;
-	}
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
 
-	body {
-		margin: 0;
-	}
+  body {
+    margin: 0;
+  }
 
   p {
     margin-top: 0;
@@ -103,6 +105,41 @@ injectGlobal`
   * + h6 {
     margin-top: ${baseline}px;
   }
+
+  code,
+  pre {
+    padding: 0 3px 2px;
+    font-family: ${ds.get('type.fontFamily.mono')};
+    font-size: ${ds.fs('s')};
+    color: deepred;
+    border-radius: 3px;
+    tab-size: 3;
+  }
+
+  code {
+    padding: 2px 4px;
+    color: deepred;
+  }
+
+  pre {
+    display: block;
+    padding: 10px;
+    margin: 0 0 ${baseline}px;
+    color: #fff;
+    background-color: #444;
+    border-radius: 4px;
+    white-space: pre;
+    max-height: 90vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
+
+    code {
+      padding: 0;
+      color: #fff;
+      background-color: #000;
+      border: 0;
+    }
+  }
 `
 
 export default class Page extends Component {
@@ -115,7 +152,12 @@ export default class Page extends Component {
       .then(api => {
         return api
           .query(Prismic.Predicates.at('document.type', 'article'), {
-            fetch: ['article.title', 'article.uid', 'article.date', 'article.subtitle'],
+            fetch: [
+              'article.title',
+              'article.uid',
+              'article.date',
+              'article.subtitle',
+            ],
             orderings: '[my.article.date desc]',
           })
           .then(response => {
@@ -138,23 +180,36 @@ export default class Page extends Component {
   render() {
     return (
       <Fragment>
+        <Head>
+          <title>Zander Martineau. Front-end developer in London.</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
         <BigType />
-        <Container>
+        <Container intro>
           <h1>WTF?</h1>
           <h3>Zander Martineau. Front-end developer in London.</h3>
           <h2>Making the web simple, fun and fast since '06</h2>
         </Container>
         <Container>
           <ArticleFeed results={this.props.articles} title="Writing" />
-          <WorkFeed results={this.props.work} title="Work" />
-          <PinboardFeed
-            feed="https://pinboard-api.now.sh/json/u:MrMartineau/t:zm:reading/"
-            title="Reading list"
-          />
-          <PinboardFeed
-            feed="https://pinboard-api.now.sh/json/u:MrMartineau/t:zm:link/"
-            title="Link feed"
-          />
+          <Spacer>
+            <WorkFeed results={this.props.work} title="Work" />
+          </Spacer>
+          <Spacer>
+            <PinboardFeed
+              feed="https://pinboard-api.now.sh/json/u:MrMartineau/t:zm:reading/"
+              title="Reading list"
+            />
+          </Spacer>
+          <Spacer>
+            <PinboardFeed
+              feed="https://pinboard-api.now.sh/json/u:MrMartineau/t:zm:link/"
+              title="Link feed"
+            />
+          </Spacer>
         </Container>
       </Fragment>
     )
