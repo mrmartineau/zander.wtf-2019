@@ -2,7 +2,22 @@ import React, { Component } from 'react'
 import Head from 'next/head'
 import { RichText } from 'prismic-reactjs'
 import { initApi } from '../utils/prismic'
-import { Container } from '../components/common/Layout'
+import { Container, Spacer } from '../components/common/Layout'
+import styled from 'styled-components'
+import {ds} from '../designsystem'
+
+const Article = styled.article`
+  a {
+    &:link,
+    &:visited {
+      color: ${ds.color('link')}
+    }
+    &:hover,
+    &:active {
+      color: ${ds.color('link', 'over')}
+    }
+  }
+`
 
 export default class Writing extends Component {
   static async getInitialProps({ req, query }) {
@@ -23,13 +38,21 @@ export default class Writing extends Component {
     const title = response.data.title[0].text
     const body = response.data.body
     return (
-      <Container>
-        <Head>
-          <title>{title}</title>
-        </Head>
-        <h1>{title}</h1>
-        {RichText.render(body)}
-      </Container>
+      <Article>
+      <Spacer>
+        <Container>
+          <Head>
+            <title>{title}</title>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
+          <h1>{title}</h1>
+          {RichText.render(body)}
+        </Container>
+      </Spacer>
+      </Article>
     )
   }
 }
