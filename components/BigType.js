@@ -5,17 +5,17 @@ import { ds } from '../designsystem/index'
 const BigType = styled.div`
   font-size: 200vw;
   font-weight: 900;
-  font-family: ${ds.get('type.fontFamilyBase')};
-  color: ${ds.color('text')};
   overflow-x: hidden;
-  margin: 0;
+  margin: -10vw 0 0;
   padding: 0;
   line-height: 0.72;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const BigTypeItem = styled.div`
   width: 200%;
-  transform: translateX(-25%);
   text-align: center;
 `
 
