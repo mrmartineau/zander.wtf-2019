@@ -1,15 +1,38 @@
 import React from 'react'
 import Link from 'next/link'
+import {
+  FeedWrapper,
+  FeedList,
+  FeedItem,
+  FeedItemLink,
+  FeedItemLinkTitle,
+  FeedItemLinkUrl,
+  FeedItemBox,
+  FeedItemDate,
+  FeedItemDesc,
+} from './Feed'
 
 export default props => {
-  const articleFeed = props.results.map((item, index) => {
+  const feedItems = props.results.map((item, index) => {
     return (
-      <li key={`article-${item.uid}`}>
-        <Link prefetch href={`/writing/${item.uid}`}>
-          <a>{item.data.title[0].text}</a>
+      <FeedItem key={`articleFeedItem-${index}`}>
+        <Link href={`/writing/${item.uid}`} title={item.data.title[0].text}>
+          <FeedItemLink>
+            <FeedItemBox>
+              <FeedItemLinkTitle>{item.data.title[0].text}</FeedItemLinkTitle>
+              <FeedItemDate>{item.data.date}</FeedItemDate>
+            </FeedItemBox>
+            <FeedItemDesc>{item.data.subtitle[0].text}</FeedItemDesc>
+          </FeedItemLink>
         </Link>
-      </li>
+      </FeedItem>
     )
   })
-  return <ul>{articleFeed}</ul>
+
+  return (
+    <FeedWrapper>
+      <h2 id={encodeURI(props.title)}>{props.title}</h2>
+      <FeedList>{feedItems}</FeedList>
+    </FeedWrapper>
+  )
 }

@@ -2,8 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { injectGlobal } from 'styled-components'
 import { ds } from '../designsystem'
 import BigType from '../components/BigType'
-import Feed from '../components/Feed'
+import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
+import WorkFeed from '../components/WorkFeed'
 import { Container } from '../components/common/Layout'
 import { initApi } from '../utils/prismic'
 import Prismic from 'prismic-javascript'
@@ -33,7 +34,7 @@ injectGlobal`
 
   p {
     margin-top: 0;
-    margin-bottom: ${baseline};
+    margin-bottom: ${baseline}px;
   }
 
   /**
@@ -48,7 +49,7 @@ injectGlobal`
     font-family: ${ds.get('type.fontFamilyHeadings')};
     line-height: ${ds.get('type.lineHeight.headings')};
     margin-top: 0;
-    margin-bottom: ${baseline};
+    margin-bottom: ${baseline}px;
   }
 
   h1 {
@@ -100,7 +101,7 @@ injectGlobal`
   * + h4,
   * + h5,
   * + h6 {
-    margin-top: ${baseline};
+    margin-top: ${baseline}px;
   }
 `
 
@@ -114,7 +115,8 @@ export default class Page extends Component {
       .then(api => {
         return api
           .query(Prismic.Predicates.at('document.type', 'article'), {
-            fetch: ['article.title', 'article.uid'],
+            fetch: ['article.title', 'article.uid', 'article.date', 'article.subtitle'],
+            orderings: '[my.article.date desc]',
           })
           .then(response => {
             return response.results
@@ -138,23 +140,18 @@ export default class Page extends Component {
       <Fragment>
         <BigType />
         <Container>
-          <h2>Writing</h2>
-          <ArticleFeed results={this.props.articles} />
-          <h2>Work</h2>
-          <ul>
-            {this.props.work.map((item, index) => {
-              return (
-                <li key={`work-${index}`}>
-                  <a href={item.data.link.url}>{item.data.title[0].text}</a>
-                </li>
-              )
-            })}
-          </ul>
-          <Feed
+          <h1>WTF?</h1>
+          <h3>Zander Martineau. Front-end developer in London.</h3>
+          <h2>Making the web simple, fun and fast since '06</h2>
+        </Container>
+        <Container>
+          <ArticleFeed results={this.props.articles} title="Writing" />
+          <WorkFeed results={this.props.work} title="Work" />
+          <PinboardFeed
             feed="https://pinboard-api.now.sh/json/u:MrMartineau/t:zm:reading/"
             title="Reading list"
           />
-          <Feed
+          <PinboardFeed
             feed="https://pinboard-api.now.sh/json/u:MrMartineau/t:zm:link/"
             title="Link feed"
           />
