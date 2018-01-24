@@ -13,18 +13,20 @@ export const FeedList = styled.ul`
 `
 
 export const FeedItem = styled.li`
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
 `
 
 export const FeedItemLink = styled.a`
   display: block;
-  padding: ${ds.spacing(2)} 0;
-  color: ${ds.color('text')};
+  padding: ${ds.spacing(2)};
+  color: ${ds.color('bright')};
   text-decoration: none;
   cursor: pointer;
+  border-bottom: 1px solid;
 
   &:hover {
-    color: ${ds.color('link', 'over')};
+    color: ${ds.color('dark')};
+    background-color: ${ds.color('bright')};
   }
 `
 export const FeedItemLinkTitle = styled.div`
@@ -55,4 +57,5 @@ export const FeedItemLinkUrl = styled.div`
 export const FeedItemImage = styled.img`
   display: block;
   margin-bottom: ${ds.space(2)};
+  max-width: 100%;
 `

@@ -16,8 +16,8 @@ export default props => {
   const feedItems = props.results.map((item, index) => {
     return (
       <FeedItem key={`articleFeedItem-${index}`}>
-        <Link href={`/writing/${item.uid}`} title={item.data.title[0].text}>
-          <FeedItemLink>
+        <Link href={`/writing/${item.uid}`}>
+          <FeedItemLink title={item.data.title[0].text}>
             <FeedItemBox>
               <FeedItemLinkTitle>{item.data.title[0].text}</FeedItemLinkTitle>
               <FeedItemDate>{item.data.date}</FeedItemDate>

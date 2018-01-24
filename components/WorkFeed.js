@@ -15,9 +15,10 @@ import {
 
 export default props => {
   const feedItems = props.results.map((item, index) => {
+    const linkUrl = item.data.link.url ? item.data.link.url : '#';
     return (
       <li key={`work-${index}`}>
-        <FeedItemLink href={item.data.link.url}>
+        <FeedItemLink href={linkUrl}>
           {item.data.image.url && (
             <FeedItemImage
               src={item.data.image.url}
