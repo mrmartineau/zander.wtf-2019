@@ -1,0 +1,7 @@
+{
+  "name": "zander.wtf",
+  "alias": "zander.wtf",
+  "env": {
+    "ZM_PRISMIC_API_KEY": "@zm-prismic-api-key"
+  }
+}
