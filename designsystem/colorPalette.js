@@ -6,7 +6,7 @@ export default {
   },
 
   dark: {
-    base: '#212B35',
+    base: '#000',
     light: '#454F5B',
     lighter: '#637381',
   },
@@ -33,7 +33,7 @@ export default {
   },
 
   link: {
-    base: '#fe7c08',
-    over: '#fea04c',
+    base: '#fff',
+    over: '#DA37CF',
   },
 }
