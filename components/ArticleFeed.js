@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import {Link} from '../routes'
 import {
   FeedWrapper,
   FeedList,
@@ -16,7 +16,7 @@ export default props => {
   const feedItems = props.results.map((item, index) => {
     return (
       <FeedItem key={`articleFeedItem-${index}`}>
-        <Link href={`/writing/${item.uid}`} passHref>
+        <Link route="writing" params={{slug: item.uid}} passHref>
           <FeedItemLink title={item.data.title[0].text}>
             <FeedItemBox>
               <FeedItemLinkTitle>{item.data.title[0].text}</FeedItemLinkTitle>
