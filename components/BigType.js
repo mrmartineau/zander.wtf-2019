@@ -5,7 +5,7 @@ import { ds } from '../designsystem/index'
 const BigType = styled.div`
   font-size: 200vw;
   font-weight: 900;
-  overflow-x: hidden;
+  overflow: hidden;
   margin: -10vw 0 0;
   padding: 0;
   line-height: 0.72;
