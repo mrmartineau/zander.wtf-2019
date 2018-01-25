@@ -9,6 +9,7 @@ import WorkFeed from '../components/WorkFeed'
 import { Container, Spacer } from '../components/common/Layout'
 import { initApi } from '../utils/prismic'
 import Prismic from 'prismic-javascript'
+import setupServiceWorker from '../utils/setupServiceWorker'
 
 const baseline = ds.multiply('type.modularscale.base', 1.4)
 
@@ -175,6 +176,10 @@ export default class Page extends Component {
       articles: articles,
       work: work.results,
     }
+  }
+
+  componentDidMount() {
+    setupServiceWorker()
   }
 
   render() {
