@@ -4,17 +4,17 @@ import { RichText } from 'prismic-reactjs'
 import { initApi } from '../utils/prismic'
 import { Container, Spacer } from '../components/common/Layout'
 import styled from 'styled-components'
-import {ds} from '../designsystem'
+import { ds } from '../designsystem'
 
 const Article = styled.article`
   a {
     &:link,
     &:visited {
-      color: ${ds.color('link')}
+      color: ${ds.color('link')};
     }
     &:hover,
     &:active {
-      color: ${ds.color('link', 'over')}
+      color: ${ds.color('link', 'over')};
     }
   }
 `
@@ -39,19 +39,19 @@ export default class Writing extends Component {
     const body = response.data.body
     return (
       <Article>
-      <Spacer>
-        <Container>
-          <Head>
-            <title>{title}</title>
-            <meta
-              name="viewport"
-              content="initial-scale=1.0, width=device-width"
-            />
-          </Head>
-          <h1>{title}</h1>
-          {RichText.render(body)}
-        </Container>
-      </Spacer>
+        <Spacer>
+          <Container>
+            <Head>
+              <title>{title}</title>
+              <meta
+                name="viewport"
+                content="initial-scale=1.0, width=device-width"
+              />
+            </Head>
+            <h1>{title}</h1>
+            {RichText.render(body)}
+          </Container>
+        </Spacer>
       </Article>
     )
   }
