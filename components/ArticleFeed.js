@@ -6,7 +6,6 @@ import {
   FeedItem,
   FeedItemLink,
   FeedItemLinkTitle,
-  FeedItemLinkUrl,
   FeedItemBox,
   FeedItemDate,
   FeedItemDesc,

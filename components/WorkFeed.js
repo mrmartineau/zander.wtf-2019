@@ -5,32 +5,29 @@ import {
   FeedList,
   FeedItem,
   FeedItemLink,
-  FeedItemLinkTitle,
-  FeedItemLinkUrl,
-  FeedItemBox,
-  FeedItemDate,
   FeedItemDesc,
   FeedItemImage,
 } from './Feed'
 
 export default props => {
   const feedItems = props.results.map((item, index) => {
-    const linkUrl = item.data.link.url ? item.data.link.url : '#';
+    const linkUrl = item.data.link.url ? item.data.link.url : '';
+    const title = item.data.title[0].text
     return (
-      <li key={`work-${index}`}>
-        <FeedItemLink href={linkUrl}>
+      <FeedItem key={`work-${index}`}>
+        <FeedItemLink href={linkUrl} title={title} target="_blank">
           {item.data.image.url && (
             <FeedItemImage
               src={item.data.image.url}
-              alt={`Image of ${item.data.title[0].text}`}
+              alt={`Image of ${title}`}
             />
           )}
-          <b>{item.data.title[0].text}</b>
+          <b>{title}</b>
           {item.data.description.length > 0 && (
             <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>
           )}
         </FeedItemLink>
-      </li>
+      </FeedItem>
     )
   })
 

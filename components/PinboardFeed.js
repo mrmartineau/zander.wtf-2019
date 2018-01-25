@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Link from 'next/link'
 import {
   FeedWrapper,
   FeedList,
@@ -32,13 +31,11 @@ export default class Feed extends Component {
     const feedItems = this.state.feed.map((item, index) => {
       return (
         <FeedItem key={`feedItem-${index}`}>
-          <Link href={item.u}>
-            <FeedItemLink title={item.n}>
-              <FeedItemLinkTitle>{item.d}</FeedItemLinkTitle>
-              <FeedItemDesc>{item.n}</FeedItemDesc>
-              <FeedItemLinkUrl>{item.u}</FeedItemLinkUrl>
-            </FeedItemLink>
-          </Link>
+          <FeedItemLink href={item.u} title={item.n} target="_blank">
+            <FeedItemLinkTitle>{item.d}</FeedItemLinkTitle>
+            <FeedItemDesc>{item.n}</FeedItemDesc>
+            <FeedItemLinkUrl>{item.u}</FeedItemLinkUrl>
+          </FeedItemLink>
         </FeedItem>
       )
     })
