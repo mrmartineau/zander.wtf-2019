@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from '../routes'
+import { Link } from '../routes'
 import {
   FeedWrapper,
   FeedList,
@@ -13,15 +13,21 @@ import {
 
 export default props => {
   const feedItems = props.results.map((item, index) => {
+    const data = item.data
+    const title = data.title[0].text
     return (
       <FeedItem key={`articleFeedItem-${index}`}>
-        <Link route="writing" params={{slug: item.uid}} passHref>
-          <FeedItemLink title={item.data.title[0].text}>
+        <Link route="writing" params={{ slug: item.uid }} passHref>
+          <FeedItemLink title={title}>
             <FeedItemBox>
-              <FeedItemLinkTitle>{item.data.title[0].text}</FeedItemLinkTitle>
-              <FeedItemDate>{item.data.date}</FeedItemDate>
+              {data.title.length && (
+                <FeedItemLinkTitle>{title}</FeedItemLinkTitle>
+              )}
+              {data.date && <FeedItemDate>{data.date}</FeedItemDate>}
             </FeedItemBox>
-            <FeedItemDesc>{item.data.subtitle[0].text}</FeedItemDesc>
+            {data.subtitle.length && (
+              <FeedItemDesc>{data.subtitle[0].text}</FeedItemDesc>
+            )}
           </FeedItemLink>
         </Link>
       </FeedItem>
