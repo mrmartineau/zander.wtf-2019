@@ -52,26 +52,13 @@ export const myDesignSystem = {
   colors: {
     colorPalette,
 
-    brand: {
-      red: '#e82219',
-      deeporange: '#ff7200',
-      orange: '#ff9500',
-      green: '#c4d000',
-      teal: '#1aa5c8',
-      navy: '#0052da',
-    },
+    brand: {},
   },
 
   breakpoints: {
     s: 300,
     m: 500,
     l: 800,
-  },
-
-  zIndex: {
-    low: 10,
-    mid: 100,
-    high: 1000,
   },
 
   spacing: {
@@ -87,16 +74,6 @@ export const myDesignSystem = {
       columnCount: 12,
     },
   },
-
-  transition: {
-    default: {
-      duration: transitions.duration,
-      timing: transitions.timing,
-      transition: `all ${transitions.duration} ${transitions.timing}`,
-    },
-  },
-
-  borderRadius: '0.3em',
 }
 
 export const ds = new DesignSystem(myDesignSystem, {
