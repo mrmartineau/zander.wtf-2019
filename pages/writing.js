@@ -47,6 +47,10 @@ export default class Writing extends Component {
                 name="viewport"
                 content="initial-scale=1.0, width=device-width"
               />
+              <meta
+                name="google-site-verification"
+                content="0jhxV5hlLfqQ8q7mc6Xif2GjQ64gn-aXasg1EKeW3gw"
+              />
             </Head>
             <h1>{title}</h1>
             {RichText.render(body)}
