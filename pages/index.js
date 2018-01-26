@@ -57,7 +57,7 @@ injectGlobal`
 
   h1 {
     font-size: ${ds.fs('xl')};
-    margin-bottom: ${ds.multiply(baseline, 2)};
+    margin-bottom: ${ds.multiply(baseline, 2)}px;
 
     @media screen and (min-width: ${ds.bp('m')}) {
       font-size: ${ds.fs('xxl')};
@@ -195,6 +195,8 @@ export default class Page extends Component {
             name="google-site-verification"
             content="0jhxV5hlLfqQ8q7mc6Xif2GjQ64gn-aXasg1EKeW3gw"
           />
+          <link rel="dns-prefetch" href="https://pinboard-api.now.sh" />
+          <link rel="preconnect" href="https://pinboard-api.now.sh" />
         </Head>
         <BigType />
         <Container intro>
