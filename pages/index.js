@@ -169,7 +169,9 @@ export default class Page extends Component {
 
     const work = await initApi()
       .then(api => {
-        return api.query(Prismic.Predicates.at('document.type', 'work'))
+        return api.query(Prismic.Predicates.at('document.type', 'work'), {
+          orderings: '[my.work.date desc]',
+        })
       })
       .catch(err => console.log(err))
     return {
