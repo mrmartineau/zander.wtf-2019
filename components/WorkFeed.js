@@ -8,12 +8,25 @@ import {
   FeedItem,
   FeedItemLink,
   FeedItemDesc,
-  FeedItemImage,
+  FeedItemBox,
+  FeedItemLinkUrl,
 } from './Feed'
+import { ds } from '../designsystem'
 
 export const WorkFeedItemBox = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+`
+
+export const WorkFeedItemImageWrapper = styled.div`
+  margin-left: ${ds.space(2)};
+  flex-basis: 20%;
+  flex-shrink: 0;
+`
+
+export const WorkFeedItemImage = styled.img`
+  display: block;
+  max-width: 100%;
 `
 
 export default props => {
@@ -24,19 +37,22 @@ export default props => {
       <FeedItem key={`work-${index}`}>
         <FeedItemLink href={linkUrl} title={title} target="_blank">
           <WorkFeedItemBox>
-            {item.data.image.url && (
-              <FeedItemImage
-                src={item.data.image.url}
-                alt={`Image of ${title}`}
-              />
-            )}
             <div>
               <b>{title}</b>
               {item.data.description.length > 0 && (
                 <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>
               )}
             </div>
+            {item.data.image.url && (
+              <WorkFeedItemImageWrapper>
+                <WorkFeedItemImage
+                  src={item.data.image.url}
+                  alt={`Image of ${title}`}
+                />
+              </WorkFeedItemImageWrapper>
+            )}
           </WorkFeedItemBox>
+          {linkUrl && <FeedItemLinkUrl>{linkUrl}</FeedItemLinkUrl>}
         </FeedItemLink>
       </FeedItem>
     )

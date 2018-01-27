@@ -53,11 +53,3 @@ export const FeedItemLinkUrl = styled.div`
   font-size: ${ds.fs('s')};
   margin-top: ${ds.space(1)};
 `
-
-export const FeedItemImage = styled.img`
-  display: block;
-  margin-right: ${ds.space(2)};
-  max-width: 100%;
-  flex-basis: 150px;
-  flex-shrink: 0;
-`
