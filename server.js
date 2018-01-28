@@ -10,6 +10,7 @@ const redirects = [
   { from: '/lab', to: '/' },
   { from: '/styleguide', to: '/' },
   { from: '/work', to: '/#Work' },
+  { from: '/writing', to: '/#Writing' },
   { from: '/2017/01/creative-technology-monthly-disappearing-interface/', to: '/writing/creative-technology-monthly-disappearing-interface' },
   { from: '/2016/12/creative-technology-monthly-motion-and-animation/', to: '/writing/creative-technology-monthly-motion-and-animation' },
   { from: '/2016/11/creative-technology-monthly-chatbots/', to: '/writing/creative-technology-monthly-chatbots' },
