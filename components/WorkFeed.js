@@ -14,14 +14,27 @@ import {
 import { ds } from '../designsystem'
 
 export const WorkFeedItemBox = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: block;
+
+  @media screen and (min-width: ${ds.bp('m')}) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `
 
 export const WorkFeedItemImageWrapper = styled.div`
-  margin-left: ${ds.space(2)};
-  flex-basis: 20%;
-  flex-shrink: 0;
+  margin-top: ${ds.space(2)};
+  width: 50%;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+
+  @media screen and (min-width: ${ds.bp('m')}) {
+    margin-left: ${ds.space(2)};
+    margin-top: 0;
+    flex-basis: 27%;
+    flex-shrink: 0;
+  }
 `
 
 export const WorkFeedItemImage = styled.img`
@@ -42,6 +55,7 @@ export default props => {
               {item.data.description.length > 0 && (
                 <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>
               )}
+              {linkUrl && <FeedItemLinkUrl>{linkUrl}</FeedItemLinkUrl>}
             </div>
             {item.data.image.url && (
               <WorkFeedItemImageWrapper>
@@ -52,7 +66,6 @@ export default props => {
               </WorkFeedItemImageWrapper>
             )}
           </WorkFeedItemBox>
-          {linkUrl && <FeedItemLinkUrl>{linkUrl}</FeedItemLinkUrl>}
         </FeedItemLink>
       </FeedItem>
     )
