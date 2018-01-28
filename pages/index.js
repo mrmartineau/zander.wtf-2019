@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Head from 'next/head'
-import { injectGlobal } from 'styled-components'
+import { injectGlobal, css } from 'styled-components'
 import { ds } from '../designsystem'
 import BigType from '../components/BigType'
 import PinboardFeed from '../components/PinboardFeed'
@@ -10,19 +10,30 @@ import { Container, Spacer } from '../components/common/Layout'
 import { initApi } from '../utils/prismic'
 import Prismic from 'prismic-javascript'
 import setupServiceWorker from '../utils/setupServiceWorker'
+import fluidType, { fluidSpace } from '../utils/fluidType'
 
-const baseline = ds.multiply('type.modularscale.base', 1.4)
+const baseline = ds.pxTo(35, 25, 'rem')
+// const baseFluidType = fluidType('15px', '20px', '320px', '1000px')
+// const baseFluidType = fluidSpace('16px', '25px', '320px', '1000px')
 
 injectGlobal`
   html {
     box-sizing: border-box;
-    font-size: ${ds.get('type.baseFontSize')};
     text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     color: ${ds.color('bright')};
     background-color: ${ds.color('dark')};
     font-family: ${ds.get('type.fontFamilyBase')};
     line-height: ${ds.get('type.lineHeight.base')};
+    font-size: 16px;
+
+    @media screen and (min-width: ${ds.bp('s')}) {
+      font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1000 - 320)));
+    }
+
+    @media screen and (min-width: ${ds.bp('l')}) {
+      font-size: 25px;
+    }
   }
 
   *,
@@ -37,7 +48,7 @@ injectGlobal`
 
   p {
     margin-top: 0;
-    margin-bottom: ${baseline}px;
+    margin-bottom: ${baseline};
   }
 
   /**
@@ -52,50 +63,30 @@ injectGlobal`
     font-family: ${ds.get('type.fontFamilyHeadings')};
     line-height: ${ds.get('type.lineHeight.headings')};
     margin-top: 0;
-    margin-bottom: ${baseline}px;
+    margin-bottom: ${baseline};
   }
 
   h1 {
-    font-size: ${ds.fs('xl')};
-    margin-bottom: ${ds.multiply(baseline, 2)}px;
-
-    @media screen and (min-width: ${ds.bp('m')}) {
-      font-size: ${ds.fs('xxl')};
-    }
+    font-size: ${ds.fs('xxl')};
+    margin-bottom: ${ds.pxTo(70, 25, 'rem')};
   }
 
   h2 {
-    font-size: ${ds.fs('l')};
-
-    @media screen and (min-width: ${ds.bp('m')}) {
-      font-size: ${ds.fs('xl')};
-    }
+    font-size: ${ds.fs('xl')};
   }
 
   h3 {
-    font-size: ${ds.fs('m')};
-
-    @media screen and (min-width: ${ds.bp('m')}) {
-      font-size: ${ds.fs('l')};
-    }
+    font-size: ${ds.fs('l')};
   }
 
   h4 {
-    font-size: ${ds.fs('s')};
-
-    @media screen and (min-width: ${ds.bp('m')}) {
-      font-size: ${ds.fs('m')};
-    }
+    font-size: ${ds.fs('m')};
   }
 
   h5,
   h6 {
-    font-size: ${ds.fs('s')};
+    font-size: ${ds.fs('m')};
     margin-bottom: 0;
-
-    @media screen and (min-width: ${ds.bp('m')}) {
-      font-size: ${ds.fs('m')};
-    }
   }
 
   * + h1,
@@ -104,7 +95,7 @@ injectGlobal`
   * + h4,
   * + h5,
   * + h6 {
-    margin-top: ${baseline}px;
+    margin-top: ${baseline};
   }
 
   code,
@@ -125,7 +116,7 @@ injectGlobal`
   pre {
     display: block;
     padding: 10px;
-    margin: 0 0 ${baseline}px;
+    margin: 0 0 ${baseline};
     color: #fff;
     background-color: #444;
     border-radius: 4px;

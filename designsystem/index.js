@@ -29,8 +29,8 @@ export const myDesignSystem = {
     },
 
     modularscale: {
-      base: 25, // should be the same as baseFontSize
-      ratio: 1.5,
+      base: [25], // should be the same as baseFontSize
+      ratio: 1.25,
     },
 
     fontFamily,
@@ -56,9 +56,9 @@ export const myDesignSystem = {
   },
 
   breakpoints: {
-    s: 300,
-    m: 500,
-    l: 800,
+    s: '300px',
+    m: '600px',
+    l: '1000px',
   },
 
   spacing: {

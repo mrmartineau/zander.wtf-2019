@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { ds } from '../designsystem'
 
 export const FeedWrapper = styled.div`
-  margin: ${ds.spacing(10)} 0;
+  margin: ${ds.pxTo(80, 25, 'rem')} 0;
 `
 
 export const FeedList = styled.ul`
@@ -18,7 +18,7 @@ export const FeedItem = styled.li`
 
 export const FeedItemLink = styled.a`
   display: block;
-  padding: ${ds.spacing(2)};
+  padding: ${ds.pxTo(16, 25, 'rem')};
   color: ${ds.color('bright')};
   text-decoration: none;
   cursor: pointer;
@@ -45,11 +45,11 @@ export const FeedItemDate = styled.div`
 
 export const FeedItemDesc = styled.div`
   opacity: 0.6;
-  margin-top: ${ds.spacing(1)};
+  margin-top: ${ds.pxTo(8, 25, 'rem')};
 `
 
 export const FeedItemLinkUrl = styled.div`
   opacity: 0.6;
   font-size: ${ds.fs('s')};
-  margin-top: ${ds.space(1)};
+  margin-top: ${ds.pxTo(8, 25, 'rem')};
 `
