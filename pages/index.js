@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react'
-import Head from 'next/head'
+import React, { Component } from 'react'
 import { injectGlobal, css } from 'styled-components'
 import { ds } from '../designsystem'
+import MasterLayout from '../layouts/master'
 import globalStyles from '../designsystem/globalStyles'
 import BigType from '../components/BigType'
 import PinboardFeed from '../components/PinboardFeed'
@@ -59,20 +59,7 @@ export default class Page extends Component {
 
   render() {
     return (
-      <Fragment>
-        <Head>
-          <title>Zander Martineau. Front-end developer in London.</title>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-          <meta
-            name="google-site-verification"
-            content="0jhxV5hlLfqQ8q7mc6Xif2GjQ64gn-aXasg1EKeW3gw"
-          />
-          <link rel="dns-prefetch" href="https://pinboard-api.now.sh" />
-          <link rel="preconnect" href="https://pinboard-api.now.sh" />
-        </Head>
+      <MasterLayout title="Zander Martineau. Front-end developer in London.">
         <BigType />
         <Container intro>
           <h1>WTF?</h1>
@@ -80,10 +67,14 @@ export default class Page extends Component {
           <h2>Making the web simple, fun and fast since '06</h2>
         </Container>
         <Container>
-          <ArticleFeed results={this.props.articles} title="Writing" />
-          <Spacer>
-            <WorkFeed results={this.props.work} title="Work" />
-          </Spacer>
+          {this.props.articles && (
+            <ArticleFeed results={this.props.articles} title="Writing" />
+          )}
+          {this.props.work && (
+            <Spacer>
+              <WorkFeed results={this.props.work} title="Work" />
+            </Spacer>
+          )}
           <Spacer>
             <PinboardFeed
               feed="https://pinboard-api.now.sh/json/u:MrMartineau/t:zm:reading/"
@@ -97,7 +88,7 @@ export default class Page extends Component {
             />
           </Spacer>
         </Container>
-      </Fragment>
+      </MasterLayout>
     )
   }
 }
