@@ -5,6 +5,7 @@ export default {
 
   dark: {
     base: '#000',
+    lighter: '#444',
   },
 
   link: {

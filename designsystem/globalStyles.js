@@ -109,8 +109,8 @@ export const codeStyles = `
     display: block;
     padding: 10px;
     margin: 0 0 ${baseline};
-    color: #fff;
-    background-color: #444;
+    color: ${ds.color('bright')};
+    background-color: ${ds.color('dark', 'lighter')};
     border-radius: 4px;
     white-space: pre;
     max-height: 90vh;
@@ -119,8 +119,8 @@ export const codeStyles = `
 
     code {
       padding: 0;
-      color: #fff;
-      background-color: #000;
+      color: ${ds.color('bright')};
+      background-color: ${ds.color('dark')};
       border: 0;
     }
   }
