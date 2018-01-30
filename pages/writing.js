@@ -3,8 +3,13 @@ import Head from 'next/head'
 import { RichText } from 'prismic-reactjs'
 import { initApi } from '../utils/prismic'
 import { Container, Spacer } from '../components/common/Layout'
-import styled from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 import { ds } from '../designsystem'
+import globalStyles, { codeStyles } from '../designsystem/globalStyles'
+
+injectGlobal`
+  ${globalStyles}
+`
 
 const Article = styled.article`
   a {
@@ -17,6 +22,8 @@ const Article = styled.article`
       color: ${ds.color('link', 'over')};
     }
   }
+
+  ${codeStyles};
 `
 
 export default class Writing extends Component {
