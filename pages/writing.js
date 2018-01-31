@@ -47,7 +47,7 @@ export default class Writing extends Component {
     const title = response.data.title[0].text
     const body = response.data.body
     return (
-      <MasterLayout title={title}>
+      <MasterLayout title={title} description="An article by Zander Martineau">
         <Article>
           <Spacer>
             <Container>

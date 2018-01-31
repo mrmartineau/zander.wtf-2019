@@ -48,7 +48,7 @@ export default props => {
     const title = item.data.title[0].text
     return (
       <FeedItem key={`work-${index}`}>
-        <FeedItemLink href={linkUrl} title={title} target="_blank">
+        <FeedItemLink href={linkUrl} title={title} target="_blank" rel="noopener">
           <WorkFeedItemBox>
             <div>
               <b>{title}</b>
