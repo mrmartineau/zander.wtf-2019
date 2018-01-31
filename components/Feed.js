@@ -23,6 +23,7 @@ export const FeedItemLink = styled.a`
   text-decoration: none;
   cursor: pointer;
   border-bottom: 1px solid;
+  word-wrap: break-word;
 
   &:hover {
     color: ${ds.color('dark')};
