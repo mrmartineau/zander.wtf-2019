@@ -13,6 +13,8 @@ injectGlobal`
 
 const Article = styled.article`
   a {
+    word-wrap: break-word;
+
     &:link,
     &:visited {
       color: ${ds.color('link')};
