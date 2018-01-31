@@ -1,3 +1,4 @@
+import { css } from 'styled-components'
 import { ds } from './index'
 // import fluidType, { fluidSpace } from '../utils/fluidType'
 
@@ -89,7 +90,7 @@ export default `
   }
 `
 
-export const codeStyles = `
+export const codeStyles = css`
   code,
   pre {
     padding: 0 3px 2px;
