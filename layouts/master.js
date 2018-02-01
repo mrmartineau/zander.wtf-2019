@@ -9,7 +9,7 @@ export default ({
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
-      <meta http-equiv="x-ua-compatible" content="ie=edge" />
+      <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta name="description" content={description} />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="author" href="Zander Martineau" />
