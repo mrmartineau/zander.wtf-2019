@@ -23,9 +23,9 @@ export const FeedItemLink = styled.a`
   text-decoration: none;
   cursor: pointer;
   border-bottom: 1px solid;
-  word-wrap: break-word;
 
-  &:hover {
+  &:hover,
+  &:active {
     color: ${ds.color('dark')};
     background-color: ${ds.color('bright')};
   }
@@ -53,4 +53,5 @@ export const FeedItemLinkUrl = styled.div`
   opacity: 0.6;
   font-size: ${ds.fs('s')};
   margin-top: ${ds.pxTo(8, 25, 'rem')};
+  word-wrap: break-word;
 `
