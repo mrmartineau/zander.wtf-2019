@@ -31,9 +31,14 @@ export default class Feed extends Component {
     const feedItems = this.state.feed.map((item, index) => {
       return (
         <FeedItem key={`feedItem-${index}`}>
-          <FeedItemLink href={item.u} title={item.n} target="_blank" rel="noopener">
+          <FeedItemLink
+            href={item.u}
+            title={item.d}
+            target="_blank"
+            rel="noopener"
+          >
             <FeedItemLinkTitle>{item.d}</FeedItemLinkTitle>
-            <FeedItemDesc>{item.n}</FeedItemDesc>
+            {item.n && <FeedItemDesc>{item.n}</FeedItemDesc>}
             <FeedItemLinkUrl>{item.u}</FeedItemLinkUrl>
           </FeedItemLink>
         </FeedItem>
