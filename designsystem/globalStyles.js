@@ -9,32 +9,10 @@ const baseline = ds.pxTo(35, 25, 'rem')
 // global styles
 export default `
   html {
-    box-sizing: border-box;
-    text-size-adjust: 100%;
-    text-rendering: optimizeLegibility;
     color: ${ds.color('bright')};
     background-color: ${ds.color('dark')};
     font-family: ${ds.get('type.fontFamilyBase')};
     line-height: ${ds.get('type.lineHeight.base')};
-    font-size: 16px;
-
-    @media screen and (min-width: ${ds.bp('s')}) {
-      font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1000 - 320)));
-    }
-
-    @media screen and (min-width: ${ds.bp('l')}) {
-      font-size: 25px;
-    }
-  }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-
-  body {
-    margin: 0;
   }
 
   p {
