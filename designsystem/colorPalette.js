@@ -10,6 +10,6 @@ export default {
 
   link: {
     base: '#fff',
-    over: '#DA37CF',
+    over: '#02C39A',
   },
 }

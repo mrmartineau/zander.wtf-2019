@@ -81,30 +81,25 @@ export default `
 export const codeStyles = css`
   code,
   pre {
-    padding: 0 3px 2px;
     font-family: ${ds.get('type.fontFamily.mono')};
-    font-size: ${ds.fs('s')};
-    color: deepred;
-    border-radius: 3px;
-    tab-size: 3;
+    font-size: ${ds.fs('xs')};
+    color: ${ds.color('dark')};
+    background-color: ${ds.color('bright')};
   }
 
   code {
     padding: 2px 4px;
-    color: deepred;
   }
 
   pre {
+    position: relative;
     display: block;
-    padding: 10px;
+    padding: ${baseline};
     margin: 0 0 ${baseline};
-    color: ${ds.color('bright')};
-    background-color: ${ds.color('dark', 'lighter')};
-    border-radius: 4px;
+    /* max-height: 90vh; */
+    overflow: auto;
+    tab-size: 3;
     white-space: pre;
-    max-height: 90vh;
-    overflow-y: scroll;
-    overflow-x: scroll;
 
     code {
       padding: 0;
