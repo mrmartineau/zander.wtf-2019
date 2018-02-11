@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 import { ds } from './index'
 // import fluidType, { fluidSpace } from '../utils/fluidType'
 
-const baseline = ds.pxTo(35, 25, 'rem')
+export const baseline = ds.pxTo(35, 25, 'rem')
 // const baseFluidType = fluidType('15px', '20px', '320px', '1000px')
 // const baseFluidType = fluidSpace('16px', '25px', '320px', '1000px')
 
