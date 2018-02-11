@@ -66,6 +66,16 @@ export default `
   * + h6 {
     margin-top: ${baseline};
   }
+
+  ::-moz-selection {
+    background: ${ds.color('link', 'over')};
+    color: ${ds.color('bright')};
+  }
+
+  ::selection {
+    background: ${ds.color('link', 'over')};
+    color: ${ds.color('bright')};
+  }
 `
 
 export const codeStyles = css`
