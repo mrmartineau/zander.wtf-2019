@@ -4,6 +4,7 @@ export default ({
   children,
   title = 'This is the default title',
   description = 'Personal website for Zander Martineau',
+  canonical = null,
 }) => (
   <div>
     <Head>
@@ -27,6 +28,7 @@ export default ({
       <link rel="dns-prefetch" href="https://pinboard-api.now.sh" />
       <link rel="preconnect" href="https://pinboard-api.now.sh" />
       <link rel="preconnect" href="https://zanderwtf.prismic.io" />
+      {canonical && <link rel="canonical" href={canonical} />}
     </Head>
 
     {children}

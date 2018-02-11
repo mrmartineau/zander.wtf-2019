@@ -58,8 +58,15 @@ export default class Writing extends Component {
     const response = this.props.response
     const title = response.data.title[0].text
     const body = response.data.body
+    const canonical = response.data.original_url.url
+      ? response.data.original_url.url
+      : null
     return (
-      <MasterLayout title={title} description="An article by Zander Martineau">
+      <MasterLayout
+        title={title}
+        description="An article by Zander Martineau"
+        canonical={canonical}
+      >
         <Article>
           <Spacer>
             <Container>
