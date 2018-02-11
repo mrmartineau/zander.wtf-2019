@@ -25,6 +25,10 @@ const Article = styled.article`
     }
   }
 
+  img {
+    max-width: 100%;
+  }
+
   ${codeStyles};
 `
 
