@@ -5,10 +5,18 @@ import { initApi } from '../utils/prismic'
 import { Container, Spacer } from '../components/common/Layout'
 import styled, { injectGlobal } from 'styled-components'
 import { ds } from '../designsystem'
-import globalStyles, { codeStyles } from '../designsystem/globalStyles'
+import globalStyles, { codeStyles, baseline } from '../designsystem/globalStyles'
 
 injectGlobal`
   ${globalStyles}
+`
+
+const Time = styled.time`
+  font-size: ${ds.fs(-1)};
+  font-family: ${ds.get('type.fontFamily.mono')};
+  margin-bottom: ${baseline};
+  display: block;
+  opacity: 0.6;
 `
 
 const Article = styled.article`
@@ -56,6 +64,7 @@ export default class Writing extends Component {
           <Spacer>
             <Container>
               <h1>{title}</h1>
+              <Time datetime={response.data.date}>{response.data.date}</Time>
               {RichText.render(body)}
             </Container>
           </Spacer>
