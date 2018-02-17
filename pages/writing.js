@@ -6,6 +6,7 @@ import { Container, Spacer } from '../components/common/Layout'
 import styled, { injectGlobal } from 'styled-components'
 import { ds } from '../designsystem'
 import globalStyles, { linkStyles, codeStyles, baseline } from '../designsystem/globalStyles'
+import Link from 'next/link'
 
 injectGlobal`
   ${globalStyles}
@@ -29,6 +30,16 @@ const Article = styled.article`
   }
 
   ${codeStyles};
+`
+
+const BackLink = styled.a`
+  font-family: ${ds.get('type.fontFamily.mono')};
+  font-size: ${ds.fs(-2)};
+  ${linkStyles};
+  text-decoration: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
 `
 
 export default class Writing extends Component {
@@ -61,6 +72,11 @@ export default class Writing extends Component {
         <Article>
           <Spacer>
             <Container>
+              <Link href="/#Writing" passHref>
+                <BackLink>
+                  ← Back
+                </BackLink>
+              </Link>
               <h1>{title}</h1>
               <Time datetime={response.data.date}>{response.data.date}</Time>
               {RichText.render(body)}
