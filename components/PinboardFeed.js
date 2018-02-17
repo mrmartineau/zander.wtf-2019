@@ -3,6 +3,7 @@ import axios from 'axios'
 import {
   FeedWrapper,
   FeedUrl,
+  FeedTitle,
   FeedList,
   FeedItem,
   FeedItemLink,
@@ -57,7 +58,7 @@ export default class Feed extends Component {
 
     return (
       <FeedWrapper>
-        <h2 id={encodeURI(this.props.title)}>
+        <FeedTitle id={encodeURI(this.props.title)}>
           {this.props.title}
           <FeedUrl
             href={`${PINBOARD_PATH}${this.props.feed}`}
@@ -66,7 +67,7 @@ export default class Feed extends Component {
           >
             [ ? ]
           </FeedUrl>
-        </h2>
+        </FeedTitle>
 
         <FeedList>{feedItems}</FeedList>
       </FeedWrapper>

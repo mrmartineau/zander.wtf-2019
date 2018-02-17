@@ -5,6 +5,7 @@ import { Container } from './common/Layout'
 import {
   FeedWrapper,
   FeedList,
+  FeedTitle,
   FeedItem,
   FeedItemLink,
   FeedItemDesc,
@@ -73,7 +74,7 @@ export default props => {
 
   return (
     <FeedWrapper>
-      <h2 id={encodeURI(props.title)}>{props.title}</h2>
+      <FeedTitle id={encodeURI(props.title)}>{props.title}</FeedTitle>
       <FeedList>{feedItems}</FeedList>
     </FeedWrapper>
   )

@@ -11,7 +11,7 @@ export const FeedUrl = styled.a`
   font-family: ${ds.get('type.fontFamily.mono')};
   font-weight: normal;
   display: inline-block;
-  margin-left: 1rem;
+  margin-left: 0.4rem;
   text-decoration: none;
 
   ${linkStyles}
@@ -23,13 +23,15 @@ export const FeedList = styled.ul`
   margin: 0;
 `
 
-export const FeedItem = styled.li`
-  /* border-bottom: 1px solid #ddd; */
+export const FeedTitle = styled.h2`
+  text-align: center;
 `
+
+export const FeedItem = styled.li``
 
 export const FeedItemLink = styled.a`
   display: block;
-  padding: ${ds.pxTo(16, 25, 'rem')};
+  padding: 1rem;
   color: ${ds.color('bright')};
   text-decoration: none;
   cursor: pointer;
@@ -58,6 +60,7 @@ export const FeedItemDate = styled.div`
 export const FeedItemDesc = styled.div`
   opacity: 0.6;
   margin-top: ${ds.pxTo(8, 25, 'rem')};
+  font-size: ${ds.fs('s')};
 `
 
 export const FeedItemLinkUrl = styled.div`

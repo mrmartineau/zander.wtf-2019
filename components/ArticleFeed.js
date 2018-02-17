@@ -3,6 +3,7 @@ import { Link } from '../routes'
 import {
   FeedWrapper,
   FeedList,
+  FeedTitle,
   FeedItem,
   FeedItemLink,
   FeedItemLinkTitle,
@@ -11,8 +12,11 @@ import {
   FeedItemDesc,
 } from './Feed'
 
-export default props => {
-  const feedItems = props.results.map((item, index) => {
+export default ({ results, title, currentId = null, TitleTag = 'h2' }) => {
+  const newFeed = results.filter(item => {
+    return item.id !== currentId
+  })
+  const feedItems = newFeed.map((item, index) => {
     const data = item.data
     const title = data.title[0].text
     return (
@@ -36,7 +40,7 @@ export default props => {
 
   return (
     <FeedWrapper>
-      <h2 id={encodeURI(props.title)}>{props.title}</h2>
+      <FeedTitle id={encodeURI(title)}>{title}</FeedTitle>
       <FeedList>{feedItems}</FeedList>
     </FeedWrapper>
   )
