@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import {
   FeedWrapper,
+  FeedUrl,
   FeedList,
   FeedItem,
   FeedItemLink,
@@ -9,6 +10,9 @@ import {
   FeedItemDesc,
   FeedItemLinkUrl,
 } from './Feed'
+
+const FEED_PATH = 'https://pinboard-api.now.sh/json/'
+const PINBOARD_PATH = 'https://pinboard.in/'
 
 export default class Feed extends Component {
   constructor(props) {
@@ -20,7 +24,7 @@ export default class Feed extends Component {
   }
 
   componentDidMount() {
-    axios.get(this.props.feed).then(response => {
+    axios.get(`${FEED_PATH}${this.props.feed}`).then(response => {
       this.setState({
         feed: response.data,
       })
@@ -28,7 +32,13 @@ export default class Feed extends Component {
   }
 
   render() {
-    const feedItems = this.state.feed.map((item, index) => {
+    const maxDisplayCount = 10
+    const newFeedList =
+      this.state.feed.length <= maxDisplayCount
+        ? this.state.feed
+        : this.state.feed.slice(0, maxDisplayCount)
+
+    const feedItems = newFeedList.map((item, index) => {
       return (
         <FeedItem key={`feedItem-${index}`}>
           <FeedItemLink
@@ -47,7 +57,17 @@ export default class Feed extends Component {
 
     return (
       <FeedWrapper>
-        <h2 id={encodeURI(this.props.title)}>{this.props.title}</h2>
+        <h2 id={encodeURI(this.props.title)}>
+          {this.props.title}
+          <FeedUrl
+            href={`${PINBOARD_PATH}${this.props.feed}`}
+            target="_blank"
+            rel="noopener"
+          >
+            [ ? ]
+          </FeedUrl>
+        </h2>
+
         <FeedList>{feedItems}</FeedList>
       </FeedWrapper>
     )

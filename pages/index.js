@@ -77,13 +77,13 @@ export default class Page extends Component {
           )}
           <Spacer>
             <PinboardFeed
-              feed="https://pinboard-api.now.sh/json/u:MrMartineau/t:zm:reading/"
+              feed="u:MrMartineau/t:zm:reading/"
               title="Reading list"
             />
           </Spacer>
           <Spacer>
             <PinboardFeed
-              feed="https://pinboard-api.now.sh/json/u:MrMartineau/t:zm:link/"
+              feed="u:MrMartineau/t:zm:link/"
               title="Link feed"
             />
           </Spacer>
