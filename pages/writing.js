@@ -5,7 +5,7 @@ import { initApi } from '../utils/prismic'
 import { Container, Spacer } from '../components/common/Layout'
 import styled, { injectGlobal } from 'styled-components'
 import { ds } from '../designsystem'
-import globalStyles, { codeStyles, baseline } from '../designsystem/globalStyles'
+import globalStyles, { linkStyles, codeStyles, baseline } from '../designsystem/globalStyles'
 
 injectGlobal`
   ${globalStyles}
@@ -21,16 +21,7 @@ const Time = styled.time`
 
 const Article = styled.article`
   a {
-    word-wrap: break-word;
-
-    &:link,
-    &:visited {
-      color: ${ds.color('link')};
-    }
-    &:hover,
-    &:active {
-      color: ${ds.color('link', 'over')};
-    }
+    ${linkStyles};
   }
 
   img {

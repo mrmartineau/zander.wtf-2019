@@ -78,6 +78,19 @@ export default `
   }
 `
 
+export const linkStyles = css`
+  word-wrap: break-word;
+
+  &:link,
+  &:visited {
+    color: ${ds.color('link')};
+  }
+  &:hover,
+  &:active {
+    color: ${ds.color('link', 'over')};
+  }
+`
+
 export const codeStyles = css`
   code,
   pre {
