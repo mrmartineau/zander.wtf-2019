@@ -2,36 +2,38 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
-  static getInitialProps ({ renderPage }) {
+  static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet()
-    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
+    const page = renderPage(App => props =>
+      sheet.collectStyles(<App {...props} />)
+    )
     const styleTags = sheet.getStyleElement()
     return { ...page, styleTags }
   }
 
-  render () {
+  render() {
     return (
       <html lang="en">
         <head>
-
           <style>{`
+            /* 16px @ 300px increasing to 25px @ 1000px */
+            @media (min-width: 300px) {
+              :root {
+                font-size: calc(1rem + ((1vw - 3px) * 1.2857));
+                /* Where: * 1.2857 = 100 * font_Size_Difference / viewport_Width_Difference */
+              }
+            }
+            /* Prevent font scaling beyond this breakpoint */
+            @media (min-width: 1000px) {
+              :root {
+                font-size: 25px;
+              }
+            }
+
             html {
               box-sizing: border-box;
               text-size-adjust: 100%;
               text-rendering: optimizeLegibility;
-              font-size: 16px;
-            }
-
-            @media screen and (min-width: 300px) {
-              html {
-                font-size: calc(16px + (25 - 16) * ((100vw - 300px) / (1000 - 300)));
-              }
-            }
-
-            @media screen and (min-width: 1000px) {
-              html {
-                font-size: 25px;
-              }
             }
 
             *,
