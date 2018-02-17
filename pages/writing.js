@@ -5,8 +5,14 @@ import { initApi } from '../utils/prismic'
 import { Container, Spacer } from '../components/common/Layout'
 import styled, { injectGlobal } from 'styled-components'
 import { ds } from '../designsystem'
-import globalStyles, { linkStyles, codeStyles, baseline } from '../designsystem/globalStyles'
+import globalStyles, {
+  linkStyles,
+  codeStyles,
+  baseline,
+} from '../designsystem/globalStyles'
 import Link from 'next/link'
+import Prismic from 'prismic-javascript'
+import ArticleFeed from '../components/ArticleFeed'
 
 injectGlobal`
   ${globalStyles}
@@ -32,6 +38,12 @@ const Article = styled.article`
   ${codeStyles};
 `
 
+const Hr = styled.hr`
+  margin: 2rem auto;
+  width: 50%;
+  opacity: 0.5;
+`
+
 const BackLink = styled.a`
   font-family: ${ds.get('type.fontFamily.mono')};
   font-size: ${ds.fs(-2)};
@@ -50,9 +62,29 @@ export default class Writing extends Component {
       })
       .catch(err => console.log(err))
 
+    const articles = await initApi()
+      .then(api => {
+        return api
+          .query(Prismic.Predicates.at('document.type', 'article'), {
+            fetch: [
+              'article.title',
+              'article.uid',
+              'article.date',
+              'article.subtitle',
+            ],
+            orderings: '[my.article.date desc]',
+            pageSize: 4,
+          })
+          .then(response => {
+            return response.results
+          })
+      })
+      .catch(err => console.log(err))
+
     return {
       query,
       response,
+      articles,
     }
   }
 
@@ -69,20 +101,25 @@ export default class Writing extends Component {
         description="An article by Zander Martineau"
         canonical={canonical}
       >
-        <Article>
-          <Spacer>
-            <Container>
-              <Link href="/#Writing" passHref>
-                <BackLink>
-                  ← Back
-                </BackLink>
-              </Link>
+        <Spacer>
+          <Container>
+            <Link href="/#Writing" passHref>
+              <BackLink>← Back</BackLink>
+            </Link>
+            <Article>
               <h1>{title}</h1>
               <Time datetime={response.data.date}>{response.data.date}</Time>
               {RichText.render(body)}
-            </Container>
-          </Spacer>
-        </Article>
+            </Article>
+            <Hr />
+            <ArticleFeed
+              results={this.props.articles}
+              title="Recent posts"
+              currentId={response.id}
+              TitleTag="h4"
+            />
+          </Container>
+        </Spacer>
       </MasterLayout>
     )
   }
