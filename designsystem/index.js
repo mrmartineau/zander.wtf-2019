@@ -2,8 +2,10 @@ import colorPalette from './colorPalette'
 import DesignSystem from 'design-system-utils'
 
 const fontFamily = {
-  system:
-    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
+  system: `-apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+    "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   sans: '"Helvetica Neue", Helvetica, Arial, sans-serif',
   serif: 'Georgia, "Times New Roman", Times, serif',
   mono: 'Menlo, Monaco, "Courier New", monospace',
