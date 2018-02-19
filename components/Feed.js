@@ -65,7 +65,8 @@ export const FeedItemDesc = styled.div`
 
 export const FeedItemLinkUrl = styled.div`
   opacity: 0.6;
-  font-size: ${ds.fs('s')};
   margin-top: ${ds.pxTo(8, 25, 'rem')};
   word-wrap: break-word;
+  font-size: ${ds.fs(-2)};
+  font-family: ${ds.get('type.fontFamily.mono')};
 `
