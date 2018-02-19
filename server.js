@@ -3,6 +3,8 @@ const routes = require('./routes')
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handler = routes.getRequestHandler(app)
 const express = require('express')
+const { parse } = require('url')
+const { join } = require('path')
 
 const redirects = [
   { from: '/articles', to: '/#Writing' },
@@ -48,7 +50,6 @@ const redirects = [
 ]
 
 app.prepare().then(() => {
-  // express().use(handler).listen(3000)
   const server = express()
 
   redirects.forEach(({ from, to, type = 301, method = 'get' }) => {
@@ -58,7 +59,16 @@ app.prepare().then(() => {
   })
 
   server.get('*', (req, res) => {
-    return handler(req, res)
+    const parsedUrl = parse(req.url, true)
+    const { pathname } = parsedUrl
+    if (pathname === '/service-worker.js') {
+      const filePath = join(__dirname, '.next', pathname)
+
+      app.serveStatic(req, res, filePath)
+    } else {
+      // handle(req, res, parsedUrl)
+      return handler(req, res)
+    }
   })
 
   server.listen(3000, err => {
