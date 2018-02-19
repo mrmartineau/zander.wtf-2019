@@ -45,6 +45,19 @@ export default class MyDocument extends Document {
             body {
               margin: 0;
             }
+
+            @font-face {
+              font-family: Colfax;
+              font-weight: normal;
+              src: url('/static/fonts/ColfaxWebLightSub.woff') format('woff');
+            }
+
+            @font-face {
+              font-family: Colfax;
+              font-weight: bold;
+              src: url('/static/fonts/ColfaxWebBoldSub.woff') format('woff');
+            }
+          }
           `}</style>
         </head>
         <Head>
