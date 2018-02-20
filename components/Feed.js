@@ -10,9 +10,10 @@ export const FeedUrl = styled.a`
   font-size: ${ds.fs(-2)};
   font-family: ${ds.get('type.fontFamily.mono')};
   font-weight: normal;
-  display: inline-block;
+  display: block;
   margin-left: 0.4rem;
   text-decoration: none;
+  text-align: center;
 
   ${linkStyles}
 `
@@ -25,6 +26,7 @@ export const FeedList = styled.ul`
 
 export const FeedTitle = styled.h2`
   text-align: center;
+  text-transform: uppercase;
 `
 
 export const FeedItem = styled.li``
