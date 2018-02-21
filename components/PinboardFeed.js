@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import 'fetch-everywhere'
 import {
   FeedWrapper,
   FeedUrl,
@@ -25,11 +25,18 @@ export default class Feed extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${FEED_PATH}${this.props.feed}`).then(response => {
-      this.setState({
-        feed: response.data,
+    fetch(`${FEED_PATH}${this.props.feed}`)
+      .then(response => {
+        if (response.status >= 400) {
+          throw new Error('Bad response from server')
+        }
+        return response.json()
       })
-    })
+      .then(response => {
+        this.setState({
+          feed: response,
+        })
+      })
   }
 
   render() {
