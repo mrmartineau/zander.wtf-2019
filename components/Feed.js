@@ -10,9 +10,10 @@ export const FeedUrl = styled.a`
   font-size: ${ds.fs(-2)};
   font-family: ${ds.get('type.fontFamily.mono')};
   font-weight: normal;
-  display: inline-block;
+  display: block;
   margin-left: 0.4rem;
   text-decoration: none;
+  text-align: center;
 
   ${linkStyles}
 `
@@ -25,6 +26,7 @@ export const FeedList = styled.ul`
 
 export const FeedTitle = styled.h2`
   text-align: center;
+  text-transform: uppercase;
 `
 
 export const FeedItem = styled.li``
@@ -54,7 +56,9 @@ export const FeedItemBox = styled.div`
 `
 
 export const FeedItemDate = styled.div`
-  font-size: ${ds.fs('s')};
+  font-size: ${ds.fs('xs')};
+  font-family: ${ds.get('type.fontFamily.mono')};
+  opacity: 0.6;
 `
 
 export const FeedItemDesc = styled.div`

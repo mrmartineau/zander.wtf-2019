@@ -6,9 +6,9 @@ const fontFamily = {
     Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
     "Helvetica Neue", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-  sans: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+  sans: `Colfax, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   serif: 'Georgia, "Times New Roman", Times, serif',
-  mono: 'Menlo, Monaco, "Courier New", monospace',
+  mono: `Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif`,
 }
 
 const transitions = {
@@ -36,8 +36,8 @@ export const myDesignSystem = {
     },
 
     fontFamily,
-    fontFamilyBase: fontFamily.system,
-    fontFamilyHeadings: fontFamily.system,
+    fontFamilyBase: fontFamily.sans,
+    fontFamilyHeadings: fontFamily.sans,
 
     lineHeight: {
       headings: 1.1,

@@ -14,8 +14,12 @@ export default class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <head>
-          <style>{`
+        <Head>
+          <title>Zander Martineau</title>
+          <meta charSet="utf-8" />
+          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+          {this.props.styleTags}
+          <style dangerouslySetInnerHTML={{__html: `
             /* 16px @ 300px increasing to 25px @ 1000px */
             @media (min-width: 300px) {
               :root {
@@ -45,11 +49,20 @@ export default class MyDocument extends Document {
             body {
               margin: 0;
             }
-          `}</style>
-        </head>
-        <Head>
-          <title>Zander Martineau</title>
-          {this.props.styleTags}
+
+            @font-face {
+              font-family: 'Colfax';
+              font-weight: normal;
+              src: url('/static/fonts/ColfaxWebRegularSub.woff') format('woff');
+            }
+
+            @font-face {
+              font-family: 'Colfax';
+              font-weight: bold;
+              src: url('/static/fonts/ColfaxWebBoldSub.woff') format('woff');
+            }
+          }
+          `}}/>
         </Head>
         <body>
           <Main />
