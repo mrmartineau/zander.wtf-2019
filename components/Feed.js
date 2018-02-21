@@ -34,15 +34,15 @@ export const FeedItem = styled.li``
 export const FeedItemLink = styled.a`
   display: block;
   padding: 1rem;
-  color: ${ds.color('bright')};
+  color: var(--theme-foreground);
   text-decoration: none;
   cursor: pointer;
   border-bottom: 1px solid;
 
   &:hover,
   &:active {
-    color: ${ds.color('dark')};
-    background-color: ${ds.color('bright')};
+    color: var(--theme-background);
+    background-color: var(--theme-foreground);
   }
 `
 export const FeedItemLinkTitle = styled.div`

@@ -20,6 +20,24 @@ export default class MyDocument extends Document {
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           {this.props.styleTags}
           <style dangerouslySetInnerHTML={{__html: `
+            :root {
+              --theme-foreground: #fff;
+              --theme-background: #000;
+              --theme-accent: #02C39A;
+            }
+
+            :root.theme-inverse {
+              --theme-foreground: #000;
+              --theme-background: #fff;
+              --theme-accent: #02C39A;
+            }
+
+            :root.theme-accent {
+              --theme-foreground: #fff;
+              --theme-background: #02C39A;
+              --theme-accent: #000;
+            }
+
             /* 16px @ 300px increasing to 25px @ 1000px */
             @media (min-width: 300px) {
               :root {
