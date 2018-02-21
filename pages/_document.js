@@ -14,8 +14,12 @@ export default class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <head>
-          <style>{`
+        <Head>
+          <title>Zander Martineau</title>
+          <meta charSet="utf-8" />
+          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+          {this.props.styleTags}
+          <style dangerouslySetInnerHTML={{__html: `
             /* 16px @ 300px increasing to 25px @ 1000px */
             @media (min-width: 300px) {
               :root {
@@ -47,22 +51,18 @@ export default class MyDocument extends Document {
             }
 
             @font-face {
-              font-family: Colfax;
+              font-family: 'Colfax';
               font-weight: normal;
-              src: url('/static/fonts/ColfaxWebLightSub.woff') format('woff');
+              src: url('/static/fonts/ColfaxWebRegularSub.woff') format('woff');
             }
 
             @font-face {
-              font-family: Colfax;
+              font-family: 'Colfax';
               font-weight: bold;
               src: url('/static/fonts/ColfaxWebBoldSub.woff') format('woff');
             }
           }
-          `}</style>
-        </head>
-        <Head>
-          <title>Zander Martineau</title>
-          {this.props.styleTags}
+          `}}/>
         </Head>
         <body>
           <Main />
