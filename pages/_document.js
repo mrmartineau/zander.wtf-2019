@@ -18,7 +18,9 @@ export default class MyDocument extends Document {
           <title>Zander Martineau</title>
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <style dangerouslySetInnerHTML={{__html: `
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
             /* 16px @ 300px increasing to 25px @ 1000px */
             @media (min-width: 300px) {
               :root {
@@ -61,11 +63,20 @@ export default class MyDocument extends Document {
               src: url('/static/fonts/ColfaxWebBoldSub.woff') format('woff');
             }
           }
-          `}}/>
+          `,
+            }}
+          />
           {this.props.styleTags}
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
           <link rel="author" href="Zander Martineau" />
-          <link rel="me" href="https://github.com/mrmartineau" type="text/html" />
+          <link
+            rel="me"
+            href="https://github.com/mrmartineau"
+            type="text/html"
+          />
           <meta name="robots" content="index,follow" />
           <meta
             name="google-site-verification"
@@ -99,9 +110,16 @@ export default class MyDocument extends Document {
             href="/static/favicon/favicon-16x16.png"
           />
           <link rel="manifest" href="/static/favicon/site.webmanifest" />
-          <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#000000" />
+          <link
+            rel="mask-icon"
+            href="/static/favicon/safari-pinned-tab.svg"
+            color="#000000"
+          />
           <meta name="msapplication-TileColor" content="#000000" />
           <meta name="theme-color" content="#000000" />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:site" content="@mrmartineau" />
+          <meta property="og:locale" content="en_US" />
         </Head>
         <body>
           <Main />
