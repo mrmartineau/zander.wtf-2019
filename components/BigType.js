@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { ds } from '../designsystem/index'
 
 const BigType = styled.div`
-  font-size: 200vw;
-  font-weight: 900;
+  font-size: 210vw;
+  font-weight: bold;
   overflow: hidden;
-  margin: -1vw 0 0;
-  padding: 0;
+  margin: 0;
+  padding: 0.04em 0 0;
   line-height: 0.72;
   display: flex;
   flex-direction: column;
