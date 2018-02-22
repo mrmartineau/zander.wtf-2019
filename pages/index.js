@@ -62,7 +62,7 @@ export default class Page extends Component {
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
         <BigType />
         <Container intro>
-          <h1 style={{textAlign: 'center'}}>WTF?</h1>
+          <h1 style={{ textAlign: 'center' }}>WTF?</h1>
           <h3>Zander Martineau. Front-end developer in London.</h3>
           <h2>Making the web simple, fun and fast since '06</h2>
         </Container>
@@ -82,10 +82,7 @@ export default class Page extends Component {
             />
           </Spacer>
           <Spacer>
-            <PinboardFeed
-              feed="u:MrMartineau/t:zm:link/"
-              title="Link feed"
-            />
+            <PinboardFeed feed="u:MrMartineau/t:zm:link/" title="Link feed" />
           </Spacer>
         </Container>
       </MasterLayout>
