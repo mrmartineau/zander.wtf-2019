@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
+import Footer from '../components/Footer'
 
 export default ({
   children,
@@ -15,5 +16,7 @@ export default ({
     </Head>
 
     {children}
+
+    <Footer />
   </Fragment>
 )
