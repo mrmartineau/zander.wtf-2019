@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Head from 'next/head'
 import MasterLayout from '../layouts/master'
 import { RichText } from 'prismic-reactjs'
 import { initApi } from '../utils/prismic'
@@ -51,7 +52,7 @@ const BackLink = styled.a`
   text-decoration: none;
   position: fixed;
   top: 1rem;
-  left: 1rem;
+  left: 5vw;
 `
 
 export default class Writing extends Component {
@@ -101,6 +102,9 @@ export default class Writing extends Component {
         description="An article by Zander Martineau"
         canonical={canonical}
       >
+        <Head>
+          <meta property="og:type" content="article" />
+        </Head>
         <Spacer>
           <Container>
             <Link href="/#Writing" passHref>
