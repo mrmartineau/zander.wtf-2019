@@ -51,8 +51,20 @@ const BackLink = styled.a`
   ${linkStyles};
   text-decoration: none;
   position: fixed;
-  top: 1rem;
-  left: 5vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 5vw;
+  background-color: var(--theme-background);
+  display: block;
+  z-index: ${ds.z('mid')};
+  opacity: 0.9;
+
+  @media screen and (min-width: 900px) {
+    padding-left: 1rem;
+  }
 `
 
 export default class Writing extends Component {
