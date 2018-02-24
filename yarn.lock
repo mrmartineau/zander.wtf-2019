@@ -3176,19 +3176,19 @@ prismic-javascript@^1.5.0-beta.1:
   dependencies:
     fetch-everywhere "^1.0.5"
 
-prismic-reactjs@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/prismic-reactjs/-/prismic-reactjs-0.2.4.tgz#ac234121cab69a3df8de2b9d237bc4f1cb67ea67"
+prismic-reactjs@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/prismic-reactjs/-/prismic-reactjs-0.3.0.tgz#7e90e9a1ee601c84d42929303cdef6402c21f42a"
   dependencies:
     prismic-helpers "^1.0.0"
-    prismic-richtext "^0.2.6"
+    prismic-richtext "^0.4.1"
     react "^15.6.1"
 
-prismic-richtext@^0.2.6:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/prismic-richtext/-/prismic-richtext-0.2.7.tgz#ad203fc076bda9c4b6358ca7249f7e0072c5a323"
+prismic-richtext@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/prismic-richtext/-/prismic-richtext-0.4.1.tgz#1ae4159ff670a815f597f5b316cf00c86aab4f93"
   dependencies:
-    prismic-helpers "^1.0.0"
+    ramda "^0.25.0"
     uuid "^3.1.0"
 
 private@^0.1.6, private@^0.1.7:
@@ -3299,6 +3299,10 @@ querystring-es3@^0.2.0:
 querystring@0.2.0, querystring@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
+
+ramda@^0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
 
 randomatic@^1.1.3:
   version "1.1.7"
