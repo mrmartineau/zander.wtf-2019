@@ -63,6 +63,12 @@ export const myDesignSystem = {
     l: '1000px',
   },
 
+  zIndex: {
+    low: 10,
+    mid: 100,
+    high: 1000,
+  },
+
   spacing: {
     baseline: 20,
     padding: '0.3em',

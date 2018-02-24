@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
 import Footer from '../components/Footer'
+import ThemeSwitch from '../components/ThemeSwitch'
 
 export default ({
   children,
@@ -18,5 +19,6 @@ export default ({
     {children}
 
     <Footer />
+    <ThemeSwitch />
   </Fragment>
 )
