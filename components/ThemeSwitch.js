@@ -49,7 +49,7 @@ export default class ThemeSwitch extends Component {
   render() {
     return (
       <ThemeButton onClick={this.handleClick}>
-        <svg viewBox="0 0 301 197" fill="var(--theme-foreground)"><path fill-rule="evenodd" d="M301 197V0h-56.197l-45.52 96.249L153.763 0H3.372v51.22h77.271L0 145.78V197h155.105l-26.319-51.4-56.291.18 61.942-72.631 21.573 42.8 20.232 39.4h46.082l20.231-39.4V197H301z"/></svg>
+        <svg viewBox="0 0 301 197" fill="var(--theme-foreground)"><path fillRule="evenodd" d="M301 197V0h-56.197l-45.52 96.249L153.763 0H3.372v51.22h77.271L0 145.78V197h155.105l-26.319-51.4-56.291.18 61.942-72.631 21.573 42.8 20.232 39.4h46.082l20.231-39.4V197H301z"/></svg>
       </ThemeButton>
     )
   }
