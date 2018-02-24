@@ -4,6 +4,7 @@ import { ds } from '../designsystem'
 import MasterLayout from '../layouts/master'
 import globalStyles from '../designsystem/globalStyles'
 import BigType from '../components/BigType'
+import Name from '../components/Name'
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
 import WorkFeed from '../components/WorkFeed'
@@ -60,7 +61,7 @@ export default class Page extends Component {
   render() {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
-        <BigType />
+        {!!window.sidebar ? <Name /> : <BigType />}
         <Container intro>
           <h1 style={{ textAlign: 'center' }}>WTF?</h1>
           <h3>Zander Martineau. Front-end developer in London.</h3>
