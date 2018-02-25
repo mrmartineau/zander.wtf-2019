@@ -7,7 +7,9 @@ const ThemeButton = styled.button`
   left: 5vw;
   bottom: 1rem;
   border: 0;
-  width: 1.4rem;
+  width: 1rem;
+  height: 1rem;
+  overflow: hidden;
   padding: 0;
   z-index: ${ds.z('high')};
   background-color: transparent;
@@ -26,31 +28,12 @@ const ThemeButton = styled.button`
   }
 `
 
-export default class ThemeSwitch extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      active: 0,
-    }
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick() {
-    const themes = ['theme-inverse', 'theme-accent', '']
-
-    this.setState({
-      active: this.state.active === 2 ? 0 : this.state.active + 1,
-    })
-
-    const nextClass = themes[this.state.active]
-    document.documentElement.className = nextClass
-  }
-
-  render() {
-    return (
-      <ThemeButton onClick={this.handleClick}>
-        <svg viewBox="0 0 301 197" fill="var(--theme-foreground)"><path fillRule="evenodd" d="M301 197V0h-56.197l-45.52 96.249L153.763 0H3.372v51.22h77.271L0 145.78V197h155.105l-26.319-51.4-56.291.18 61.942-72.631 21.573 42.8 20.232 39.4h46.082l20.231-39.4V197H301z"/></svg>
-      </ThemeButton>
-    )
-  }
+const toggleRootClass = () => {
+  document.documentElement.classList.toggle('theme-inverse')
 }
+
+export default () => (
+  <ThemeButton onClick={toggleRootClass}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 113.225" fill="var(--theme-foreground)"><path d="M88.979 89.193c4.256 0 7.521-4.028 7.521-8.788v-70.22c0-4.76-3.265-8.787-7.521-8.787H49.578v-.012H8.28c-3.756 0-6.78 3.542-6.78 7.942V81.23c0 4.4 3.024 7.94 6.78 7.94H49.249a1.033 1.033 0 0 0 .206.023H88.98zm0-2.065H50.488V57.45H38.696v11.274L12.149 53.38l-2.591-1.498 29.138-16.843V46.36h20.705v.001h.04v11.277l26.546-15.345 2.592-1.499L59.44 23.953v11.32h-8.953V3.463h38.491c2.931 0 5.455 2.89 5.455 6.723v70.219c0 3.833-2.524 6.723-5.455 6.723z"/></svg>
+  </ThemeButton>
+)
