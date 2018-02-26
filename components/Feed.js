@@ -11,7 +11,6 @@ export const FeedUrl = styled.a`
   font-family: ${ds.get('type.fontFamily.mono')};
   font-weight: normal;
   display: block;
-  margin-left: 0.4rem;
   text-decoration: none;
   text-align: center;
 
