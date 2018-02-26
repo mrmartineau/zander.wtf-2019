@@ -61,7 +61,7 @@ export default class Page extends Component {
   render() {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
-        {!!window.sidebar ? <Name /> : <BigType />}
+        <BigType />
         <Spacer intro>
           <Container>
             <h1 style={{ textAlign: 'center' }}>WTF?</h1>
