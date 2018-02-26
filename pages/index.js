@@ -63,11 +63,15 @@ export default class Page extends Component {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
         {!!window.sidebar ? <Name /> : <BigType />}
-        <Container intro>
-          <h1 style={{ textAlign: 'center' }}>WTF?</h1>
-          <h3>Zander Martineau. Front-end developer in London.</h3>
-          <h2>Making the web simple, fun and fast since '06</h2>
-        </Container>
+        <Spacer intro>
+          <Container>
+            <h1 style={{ textAlign: 'center' }}>WTF?</h1>
+            <h2>
+              Zander Martineau. <br />Front-end developer in London.
+            </h2>
+            <h2>Making the web simple, fun and fast since '06</h2>
+          </Container>
+        </Spacer>
         <Container>
           {this.props.articles && (
             <ArticleFeed results={this.props.articles} title="Writing" />
