@@ -36,7 +36,6 @@ export const FeedItemLink = styled.a`
   color: var(--theme-foreground);
   text-decoration: none;
   cursor: pointer;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
 
   &:hover,
   &:active {
