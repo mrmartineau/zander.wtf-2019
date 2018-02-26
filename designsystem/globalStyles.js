@@ -87,7 +87,8 @@ export const linkStyles = css`
   }
   &:hover,
   &:active {
-    color: var(--theme-accent);
+    color: var(--theme-background);
+    background-color: var(--theme-foreground);
   }
 `
 

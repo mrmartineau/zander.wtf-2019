@@ -46,11 +46,7 @@ const Hr = styled.hr`
   opacity: 0.5;
 `
 
-const BackLink = styled.a`
-  font-family: ${ds.get('type.fontFamily.mono')};
-  font-size: ${ds.fs(-2)};
-  ${linkStyles};
-  text-decoration: none;
+const BackLinkWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -59,13 +55,20 @@ const BackLink = styled.a`
   padding-bottom: 0.5rem;
   padding-left: 5vw;
   background-color: var(--theme-background);
-  display: block;
   z-index: ${ds.z('mid')};
   opacity: 0.9;
 
   @media screen and (min-width: 900px) {
     padding-left: 1rem;
   }
+`
+const BackLink = styled.a`
+  font-family: ${ds.get('type.fontFamily.mono')};
+  font-size: ${ds.fs(-2)};
+  ${linkStyles};
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.1em 0.6em;
 `
 
 export default class Writing extends Component {
@@ -120,9 +123,6 @@ export default class Writing extends Component {
         </Head>
         <Spacer>
           <Container>
-            <Link href="/#Writing" passHref>
-              <BackLink>← Back</BackLink>
-            </Link>
             <Article>
               <h1>{title}</h1>
               <Time datetime={response.data.date}>{response.data.date}</Time>
@@ -137,6 +137,11 @@ export default class Writing extends Component {
             />
           </Container>
         </Spacer>
+        <BackLinkWrapper>
+          <Link href="/#Writing" passHref>
+            <BackLink>← Back</BackLink>
+          </Link>
+        </BackLinkWrapper>
       </MasterLayout>
     )
   }
