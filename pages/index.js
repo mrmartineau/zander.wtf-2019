@@ -4,6 +4,7 @@ import { ds } from '../designsystem'
 import MasterLayout from '../layouts/master'
 import globalStyles from '../designsystem/globalStyles'
 import BigType from '../components/BigType'
+import Name from '../components/Name'
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
 import WorkFeed from '../components/WorkFeed'
@@ -56,12 +57,13 @@ export default class Page extends Component {
 
   componentDidMount() {
     setupServiceWorker()
+    this.isFF = !!navigator.userAgent.match(/firefox/i);
   }
 
   render() {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
-        <BigType />
+        {this.isFF ? <Name /> : <BigType />}
         <Spacer intro>
           <Container>
             <h1 style={{ textAlign: 'center' }}>WTF?</h1>
