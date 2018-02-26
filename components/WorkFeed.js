@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Container } from './common/Layout'
+import Container from './Container'
 import {
   FeedWrapper,
   FeedList,
