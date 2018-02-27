@@ -58,8 +58,9 @@ const BackLinkWrapper = styled.div`
   z-index: ${ds.z('mid')};
   opacity: 0.9;
 
-  @media screen and (min-width: 900px) {
+  @media screen and (min-width: 1000px) {
     padding-left: 1rem;
+    right: auto;
   }
 `
 const BackLink = styled.a`
