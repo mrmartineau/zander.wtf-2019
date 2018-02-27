@@ -9,6 +9,7 @@ import styled, { injectGlobal } from 'styled-components'
 import { ds } from '../designsystem'
 import globalStyles, {
   linkStyles,
+  paddedLinkStyles,
   codeStyles,
   baseline,
 } from '../designsystem/globalStyles'
@@ -66,10 +67,7 @@ const BackLinkWrapper = styled.div`
 const BackLink = styled.a`
   font-family: ${ds.get('type.fontFamily.mono')};
   font-size: ${ds.fs(-2)};
-  ${linkStyles};
-  text-decoration: none;
-  display: inline-block;
-  padding: 0.1em 0.6em;
+  ${paddedLinkStyles};
 `
 
 export default class Writing extends Component {

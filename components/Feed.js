@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { ds } from '../designsystem'
-import { linkStyles } from '../designsystem/globalStyles'
+import { paddedLinkStyles } from '../designsystem/globalStyles'
 
 export const FeedWrapper = styled.div`
   margin: ${ds.pxTo(80, 25, 'rem')} 0;
@@ -10,11 +10,13 @@ export const FeedUrl = styled.a`
   font-size: ${ds.fs(-2)};
   font-family: ${ds.get('type.fontFamily.mono')};
   font-weight: normal;
-  display: block;
+  display: inline-block;
   text-decoration: none;
   text-align: center;
+  line-height: 1.4;
+  margin-left: 0.5rem;
 
-  ${linkStyles}
+  ${paddedLinkStyles}
 `
 
 export const FeedList = styled.ul`

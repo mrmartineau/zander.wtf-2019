@@ -80,6 +80,7 @@ export default `
 
 export const linkStyles = css`
   word-wrap: break-word;
+  text-decoration: none;
 
   &:link,
   &:visited {
@@ -90,6 +91,12 @@ export const linkStyles = css`
     color: var(--theme-background);
     background-color: var(--theme-foreground);
   }
+`
+
+export const paddedLinkStyles = css`
+  ${linkStyles};
+  display: inline-block;
+  padding: 0.1em 0.6em;
 `
 
 export const codeStyles = css`
