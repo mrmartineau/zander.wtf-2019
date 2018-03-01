@@ -9,7 +9,9 @@ export const baseline = ds.pxTo(35, 25, 'rem')
 // global styles
 export default `
   html {
+    color: ${ds.color('bright')};
     color: var(--theme-foreground);
+    background-color: ${ds.color('dark')};
     background-color: var(--theme-background);
     font-family: ${ds.get('type.fontFamilyBase')};
     line-height: ${ds.get('type.lineHeight.base')};
@@ -68,12 +70,12 @@ export default `
   }
 
   ::-moz-selection {
-    background: var(--theme-accent);
+    background: var(--theme-background);
     color: var(--theme-foreground);
   }
 
   ::selection {
-    background: var(--theme-accent);
+    background: var(--theme-background);
     color: var(--theme-foreground);
   }
 `
@@ -84,11 +86,15 @@ export const linkStyles = css`
 
   &:link,
   &:visited {
+    color: ${ds.color('bright')};
     color: var(--theme-foreground);
   }
+
   &:hover,
   &:active {
+    color: ${ds.color('dark')};
     color: var(--theme-background);
+    background-color: ${ds.color('bright')};
     background-color: var(--theme-foreground);
   }
 `
@@ -104,7 +110,9 @@ export const codeStyles = css`
   pre {
     font-family: ${ds.get('type.fontFamily.mono')};
     font-size: ${ds.fs('xs')};
+    color: ${ds.color('dark')};
     color: var(--theme-background);
+    background-color: ${ds.color('bright')};
     background-color: var(--theme-foreground);
   }
 
@@ -124,7 +132,9 @@ export const codeStyles = css`
 
     code {
       padding: 0;
+      color: ${ds.color('bright')};
       color: var(--theme-foreground);
+      background-color: ${ds.color('dark')};
       background-color: var(--theme-background);
       border: 0;
     }

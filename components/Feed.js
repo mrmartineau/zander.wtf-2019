@@ -35,13 +35,16 @@ export const FeedItem = styled.li``
 export const FeedItemLink = styled.a`
   display: block;
   padding: 1rem;
+  color: ${ds.color('bright')};
   color: var(--theme-foreground);
   text-decoration: none;
   cursor: pointer;
 
   &:hover,
   &:active {
+    color: ${ds.color('dark')};
     color: var(--theme-background);
+    background-color: ${ds.color('bright')};
     background-color: var(--theme-foreground);
   }
 `
