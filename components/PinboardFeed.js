@@ -25,7 +25,7 @@ export default class Feed extends Component {
   }
 
   componentDidMount() {
-    fetch(`${FEED_PATH}${this.props.feed}`)
+    fetch(`${FEED_PATH}${this.props.feed}?count=${this.props.count}`)
       .then(response => {
         if (response.status >= 400) {
           throw new Error('Bad response from server')
@@ -80,4 +80,8 @@ export default class Feed extends Component {
       </FeedWrapper>
     )
   }
+}
+
+Feed.defaultProps = {
+  count: 10,
 }
