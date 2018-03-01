@@ -23,17 +23,22 @@ export default class Page extends Component {
   }
 
   static async getInitialProps({ req }) {
-    const articles = await initApi()
+    const homePageData = await initApi()
       .then(api => {
         return api
-          .query(Prismic.Predicates.at('document.type', 'article'), {
+          .query(Prismic.Predicates.any('document.type', ['article','work']), {
             fetch: [
               'article.title',
               'article.uid',
               'article.date',
               'article.subtitle',
+              'work.title',
+              'work.description',
+              'work.link',
+              'work.image',
+              'work.date',
             ],
-            orderings: '[my.article.date desc]',
+            orderings: '[my.article.date desc, my.work.date desc]',
           })
           .then(response => {
             return response.results
@@ -41,16 +46,16 @@ export default class Page extends Component {
       })
       .catch(err => console.log(err))
 
-    const work = await initApi()
-      .then(api => {
-        return api.query(Prismic.Predicates.at('document.type', 'work'), {
-          orderings: '[my.work.date desc]',
-        })
-      })
-      .catch(err => console.log(err))
+    const articles = homePageData.filter(item => {
+      return item.type === 'article'
+    })
+
+    const work = homePageData.filter(item => {
+      return item.type === 'work'
+    })
     return {
       articles: articles,
-      work: work.results,
+      work: work,
     }
   }
 
