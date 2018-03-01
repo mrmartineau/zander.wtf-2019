@@ -26,7 +26,7 @@ export default class Page extends Component {
     const homePageData = await initApi()
       .then(api => {
         return api
-          .query(Prismic.Predicates.any('document.type', ['article','work']), {
+          .query(Prismic.Predicates.any('document.type', ['article', 'work']), {
             fetch: [
               'article.title',
               'article.uid',
