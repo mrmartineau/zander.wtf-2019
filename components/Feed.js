@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { ds } from '../designsystem'
-import { linkStyles } from '../designsystem/globalStyles'
+import { paddedLinkStyles } from '../designsystem/globalStyles'
 
 export const FeedWrapper = styled.div`
   margin: ${ds.pxTo(80, 25, 'rem')} 0;
@@ -11,10 +11,12 @@ export const FeedUrl = styled.a`
   font-family: ${ds.get('type.fontFamily.mono')};
   font-weight: normal;
   display: inline-block;
-  margin-left: 0.4rem;
   text-decoration: none;
+  text-align: center;
+  line-height: 1.4;
+  margin-left: 0.5rem;
 
-  ${linkStyles}
+  ${paddedLinkStyles}
 `
 
 export const FeedList = styled.ul`
@@ -25,6 +27,7 @@ export const FeedList = styled.ul`
 
 export const FeedTitle = styled.h2`
   text-align: center;
+  text-transform: uppercase;
 `
 
 export const FeedItem = styled.li``
@@ -32,15 +35,14 @@ export const FeedItem = styled.li``
 export const FeedItemLink = styled.a`
   display: block;
   padding: 1rem;
-  color: ${ds.color('bright')};
+  color: var(--theme-foreground);
   text-decoration: none;
   cursor: pointer;
-  border-bottom: 1px solid;
 
   &:hover,
   &:active {
-    color: ${ds.color('dark')};
-    background-color: ${ds.color('bright')};
+    color: var(--theme-background);
+    background-color: var(--theme-foreground);
   }
 `
 export const FeedItemLinkTitle = styled.div`
@@ -54,7 +56,9 @@ export const FeedItemBox = styled.div`
 `
 
 export const FeedItemDate = styled.div`
-  font-size: ${ds.fs('s')};
+  font-size: ${ds.fs('xs')};
+  font-family: ${ds.get('type.fontFamily.mono')};
+  opacity: 0.6;
 `
 
 export const FeedItemDesc = styled.div`

@@ -7,7 +7,8 @@ import BigType from '../components/BigType'
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
 import WorkFeed from '../components/WorkFeed'
-import { Container, Spacer } from '../components/common/Layout'
+import Container from '../components/Container'
+import Spacer from '../components/Spacer'
 import { initApi } from '../utils/prismic'
 import Prismic from 'prismic-javascript'
 import setupServiceWorker from '../utils/setupServiceWorker'
@@ -61,11 +62,15 @@ export default class Page extends Component {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
         <BigType />
-        <Container intro>
-          <h1>WTF?</h1>
-          <h3>Zander Martineau. Front-end developer in London.</h3>
-          <h2>Making the web simple, fun and fast since '06</h2>
-        </Container>
+        <Spacer intro>
+          <Container>
+            <h1 style={{ textAlign: 'center' }}>WTF?</h1>
+            <h2>
+              Zander Martineau. <br />Front-end developer in London.
+            </h2>
+            <h2>Making the web simple, fun and fast since '06</h2>
+          </Container>
+        </Spacer>
         <Container>
           {this.props.articles && (
             <ArticleFeed results={this.props.articles} title="Writing" />
@@ -82,10 +87,7 @@ export default class Page extends Component {
             />
           </Spacer>
           <Spacer>
-            <PinboardFeed
-              feed="u:MrMartineau/t:zm:link/"
-              title="Link feed"
-            />
+            <PinboardFeed feed="u:MrMartineau/t:zm:link/" title="Link feed" />
           </Spacer>
         </Container>
       </MasterLayout>

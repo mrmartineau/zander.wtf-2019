@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import Head from 'next/head'
 import MasterLayout from '../layouts/master'
 import { RichText } from 'prismic-reactjs'
 import { initApi } from '../utils/prismic'
-import { Container, Spacer } from '../components/common/Layout'
+import Container from '../components/Container'
+import Spacer from '../components/Spacer'
 import styled, { injectGlobal } from 'styled-components'
 import { ds } from '../designsystem'
 import globalStyles, {
   linkStyles,
+  paddedLinkStyles,
   codeStyles,
   baseline,
 } from '../designsystem/globalStyles'
@@ -44,14 +47,27 @@ const Hr = styled.hr`
   opacity: 0.5;
 `
 
+const BackLinkWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 5vw;
+  background-color: var(--theme-background);
+  z-index: ${ds.z('mid')};
+  opacity: 0.9;
+
+  @media screen and (min-width: 1000px) {
+    padding-left: 1rem;
+    right: auto;
+  }
+`
 const BackLink = styled.a`
   font-family: ${ds.get('type.fontFamily.mono')};
   font-size: ${ds.fs(-2)};
-  ${linkStyles};
-  text-decoration: none;
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
+  ${paddedLinkStyles};
 `
 
 export default class Writing extends Component {
@@ -101,11 +117,11 @@ export default class Writing extends Component {
         description="An article by Zander Martineau"
         canonical={canonical}
       >
+        <Head>
+          <meta property="og:type" content="article" />
+        </Head>
         <Spacer>
           <Container>
-            <Link href="/#Writing" passHref>
-              <BackLink>← Back</BackLink>
-            </Link>
             <Article>
               <h1>{title}</h1>
               <Time datetime={response.data.date}>{response.data.date}</Time>
@@ -120,6 +136,11 @@ export default class Writing extends Component {
             />
           </Container>
         </Spacer>
+        <BackLinkWrapper>
+          <Link href="/#Writing" passHref>
+            <BackLink>← Back</BackLink>
+          </Link>
+        </BackLinkWrapper>
       </MasterLayout>
     )
   }
