@@ -1,25 +1,13 @@
 const withOffline = require('next-offline')
 
-module.exports = withOffline()
-
-// {
-//   workboxOpts: {
-//     runtimeCaching: [
-//       { urlPattern: /^https?.*/, handler: 'networkFirst' },
-//       {
-//         urlPattern: /\.(?:png|gif|jpg|jpeg|svg)$/,
-//         handler: 'cacheFirst',
-//       },
-//       {
-//         urlPattern: 'https://zanderwtf.cdn.prismic.io/api/*',
-//         handler: 'staleWhileRevalidate',
-//         options: {
-//           cacheableResponse: {
-//             statuses: [0, 200],
-//           },
-//         },
-//       },
-//     ],
-//   },
-// }
+module.exports = withOffline({
+  // https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin#full_generatesw_config
+  workboxOpts: {
+    // include: [],
+    runtimeCaching: [
+      { urlPattern: /^https?.*/, handler: 'staleWhileRevalidate' },
+      { urlPattern: /.woff$/, handler: 'cacheFirst' },
+    ],
+  },
+})
 
