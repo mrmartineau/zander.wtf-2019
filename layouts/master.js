@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import Footer from '../components/Footer'
 import ThemeSwitch from '../components/ThemeSwitch'
@@ -9,7 +9,7 @@ export default ({
   description = 'Personal website for Zander Martineau',
   canonical = null,
 }) => (
-  <Fragment>
+  <span>
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
@@ -20,5 +20,5 @@ export default ({
 
     <Footer />
     <ThemeSwitch />
-  </Fragment>
+  </span>
 )
