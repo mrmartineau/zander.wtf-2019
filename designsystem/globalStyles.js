@@ -70,13 +70,13 @@ export default `
   }
 
   ::-moz-selection {
-    background: var(--theme-background);
-    color: var(--theme-foreground);
+    background: var(--theme-foreground);
+    color: var(--theme-background);
   }
 
   ::selection {
-    background: var(--theme-background);
-    color: var(--theme-foreground);
+    background: var(--theme-foreground);
+    color: var(--theme-background);
   }
 `
 
