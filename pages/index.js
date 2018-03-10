@@ -67,12 +67,12 @@ export default class Page extends Component {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
         <BigType />
+        <h3 style={{ textAlign: 'center', fontSize: '30vw' }}>WTF‽</h3>
         <Spacer intro>
           <Container>
-            <h1 style={{ textAlign: 'center' }}>WTF?</h1>
-            <h2>
+            <h1>
               Zander Martineau. <br />Front-end developer in London.
-            </h2>
+            </h1>
             <h2>Making the web simple, fun and fast since '06</h2>
           </Container>
         </Spacer>
