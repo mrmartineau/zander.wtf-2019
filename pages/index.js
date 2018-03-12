@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import dynamic from 'next/dynamic'
 import { injectGlobal, css } from 'styled-components'
 import { ds } from '../designsystem'
 import MasterLayout from '../layouts/master'
 import globalStyles from '../designsystem/globalStyles'
-import BigType from '../components/BigType'
-import Name from '../components/Name'
+const BigType = dynamic(import('../components/BigType'), {
+  ssr: false
+})
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
 import WorkFeed from '../components/WorkFeed'
@@ -24,17 +26,22 @@ export default class Page extends Component {
   }
 
   static async getInitialProps({ req }) {
-    const articles = await initApi()
+    const homePageData = await initApi()
       .then(api => {
         return api
-          .query(Prismic.Predicates.at('document.type', 'article'), {
+          .query(Prismic.Predicates.any('document.type', ['article', 'work']), {
             fetch: [
               'article.title',
               'article.uid',
               'article.date',
               'article.subtitle',
+              'work.title',
+              'work.description',
+              'work.link',
+              'work.image',
+              'work.date',
             ],
-            orderings: '[my.article.date desc]',
+            orderings: '[my.article.date desc, my.work.date desc]',
           })
           .then(response => {
             return response.results
@@ -42,34 +49,33 @@ export default class Page extends Component {
       })
       .catch(err => console.log(err))
 
-    const work = await initApi()
-      .then(api => {
-        return api.query(Prismic.Predicates.at('document.type', 'work'), {
-          orderings: '[my.work.date desc]',
-        })
-      })
-      .catch(err => console.log(err))
+    const articles = homePageData.filter(item => {
+      return item.type === 'article'
+    })
+
+    const work = homePageData.filter(item => {
+      return item.type === 'work'
+    })
     return {
       articles: articles,
-      work: work.results,
+      work: work,
     }
   }
 
   componentDidMount() {
     setupServiceWorker()
-    this.isFF = !!navigator.userAgent.match(/firefox/i);
   }
 
   render() {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
-        {this.isFF ? <Name /> : <BigType />}
+        <BigType />
+        <h3 style={{ textAlign: 'center', fontSize: '30vw' }}>WTF‽</h3>
         <Spacer intro>
           <Container>
-            <h1 style={{ textAlign: 'center' }}>WTF?</h1>
-            <h2>
+            <h1>
               Zander Martineau. <br />Front-end developer in London.
-            </h2>
+            </h1>
             <h2>Making the web simple, fun and fast since '06</h2>
           </Container>
         </Spacer>

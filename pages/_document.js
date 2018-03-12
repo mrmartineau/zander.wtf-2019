@@ -21,22 +21,16 @@ export default class MyDocument extends Document {
           <style
             dangerouslySetInnerHTML={{
               __html: `
-              :root {
-                --theme-foreground: #fff;
-                --theme-background: #000;
-                --theme-accent: #02C39A;
-              }
+              @supports (--theme-foreground: #fff) {
+                :root {
+                  --theme-foreground: #fff;
+                  --theme-background: #000;
+                }
 
-              :root.theme-inverse {
-                --theme-foreground: #000;
-                --theme-background: #fff;
-                --theme-accent: #02C39A;
-              }
-
-              :root.theme-accent {
-                --theme-foreground: #fff;
-                --theme-background: #02C39A;
-                --theme-accent: #000;
+                :root.theme-inverse {
+                  --theme-foreground: #000;
+                  --theme-background: #fff;
+                }
               }
               /* 16px @ 300px increasing to 25px @ 1000px */
               @media (min-width: 300px) {
@@ -126,7 +120,7 @@ export default class MyDocument extends Document {
             sizes="16x16"
             href="/static/favicon/favicon-16x16.png"
           />
-          <link rel="manifest" href="/static/favicon/site.webmanifest" />
+          <link rel="manifest" href="/static/manifest.json" />
           <link
             rel="mask-icon"
             href="/static/favicon/safari-pinned-tab.svg"
