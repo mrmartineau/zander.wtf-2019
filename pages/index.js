@@ -4,8 +4,10 @@ import { injectGlobal, css } from 'styled-components'
 import { ds } from '../designsystem'
 import MasterLayout from '../layouts/master'
 import globalStyles from '../designsystem/globalStyles'
-const BigType = dynamic(import('../components/BigType'), {
-  ssr: false
+import BigType from '../components/BigType'
+const BigName = dynamic(import('../components/BigName'), {
+  ssr: false,
+  loading: () => <BigType />
 })
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
@@ -69,7 +71,7 @@ export default class Page extends Component {
   render() {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
-        <BigType />
+        <BigName />
         <h3 style={{ textAlign: 'center', fontSize: '30vw' }}>WTF‽</h3>
         <Spacer intro>
           <Container>

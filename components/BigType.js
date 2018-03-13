@@ -18,7 +18,7 @@ const BigType = styled.div`
 const BigTypeItem = styled.div`
   width: 200%;
   text-align: center;
-  z-index: ${ds.z('high')}
+  z-index: ${ds.z('high')};
 `
 
 const name = ['Z', 'A', 'N', 'D', 'E', 'R']
