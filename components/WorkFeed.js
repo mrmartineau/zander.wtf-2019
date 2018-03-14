@@ -9,7 +9,6 @@ import {
   FeedTitle,
   FeedItem,
   FeedItemLink,
-  FeedItemLinkTitle,
   FeedItemDesc,
   FeedItemBox,
   FeedItemLinkUrl,
