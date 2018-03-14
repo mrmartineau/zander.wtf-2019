@@ -15,10 +15,6 @@ import {
   FeedItemLinkUrl,
 } from './Feed'
 
-export const WorkFeedItemBox = styled.div`
-  position: relative;
-`
-
 const Title = styled.div`
   position: relative;
   font-weight: bold;
@@ -28,31 +24,6 @@ const Title = styled.div`
 
   @media screen and (min-width: ${ds.bp('m')}) {
     font-size: ${ds.fs(5)};
-  }
-`
-
-export const WorkFeedItemImageWrapper = styled.div`
-  position: absolute;
-  top: ${ds.space(2)};
-  right: 0;
-  width: 40%;
-  opacity: 0.6;
-
-  @media screen and (min-width: ${ds.bp('m')}) {
-    opacity: 1;
-  }
-`
-
-export const WorkFeedItemImage = styled.img`
-  display: block;
-  max-width: 100%;
-  margin-left: auto;
-`
-const WorkCopyWrapper = styled.div`
-  ${'' /* width: 80%; */}
-
-  @media screen and (min-width: ${ds.bp('m')}) {
-    width: 60%;
   }
 `
 
@@ -68,23 +39,11 @@ export default props => {
           target="_blank"
           rel="noopener"
         >
-          <WorkFeedItemBox>
-            {item.data.image.url && (
-              <WorkFeedItemImageWrapper>
-                <WorkFeedItemImage
-                  src={item.data.image.url}
-                  alt={`Image of ${title}`}
-                />
-              </WorkFeedItemImageWrapper>
-            )}
-            <Title>{title}</Title>
-            <WorkCopyWrapper>
-              {item.data.description.length > 0 && (
-                <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>
-              )}
-              {linkUrl && <FeedItemLinkUrl>{linkUrl}</FeedItemLinkUrl>}
-            </WorkCopyWrapper>
-          </WorkFeedItemBox>
+          <Title>{title}</Title>
+          {item.data.description.length > 0 && (
+            <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>
+          )}
+          {linkUrl && <FeedItemLinkUrl>{linkUrl}</FeedItemLinkUrl>}
         </FeedItemLink>
       </FeedItem>
     )

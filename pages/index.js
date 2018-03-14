@@ -7,7 +7,7 @@ import globalStyles from '../designsystem/globalStyles'
 import BigType from '../components/BigType'
 const BigName = dynamic(import('../components/BigName'), {
   ssr: false,
-  loading: () => <BigType />
+  loading: () => <BigType />,
 })
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
@@ -40,7 +40,6 @@ export default class Page extends Component {
               'work.title',
               'work.description',
               'work.link',
-              'work.image',
               'work.date',
             ],
             orderings: '[my.article.date desc, my.work.date desc]',
