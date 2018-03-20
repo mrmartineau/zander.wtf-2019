@@ -7,24 +7,13 @@ import {
   FeedWrapper,
   FeedList,
   FeedTitle,
+  FeedItemLinkTitle,
   FeedItem,
   FeedItemLink,
   FeedItemDesc,
   FeedItemBox,
   FeedItemLinkUrl,
 } from './Feed'
-
-const Title = styled.div`
-  position: relative;
-  font-weight: bold;
-  font-size: ${ds.fs(4)};
-  text-transform: uppercase;
-  line-height: 1;
-
-  @media screen and (min-width: ${ds.bp('m')}) {
-    font-size: ${ds.fs(5)};
-  }
-`
 
 export default props => {
   const feedItems = props.results.map((item, index) => {
@@ -38,7 +27,7 @@ export default props => {
           target="_blank"
           rel="noopener"
         >
-          <Title>{title}</Title>
+          <FeedItemLinkTitle>{title}</FeedItemLinkTitle>
           {item.data.description.length > 0 && (
             <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>
           )}
