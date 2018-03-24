@@ -93,10 +93,15 @@ export default class Page extends Component {
             <PinboardFeed
               feed="u:MrMartineau/t:zm:reading/"
               title="Reading list"
+              subtitle="Interesting articles that I've read recently"
             />
           </Spacer>
           <Spacer>
-            <PinboardFeed feed="u:MrMartineau/t:zm:link/" title="Link feed" />
+            <PinboardFeed
+              feed="u:MrMartineau/t:zm:link/"
+              title="Link feed"
+              subtitle="My most recent bookmarks"
+            />
           </Spacer>
         </Container>
       </MasterLayout>

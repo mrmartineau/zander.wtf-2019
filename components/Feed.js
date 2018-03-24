@@ -30,6 +30,10 @@ export const FeedTitle = styled.h2`
   text-transform: uppercase;
 `
 
+export const FeedSubtitle = styled.p`
+  text-align: center;
+`
+
 export const FeedItem = styled.li``
 
 export const FeedItemLink = styled.a`

@@ -4,6 +4,7 @@ import {
   FeedWrapper,
   FeedUrl,
   FeedTitle,
+  FeedSubtitle,
   FeedList,
   FeedItem,
   FeedItemLink,
@@ -67,15 +68,18 @@ export default class Feed extends Component {
       <FeedWrapper>
         <FeedTitle id={encodeURI(this.props.title)}>
           {this.props.title}
+        </FeedTitle>
+
+        <FeedSubtitle>
+          {this.props.subtitle}{' '}
           <FeedUrl
             href={`${PINBOARD_PATH}${this.props.feed}`}
             target="_blank"
             rel="noopener"
           >
-            [ ? ]
+            [i]
           </FeedUrl>
-        </FeedTitle>
-
+        </FeedSubtitle>
         <FeedList>{feedItems}</FeedList>
       </FeedWrapper>
     )
