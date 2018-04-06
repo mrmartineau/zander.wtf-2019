@@ -36,7 +36,7 @@ export default () => (
     <Name />
     <LinkList>
       {links.map(item => (
-        <LinkListItem href={item.url} target="_blank" rel="noopener">
+        <LinkListItem key={item.name} href={item.url} target="_blank" rel="noopener">
           {item.name}
         </LinkListItem>
       ))}
