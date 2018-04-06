@@ -50,13 +50,9 @@ export default class Page extends Component {
       })
       .catch(err => console.log(err))
 
-    const articles = homePageData.filter(item => {
-      return item.type === 'article'
-    })
+    const articles = homePageData.filter(item => item.type === 'article')
+    const work = homePageData.filter(item => item.type === 'work')
 
-    const work = homePageData.filter(item => {
-      return item.type === 'work'
-    })
     return {
       articles: articles,
       work: work,
@@ -71,7 +67,7 @@ export default class Page extends Component {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
         <BigName />
-        <h3 style={{ textAlign: 'center', fontSize: '30vw' }}>WTF‽</h3>
+        <h3 style={{ textAlign: 'center', fontSize: '30vw' }}>WTF?!</h3>
         <Spacer intro>
           <Container>
             <h1>
