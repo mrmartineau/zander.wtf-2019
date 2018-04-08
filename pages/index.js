@@ -16,7 +16,6 @@ import Container from '../components/Container'
 import Spacer from '../components/Spacer'
 import { initApi } from '../utils/prismic'
 import Prismic from 'prismic-javascript'
-import setupServiceWorker from '../utils/setupServiceWorker'
 
 injectGlobal`
   ${globalStyles}
@@ -57,10 +56,6 @@ export default class Page extends Component {
       articles: articles,
       work: work,
     }
-  }
-
-  componentDidMount() {
-    setupServiceWorker()
   }
 
   render() {
