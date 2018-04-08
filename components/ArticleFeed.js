@@ -21,7 +21,7 @@ export default ({ results, title, currentId = null, TitleTag = 'h2' }) => {
     const title = data.title[0].text
     return (
       <FeedItem key={`articleFeedItem-${index}`}>
-        <Link route="writing" params={{ slug: item.uid }} passHref>
+        <Link route="writing" params={{ slug: item.uid }} passHref prefetch>
           <FeedItemLink title={title}>
             <FeedItemBox>
               {data.title.length && (

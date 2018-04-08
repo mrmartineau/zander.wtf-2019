@@ -137,7 +137,7 @@ export default class Writing extends Component {
           </Container>
         </Spacer>
         <BackLinkWrapper>
-          <Link href="/#Writing" passHref>
+          <Link href="/#Writing" passHref prefetch>
             <BackLink>← Back</BackLink>
           </Link>
         </BackLinkWrapper>
