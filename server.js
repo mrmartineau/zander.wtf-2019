@@ -3,7 +3,7 @@ const routes = require('./routes')
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handler = routes.getRequestHandler(app)
 const express = require('express')
-
+const buildRss = require('./scripts/build-rss')
 const redirects = [
   { from: '/articles', to: '/#Writing' },
   { from: '/kickoff', to: 'http://trykickoff.com' },
@@ -48,13 +48,19 @@ const redirects = [
 ]
 
 app.prepare().then(() => {
-  // express().use(handler).listen(3000)
   const server = express()
 
   redirects.forEach(({ from, to, type = 301, method = 'get' }) => {
     server[method](from, (req, res) => {
       res.redirect(type, to)
     })
+  })
+
+  server.get("/atom.xml", (req, res, next) => {
+    buildRss().then(feed => {
+      res.set('Content-Type', 'text/xml');
+      res.send(feed)
+    }).catch(error => console.error(error))
   })
 
   server.get('*', (req, res) => {
