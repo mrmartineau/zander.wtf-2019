@@ -14,6 +14,7 @@ export default ({
       <title>{title}</title>
       <meta name="description" content={description} />
       {canonical && <link rel="canonical" href={canonical} />}
+      <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="RSS Feed">
     </Head>
 
     {children}
