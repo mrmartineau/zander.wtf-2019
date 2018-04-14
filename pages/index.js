@@ -63,6 +63,7 @@ export default class Page extends Component {
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
         <BigName />
         <h3 style={{ textAlign: 'center', fontSize: '30vw' }}>WTF?!</h3>
+        <div id="main" style={{display:'block'}}></div>
         <Spacer intro>
           <Container>
             <h1>
