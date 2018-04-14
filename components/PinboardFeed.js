@@ -13,7 +13,7 @@ import {
   FeedItemLinkUrl,
 } from './Feed'
 
-const FEED_PATH = 'https://pinboard-api.now.sh/json/'
+const FEED_PATH = 'https://pinboard-api-cache.now.sh/json/'
 const PINBOARD_PATH = 'https://pinboard.in/'
 
 export default class Feed extends Component {
