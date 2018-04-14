@@ -52,7 +52,6 @@ export default class Feed extends Component {
         <FeedItem key={`feedItem-${index}`}>
           <FeedItemLink
             href={item.u}
-            title={item.d}
             target="_blank"
             rel="noopener"
           >

@@ -22,7 +22,7 @@ export default ({ results, title, currentId = null, TitleTag = 'h2' }) => {
     return (
       <FeedItem key={`articleFeedItem-${index}`}>
         <Link route="writing" params={{ slug: item.uid }} passHref prefetch>
-          <FeedItemLink title={title}>
+          <FeedItemLink>
             <FeedItemBox>
               {data.title.length && (
                 <FeedItemLinkTitle>{title}</FeedItemLinkTitle>
