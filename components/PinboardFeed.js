@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import 'fetch-everywhere'
 import {
   FeedWrapper,
@@ -15,6 +16,12 @@ import {
 
 const FEED_PATH = 'https://pinboard-api-cache.now.sh/json/'
 const PINBOARD_PATH = 'https://pinboard.in/'
+
+const Center = styled.div`
+  text-align: center;
+  margin-top: 1vmax;
+  margin-bottom: 1vmax;
+`
 
 export default class Feed extends Component {
   constructor(props) {
@@ -50,11 +57,7 @@ export default class Feed extends Component {
     const feedItems = newFeedList.map((item, index) => {
       return (
         <FeedItem key={`feedItem-${index}`}>
-          <FeedItemLink
-            href={item.u}
-            target="_blank"
-            rel="noopener"
-          >
+          <FeedItemLink href={item.u} target="_blank" rel="noopener">
             <FeedItemLinkTitle>{item.d}</FeedItemLinkTitle>
             {item.n && <FeedItemDesc>{item.n}</FeedItemDesc>}
             <FeedItemLinkUrl>{item.u}</FeedItemLinkUrl>
@@ -80,6 +83,15 @@ export default class Feed extends Component {
           </FeedUrl>
         </FeedSubtitle>
         <FeedList>{feedItems}</FeedList>
+        <Center>
+          <FeedUrl
+            href={`${PINBOARD_PATH}${this.props.feed}`}
+            target="_blank"
+            rel="noopener"
+          >
+            See all 👉
+          </FeedUrl>
+        </Center>
       </FeedWrapper>
     )
   }
