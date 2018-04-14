@@ -1,7 +1,12 @@
+/**
+ * SSR Cache: https://github.com/zeit/next.js/tree/canary/examples/ssr-caching
+ * Static caching: https://github.com/zeit/next.js/issues/1791#issuecomment-315459436
+ * 301 Redirects: https://www.raygesualdo.com/posts/301-redirects-with-nextjs/
+ * Local fonts: https://github.com/zeit/next.js/issues/512#issuecomment-367164248
+ */
 const next = require('next')
 const express = require('express')
 const LRUCache = require('lru-cache')
-
 const routes = require('./routes')
 const redirects = require('./redirects')
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
@@ -25,9 +30,12 @@ app.prepare().then(() => {
     renderAndCache(req, res, '/')
   })
 
-  server.get('*', (req, res) => {
-    return handler(req, res)
-  })
+  server.use(
+    '/static',
+    express.static(__dirname + '/static', {
+      maxAge: '365d',
+    })
+  )
 
   siteRedirects.forEach(({ from, to, type = 301, method = 'get' }) => {
     server[method](from, (req, res) => {
@@ -42,6 +50,10 @@ app.prepare().then(() => {
         res.send(feed)
       })
       .catch(error => console.error(error))
+  })
+
+  server.get('*', (req, res) => {
+    return handler(req, res)
   })
 
   server.listen(3000, err => {
