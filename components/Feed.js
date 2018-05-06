@@ -16,7 +16,7 @@ export const FeedUrl = styled.a`
   line-height: 1.4;
   margin-left: 0.5rem;
 
-  ${paddedLinkStyles}
+  ${paddedLinkStyles};
 `
 
 export const FeedList = styled.ul`

@@ -6,6 +6,6 @@ const PRISMIC_REPO = 'https://zanderwtf.prismic.io/api/v2'
 export const initApi = req => {
   return Prismic.getApi(PRISMIC_REPO, {
     accessToken: PRISMIC_ACCESS_TOKEN,
-    req: req,
+    req: req
   })
 }

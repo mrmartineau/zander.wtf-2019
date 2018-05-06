@@ -18,6 +18,6 @@ const Name = styled.div`
 
 export default () => (
   <NameWrapper>
-    <Name children="ZANDER" />
+    <Name children='ZANDER' />
   </NameWrapper>
 )

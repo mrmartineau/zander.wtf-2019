@@ -6,9 +6,9 @@ export default (minFontSize, maxFontSize, breakpointSmall, breakpointLarge) => {
       /* font-size: ${minFontSize}; */
       font-size: calc(${minFontSize} + (${parseInt(maxFontSize, 10) -
     parseInt(minFontSize, 10)}) * ((100vw - ${breakpointSmall}) / (${parseInt(
-    breakpointLarge,
-    10
-  ) - parseInt(breakpointSmall, 10)})));
+  breakpointLarge,
+  10
+) - parseInt(breakpointSmall, 10)})));
     }
 
     /* @media screen and (min-width: ${breakpointSmall}) {
@@ -31,5 +31,9 @@ export const fluidSpace = (
   breakpointSmall,
   breakpointLarge
 ) => {
-  return `calc(${minFontSize} + (${parseInt(maxFontSize, 10) - parseInt(minFontSize, 10)}) * ((100vw - ${breakpointSmall}) /(${parseInt(breakpointLarge, 10) - parseInt(breakpointSmall, 10)})))`
+  return `calc(${minFontSize} + (${parseInt(maxFontSize, 10) -
+    parseInt(minFontSize, 10)}) * ((100vw - ${breakpointSmall}) /(${parseInt(
+    breakpointLarge,
+    10
+  ) - parseInt(breakpointSmall, 10)})))`
 }

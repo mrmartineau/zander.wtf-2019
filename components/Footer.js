@@ -23,12 +23,12 @@ const LinkListItem = styled.a`
 const links = [
   {
     name: 'GitHub',
-    url: 'https://github.com/mrmartineau',
+    url: 'https://github.com/mrmartineau'
   },
   {
     name: 'Twitter',
-    url: 'https://twitter.com/mrmartineau',
-  },
+    url: 'https://twitter.com/mrmartineau'
+  }
 ]
 
 export default () => (
@@ -36,7 +36,12 @@ export default () => (
     <Name />
     <LinkList>
       {links.map(item => (
-        <LinkListItem key={item.name} href={item.url} target="_blank" rel="noopener">
+        <LinkListItem
+          key={item.name}
+          href={item.url}
+          target='_blank'
+          rel='noopener'
+        >
           {item.name}
         </LinkListItem>
       ))}
