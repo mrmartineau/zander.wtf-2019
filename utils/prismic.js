@@ -9,3 +9,11 @@ export const initApi = req => {
     req: req
   })
 }
+
+// -- Links resolution rules
+// This function will be used to generate links to Prismic.io documents
+// As your project grows, you should update this function according to your routes
+export const linkResolver = doc => {
+  if (doc.type === 'article') return `/writing/${doc.uid}`
+  return '/'
+}
