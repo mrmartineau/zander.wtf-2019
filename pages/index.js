@@ -62,39 +62,45 @@ export default class Page extends Component {
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
         <BigName />
         <h3 style={{ textAlign: 'center', fontSize: '30vw' }}>WTF?!</h3>
-        <div id="main" style={{ display: 'block' }} />
-        <Spacer intro>
+        <main id="main" style={{ display: 'block' }}>
+          <Spacer intro>
+            <Container>
+              <h1>
+                👋 I'm Zander Martineau.
+                <br />
+                Freelance Front-end developer in London.
+              </h1>
+              <h2>
+                Making the web simple, fun & fast since the &lt;blink&gt; tag
+                was cool.
+              </h2>
+            </Container>
+          </Spacer>
           <Container>
-            <h1>
-              Zander Martineau. <br />Front-end developer in London.
-            </h1>
-            <h2>Making the web simple, fun and fast since '06</h2>
-          </Container>
-        </Spacer>
-        <Container>
-          {this.props.articles && (
-            <ArticleFeed results={this.props.articles} title="Writing" />
-          )}
-          {this.props.work && (
+            {this.props.articles && (
+              <ArticleFeed results={this.props.articles} title="Writing" />
+            )}
+            {this.props.work && (
+              <Spacer>
+                <WorkFeed results={this.props.work} title="Work" />
+              </Spacer>
+            )}
             <Spacer>
-              <WorkFeed results={this.props.work} title="Work" />
+              <PinboardFeed
+                feed="u:MrMartineau/t:zm:reading/"
+                title="Reading"
+                subtitle="Interesting articles that I've read recently"
+              />
             </Spacer>
-          )}
-          <Spacer>
-            <PinboardFeed
-              feed="u:MrMartineau/t:zm:reading/"
-              title="Reading"
-              subtitle="Interesting articles that I've read recently"
-            />
-          </Spacer>
-          <Spacer>
-            <PinboardFeed
-              feed="u:MrMartineau/t:zm:link/"
-              title="Links"
-              subtitle="My most recent bookmarks"
-            />
-          </Spacer>
-        </Container>
+            <Spacer>
+              <PinboardFeed
+                feed="u:MrMartineau/t:zm:link/"
+                title="Links"
+                subtitle="My most recent bookmarks"
+              />
+            </Spacer>
+          </Container>
+        </main>
       </MasterLayout>
     )
   }
