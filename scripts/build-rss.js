@@ -1,7 +1,4 @@
-const fs = require('fs')
-const { promisify } = require('util')
 const RSS = require('rss')
-const RichText = require('prismic-reactjs').RichText
 const PrismicDOM = require('prismic-dom')
 
 const feed = new RSS({
@@ -13,7 +10,7 @@ const feed = new RSS({
   managingEditor: 'Zander Martineau',
   webMaster: 'Zander Martineau',
   copyright: `${new Date().getUTCFullYear()} Zander Martineau`,
-  language: 'en'
+  language: 'en',
 })
 
 const Prismic = require('prismic-javascript')
@@ -24,7 +21,7 @@ const PRISMIC_REPO = 'https://zanderwtf.prismic.io/api/v2'
 const initApi = req => {
   return Prismic.getApi(PRISMIC_REPO, {
     accessToken: PRISMIC_ACCESS_TOKEN,
-    req: req
+    req: req,
   })
 }
 
@@ -38,15 +35,15 @@ const getArticles = async () => {
             'article.uid',
             'article.date',
             'article.subtitle',
-            'article.body'
+            'article.body',
           ],
-          orderings: '[my.article.date desc]'
+          orderings: '[my.article.date desc]',
         })
         .then(response => {
           return response.results
         })
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
 
   const feedItems = articles.map(item => {
     return feed.item({
@@ -55,18 +52,15 @@ const getArticles = async () => {
       guid: item.uid,
       author: 'Zander Martineau',
       date: item.data.date,
-      description: PrismicDOM.RichText.asHtml(item.data.body)
+      description: PrismicDOM.RichText.asHtml(item.data.body),
     })
   })
 
   return feedItems
 }
 
-const writeFile = promisify(fs.writeFile)
-
-async function main () {
+async function main() {
   await getArticles()
-  // await writeFile('./static/atom.xml', feed.xml())
   return feed.xml()
 }
 

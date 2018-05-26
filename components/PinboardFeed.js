@@ -11,7 +11,7 @@ import {
   FeedItemLink,
   FeedItemLinkTitle,
   FeedItemDesc,
-  FeedItemLinkUrl
+  FeedItemLinkUrl,
 } from './Feed'
 
 const FEED_PATH = 'https://pinboard-api-cache.now.sh/json/'
@@ -24,15 +24,15 @@ const Center = styled.div`
 `
 
 export default class Feed extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
-      feed: []
+      feed: [],
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     fetch(`${FEED_PATH}${this.props.feed}?count=${this.props.count}`)
       .then(response => {
         if (response.status >= 400) {
@@ -42,12 +42,12 @@ export default class Feed extends Component {
       })
       .then(response => {
         this.setState({
-          feed: response
+          feed: response,
         })
       })
   }
 
-  render () {
+  render() {
     const maxDisplayCount = 10
     const newFeedList =
       this.state.feed.length <= maxDisplayCount
@@ -57,7 +57,7 @@ export default class Feed extends Component {
     const feedItems = newFeedList.map((item, index) => {
       return (
         <FeedItem key={`feedItem-${index}`}>
-          <FeedItemLink href={item.u} target='_blank' rel='noopener'>
+          <FeedItemLink href={item.u} target="_blank" rel="noopener">
             <FeedItemLinkTitle>{item.d}</FeedItemLinkTitle>
             {item.n && <FeedItemDesc>{item.n}</FeedItemDesc>}
             <FeedItemLinkUrl>{item.u}</FeedItemLinkUrl>
@@ -76,8 +76,8 @@ export default class Feed extends Component {
           {this.props.subtitle}{' '}
           <FeedUrl
             href={`${PINBOARD_PATH}${this.props.feed}`}
-            target='_blank'
-            rel='noopener'
+            target="_blank"
+            rel="noopener"
           >
             [i]
           </FeedUrl>
@@ -86,8 +86,8 @@ export default class Feed extends Component {
         <Center>
           <FeedUrl
             href={`${PINBOARD_PATH}${this.props.feed}`}
-            target='_blank'
-            rel='noopener'
+            target="_blank"
+            rel="noopener"
           >
             See all 👉
           </FeedUrl>
@@ -98,5 +98,5 @@ export default class Feed extends Component {
 }
 
 Feed.defaultProps = {
-  count: 10
+  count: 10,
 }

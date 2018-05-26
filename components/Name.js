@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ds } from '../designsystem/index'
 
 const NameWrapper = styled.div`
   overflow: hidden;
@@ -18,6 +17,6 @@ const Name = styled.div`
 
 export default () => (
   <NameWrapper>
-    <Name children='ZANDER' />
+    <Name>ZANDER</Name>
   </NameWrapper>
 )

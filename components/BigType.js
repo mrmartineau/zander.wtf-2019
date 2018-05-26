@@ -50,7 +50,7 @@ const SkipLink = styled.a`
 const name = ['Z', 'A', 'N', 'D', 'E', 'R']
 
 export default class extends Component {
-  componentDidMount () {
+  componentDidMount() {
     if (this.bigType !== null) {
       this.bigTypeHeight = this.bigType.clientHeight
       this.windowHeight = Math.max(
@@ -62,12 +62,12 @@ export default class extends Component {
         this.bigTypeHeight - this.windowHeight - windowHeightHalfed
       this.scrollObserver = new ScrollObserver(this.skippy, {
         threshold: threshold,
-        classNameActive: 'is-inactive'
+        classNameActive: 'is-inactive',
       })
     }
   }
 
-  jumpClick () {
+  jumpClick() {
     if (this.bigType !== null) {
       const initialDuration = 5000
       const percentageScrolled =
@@ -77,16 +77,16 @@ export default class extends Component {
         10
       )
       jump('#main', {
-        duration: duration
+        duration: duration,
       })
     }
   }
-  render () {
+  render() {
     return (
       <BigType innerRef={bigType => (this.bigType = bigType)}>
         {name.map(item => <BigTypeItem key={item}>{item}</BigTypeItem>)}
         <SkipLink
-          href='#main'
+          href="#main"
           innerRef={skippy => (this.skippy = skippy)}
           onClick={this.jumpClick.bind(this)}
         >

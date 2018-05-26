@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import styled from 'styled-components'
 import { ds } from '../designsystem'
 import { paddedLinkStyles } from '../designsystem/globalStyles'

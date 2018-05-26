@@ -1,8 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
-import styled from 'styled-components'
-import { ds } from '../designsystem'
-import Container from './Container'
 import {
   FeedWrapper,
   FeedList,
@@ -11,8 +7,7 @@ import {
   FeedItem,
   FeedItemLink,
   FeedItemDesc,
-  FeedItemBox,
-  FeedItemLinkUrl
+  FeedItemLinkUrl,
 } from './Feed'
 
 export default props => {
@@ -21,7 +16,7 @@ export default props => {
     const title = item.data.title[0].text
     return (
       <FeedItem key={`work-${index}`}>
-        <FeedItemLink href={linkUrl} target='_blank' rel='noopener'>
+        <FeedItemLink href={linkUrl} target="_blank" rel="noopener">
           <FeedItemLinkTitle>{title}</FeedItemLinkTitle>
           {item.data.description.length > 0 && (
             <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>

@@ -7,18 +7,18 @@ export default ({
   children,
   title = 'This is the default title',
   description = 'Personal website for Zander Martineau',
-  canonical = null
+  canonical = null,
 }) => (
   <Fragment>
     <Head>
       <title>{title}</title>
-      <meta name='description' content={description} />
-      {canonical && <link rel='canonical' href={canonical} />}
+      <meta name="description" content={description} />
+      {canonical && <link rel="canonical" href={canonical} />}
       <link
-        rel='alternate'
-        href='/atom.xml'
-        type='application/atom+xml'
-        title='RSS Feed'
+        rel="alternate"
+        href="/atom.xml"
+        type="application/atom+xml"
+        title="RSS Feed"
       />
     </Head>
 

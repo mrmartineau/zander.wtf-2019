@@ -9,10 +9,10 @@ import {
   FeedItemLinkTitle,
   FeedItemBox,
   FeedItemDate,
-  FeedItemDesc
+  FeedItemDesc,
 } from './Feed'
 
-export default ({ results, title, currentId = null, TitleTag = 'h2' }) => {
+export default ({ results, title, currentId = null }) => {
   const newFeed = results.filter(item => {
     return item.id !== currentId
   })
@@ -21,7 +21,7 @@ export default ({ results, title, currentId = null, TitleTag = 'h2' }) => {
     const title = data.title[0].text
     return (
       <FeedItem key={`articleFeedItem-${index}`}>
-        <Link route='writing' params={{ slug: item.uid }} passHref prefetch>
+        <Link route="writing" params={{ slug: item.uid }} passHref prefetch>
           <FeedItemLink>
             <FeedItemBox>
               {data.title.length && (

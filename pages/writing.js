@@ -11,7 +11,7 @@ import globalStyles, {
   linkStyles,
   paddedLinkStyles,
   codeStyles,
-  baseline
+  baseline,
 } from '../designsystem/globalStyles'
 import Link from 'next/link'
 import Prismic from 'prismic-javascript'
@@ -71,12 +71,12 @@ const BackLink = styled.a`
 `
 
 export default class Writing extends Component {
-  static async getInitialProps ({ req, query }) {
+  static async getInitialProps({ req, query }) {
     const response = await initApi()
       .then(api => {
         return api.getByUID('article', query.slug)
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
 
     const articles = await initApi()
       .then(api => {
@@ -86,25 +86,25 @@ export default class Writing extends Component {
               'article.title',
               'article.uid',
               'article.date',
-              'article.subtitle'
+              'article.subtitle',
             ],
             orderings: '[my.article.date desc]',
-            pageSize: 4
+            pageSize: 4,
           })
           .then(response => {
             return response.results
           })
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
 
     return {
       query,
       response,
-      articles
+      articles,
     }
   }
 
-  render () {
+  render() {
     const response = this.props.response
     const title = response.data.title[0].text
     const body = response.data.body
@@ -114,11 +114,11 @@ export default class Writing extends Component {
     return (
       <MasterLayout
         title={title}
-        description='An article by Zander Martineau'
+        description="An article by Zander Martineau"
         canonical={canonical}
       >
         <Head>
-          <meta property='og:type' content='article' />
+          <meta property="og:type" content="article" />
         </Head>
         <Spacer>
           <Container>
@@ -130,14 +130,14 @@ export default class Writing extends Component {
             <Hr />
             <ArticleFeed
               results={this.props.articles}
-              title='Recent posts'
+              title="Recent posts"
               currentId={response.id}
-              TitleTag='h4'
+              TitleTag="h4"
             />
           </Container>
         </Spacer>
         <BackLinkWrapper>
-          <Link href='/#Writing' passHref prefetch>
+          <Link href="/#Writing" passHref prefetch>
             <BackLink>← Back</BackLink>
           </Link>
         </BackLinkWrapper>
