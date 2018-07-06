@@ -62,45 +62,43 @@ export default class Page extends Component {
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
         <BigName />
         <h3 style={{ textAlign: 'center', fontSize: '30vw' }}>WTF?!</h3>
-        <main id="main" style={{ display: 'block' }}>
-          <Spacer intro>
-            <Container>
-              <h1>
-                👋 I'm Zander Martineau.
-                <br />
-                Freelance Front-end developer in London.
-              </h1>
-              <h2>
-                Making the web simple, fun & fast since the &lt;blink&gt; tag
-                was cool.
-              </h2>
-            </Container>
-          </Spacer>
+        <main id="main" style={{ display: 'block' }} />
+        <Spacer intro>
           <Container>
-            {this.props.articles && (
-              <ArticleFeed results={this.props.articles} title="Writing" />
-            )}
-            {this.props.work && (
-              <Spacer>
-                <WorkFeed results={this.props.work} title="Work" />
-              </Spacer>
-            )}
-            <Spacer>
-              <PinboardFeed
-                feed="u:MrMartineau/t:zm:reading/"
-                title="Reading"
-                subtitle="Interesting articles that I've read recently"
-              />
-            </Spacer>
-            <Spacer>
-              <PinboardFeed
-                feed="u:MrMartineau/t:zm:link/"
-                title="Links"
-                subtitle="My most recent bookmarks"
-              />
-            </Spacer>
+            <h1>
+              👋 I’m Zander Martineau, <br />
+              a freelance Front-end developer in London.
+            </h1>
+            <h2>
+              I’ve been making the web accessible, easy-to-use & fast since the
+              &lt;blink&gt; tag was cool.
+            </h2>
           </Container>
-        </main>
+        </Spacer>
+        <Container>
+          {this.props.articles && (
+            <ArticleFeed results={this.props.articles} title="Writing" />
+          )}
+          {this.props.work && (
+            <Spacer>
+              <WorkFeed results={this.props.work} title="Work" />
+            </Spacer>
+          )}
+          <Spacer>
+            <PinboardFeed
+              feed="u:MrMartineau/t:zm:reading/"
+              title="Reading"
+              subtitle="Interesting articles that I've read recently"
+            />
+          </Spacer>
+          <Spacer>
+            <PinboardFeed
+              feed="u:MrMartineau/t:zm:link/"
+              title="Links"
+              subtitle="My most recent bookmarks"
+            />
+          </Spacer>
+        </Container>
       </MasterLayout>
     )
   }
