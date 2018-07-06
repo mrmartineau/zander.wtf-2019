@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 import { ds } from '../designsystem'
+import { pxTo } from 'design-system-utils'
 import { paddedLinkStyles } from '../designsystem/globalStyles'
 
 export const FeedWrapper = styled.div`
-  margin: ${ds.pxTo(80, 25, 'rem')} 0;
+  margin: ${pxTo(80, 25, 'rem')} 0;
 `
 export const FeedUrl = styled.a`
-  font-size: ${ds.fs(-2)};
+  font-size: ${ds.fs('xs')};
   font-family: ${ds.get('type.fontFamily.mono')};
   font-weight: normal;
   display: inline-block;
@@ -69,14 +70,14 @@ export const FeedItemDate = styled.div`
 
 export const FeedItemDesc = styled.div`
   opacity: 0.6;
-  margin-top: ${ds.pxTo(8, 25, 'rem')};
+  margin-top: ${pxTo(8, 25, 'rem')};
   font-size: ${ds.fs('s')};
 `
 
 export const FeedItemLinkUrl = styled.div`
   opacity: 0.6;
-  margin-top: ${ds.pxTo(8, 25, 'rem')};
+  margin-top: ${pxTo(8, 25, 'rem')};
   word-wrap: break-word;
-  font-size: ${ds.fs(-2)};
+  font-size: ${ds.fs('xs')};
   font-family: ${ds.get('type.fontFamily.mono')};
 `

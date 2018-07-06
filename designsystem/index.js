@@ -1,5 +1,6 @@
 import colorPalette from './colorPalette'
 import DesignSystem from 'design-system-utils'
+import ms from 'modularscale-js'
 
 const fontFamily = {
   system: `-apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -16,23 +17,23 @@ const transitions = {
   timing: 'cubic-bezier(0.77, 0, 0.175, 1)',
 }
 
+const modularscale = {
+  base: [25], // should be the same as baseFontSize
+  ratio: 1.25,
+}
+
 export const myDesignSystem = {
   type: {
     baseFontSize: '25px',
 
     sizes: {
-      xs: -2,
-      s: -1,
-      base: 0, // [default] p, h5, h6
-      m: 1, // h4
-      l: 2, // h3
-      xl: 3, // h2
-      xxl: 4, // h1
-    },
-
-    modularscale: {
-      base: [25], // should be the same as baseFontSize
-      ratio: 1.25,
+      xs: `${ms(-2, modularscale)}px`,
+      s: `${ms(-1, modularscale)}px`,
+      base: `${ms(0, modularscale)}px`, // [default] p, h5, h6
+      m: `${ms(1, modularscale)}px`, // h4
+      l: `${ms(2, modularscale)}px`, // h3
+      xl: `${ms(3, modularscale)}px`, // h2
+      xxl: `${ms(4, modularscale)}px`, // h1
     },
 
     fontFamily,

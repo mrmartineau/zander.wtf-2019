@@ -26,7 +26,7 @@ const BigTypeItem = styled.div`
 
 const SkipLink = styled.a`
   font-family: ${ds.get('type.fontFamily.mono')};
-  font-size: ${ds.fs(-2)};
+  font-size: ${ds.fs('xs')};
   ${paddedLinkStyles};
   background-color: var(--theme-foreground) !important;
   color: var(--theme-background) !important;

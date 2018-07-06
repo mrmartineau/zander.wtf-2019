@@ -1,8 +1,9 @@
 import { css } from 'styled-components'
 import { ds } from './index'
+import { pxTo } from 'design-system-utils'
 // import fluidType, { fluidSpace } from '../utils/fluidType'
 
-export const baseline = ds.pxTo(35, 25, 'rem')
+export const baseline = pxTo(35, 25, 'rem')
 // const baseFluidType = fluidType('15px', '20px', '320px', '1000px')
 // const baseFluidType = fluidSpace('16px', '25px', '320px', '1000px')
 
@@ -39,7 +40,7 @@ export default `
 
   h1 {
     font-size: ${ds.fs('xxl')};
-    margin-bottom: ${ds.pxTo(70, 25, 'rem')};
+    margin-bottom: ${pxTo(70, 25, 'rem')};
   }
 
   h2 {

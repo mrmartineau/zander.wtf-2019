@@ -22,7 +22,7 @@ injectGlobal`
 `
 
 const Time = styled.time`
-  font-size: ${ds.fs(-1)};
+  font-size: ${ds.fs('s')};
   font-family: ${ds.get('type.fontFamily.mono')};
   margin-bottom: ${baseline};
   display: block;
@@ -66,7 +66,7 @@ const BackLinkWrapper = styled.div`
 `
 const BackLink = styled.a`
   font-family: ${ds.get('type.fontFamily.mono')};
-  font-size: ${ds.fs(-2)};
+  font-size: ${ds.fs('xs')};
   ${paddedLinkStyles};
 `
 
