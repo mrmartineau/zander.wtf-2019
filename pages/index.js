@@ -31,6 +31,11 @@ const Intro = styled.h1`
   }
 `
 
+const Inverse = styled.div`
+  background-color: var(--theme-foreground);
+  color: var(--theme-background);
+`
+
 const Gig = styled.p`
   font-size: 1rem;
 `
@@ -90,11 +95,15 @@ export default class Page extends Component {
           {this.props.articles && (
             <ArticleFeed results={this.props.articles} title="Writing" />
           )}
+
           {this.props.work && (
-            <Spacer>
-              <WorkFeed results={this.props.work} title="Work" />
-            </Spacer>
+            <Inverse>
+              <Spacer>
+                <WorkFeed results={this.props.work} title="Work" />
+              </Spacer>
+            </Inverse>
           )}
+
           <Spacer>
             <PinboardFeed
               feed="u:MrMartineau/t:zm:reading/"
@@ -102,13 +111,16 @@ export default class Page extends Component {
               subtitle="Interesting articles that I've read recently"
             />
           </Spacer>
-          <Spacer>
-            <PinboardFeed
-              feed="u:MrMartineau/t:zm:link/"
-              title="Links"
-              subtitle="My most recent bookmarks"
-            />
-          </Spacer>
+
+          <Inverse>
+            <Spacer>
+              <PinboardFeed
+                feed="u:MrMartineau/t:zm:link/"
+                title="Links"
+                subtitle="My most recent bookmarks"
+              />
+            </Spacer>
+          </Inverse>
         </Container>
       </MasterLayout>
     )
