@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import dynamic from 'next/dynamic'
-import { injectGlobal } from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 import MasterLayout from '../layouts/master'
 import globalStyles from '../designsystem/globalStyles'
 import BigType from '../components/BigType'
@@ -20,12 +20,17 @@ injectGlobal`
   ${globalStyles}
 `
 
+const Inverse = styled.div`
+  background-color: var(--theme-foreground);
+  color: var(--theme-background);
+`
+
 export default class Page extends Component {
   constructor(props) {
     super(props)
   }
 
-  static async getInitialProps({ req }) {
+  static async getInitialProps() {
     const homePageData = await initApi()
       .then(api => {
         return api
@@ -66,7 +71,7 @@ export default class Page extends Component {
         <Spacer intro>
           <Container>
             <h1>
-              👋 I’m Zander Martineau, <br />
+              I’m Zander Martineau, <br />
               a freelance Front-end developer in London.
             </h1>
             <h2>
@@ -79,11 +84,15 @@ export default class Page extends Component {
           {this.props.articles && (
             <ArticleFeed results={this.props.articles} title="Writing" />
           )}
+
           {this.props.work && (
-            <Spacer>
-              <WorkFeed results={this.props.work} title="Work" />
-            </Spacer>
+            <Inverse>
+              <Spacer>
+                <WorkFeed results={this.props.work} title="Work" />
+              </Spacer>
+            </Inverse>
           )}
+
           <Spacer>
             <PinboardFeed
               feed="u:MrMartineau/t:zm:reading/"
@@ -91,13 +100,16 @@ export default class Page extends Component {
               subtitle="Interesting articles that I've read recently"
             />
           </Spacer>
-          <Spacer>
-            <PinboardFeed
-              feed="u:MrMartineau/t:zm:link/"
-              title="Links"
-              subtitle="My most recent bookmarks"
-            />
-          </Spacer>
+
+          <Inverse>
+            <Spacer>
+              <PinboardFeed
+                feed="u:MrMartineau/t:zm:link/"
+                title="Links"
+                subtitle="My most recent bookmarks"
+              />
+            </Spacer>
+          </Inverse>
         </Container>
       </MasterLayout>
     )
