@@ -5,7 +5,7 @@ import Name from './Name'
 import { paddedLinkStyles } from '../designsystem/globalStyles'
 
 const Footer = styled.footer`
-  margin: 20vw 0;
+  margin: 20vw 0 -10vw 0;
 `
 
 const LinkList = styled.div`
@@ -33,7 +33,6 @@ const links = [
 
 export default () => (
   <Footer>
-    <Name />
     <LinkList>
       {links.map(item => (
         <LinkListItem
@@ -46,5 +45,6 @@ export default () => (
         </LinkListItem>
       ))}
     </LinkList>
+    <Name />
   </Footer>
 )
