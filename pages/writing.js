@@ -70,6 +70,10 @@ const BackLink = styled.a`
   ${paddedLinkStyles};
 `
 
+const ArticleTitle = styled.h1`
+  font-size: 5rem;
+`
+
 export default class Writing extends Component {
   static async getInitialProps({ req, query }) {
     const response = await initApi()
@@ -123,7 +127,7 @@ export default class Writing extends Component {
         <Spacer>
           <Container>
             <Article>
-              <h1>{title}</h1>
+              <ArticleTitle>{title}</ArticleTitle>
               <Time datetime={response.data.date}>{response.data.date}</Time>
               {RichText.render(body)}
             </Article>
@@ -137,7 +141,7 @@ export default class Writing extends Component {
           </Container>
         </Spacer>
         <BackLinkWrapper>
-          <Link href="/#Writing" passHref prefetch>
+          <Link href="/#main" passHref prefetch>
             <BackLink>← Back</BackLink>
           </Link>
         </BackLinkWrapper>
