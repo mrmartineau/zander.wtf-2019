@@ -21,8 +21,12 @@ injectGlobal`
 `
 
 const Inverse = styled.div`
-  background-color: var(--theme-foreground);
-  color: var(--theme-background);
+  --theme-background: #fff;
+  --theme-foreground: #000;
+
+  background-color: var(--theme-background);
+  color: var(--theme-foreground);
+  padding: 1px 0;
 `
 
 export default class Page extends Component {
@@ -84,15 +88,18 @@ export default class Page extends Component {
           {this.props.articles && (
             <ArticleFeed results={this.props.articles} title="Writing" />
           )}
+        </Container>
 
-          {this.props.work && (
-            <Inverse>
+        {this.props.work && (
+          <Inverse>
+            <Container>
               <Spacer>
                 <WorkFeed results={this.props.work} title="Work" />
               </Spacer>
-            </Inverse>
-          )}
-
+            </Container>
+          </Inverse>
+        )}
+        <Container>
           <Spacer>
             <PinboardFeed
               feed="u:MrMartineau/t:zm:reading/"
@@ -100,8 +107,10 @@ export default class Page extends Component {
               subtitle="Interesting articles that I've read recently"
             />
           </Spacer>
+        </Container>
 
-          <Inverse>
+        <Inverse>
+          <Container>
             <Spacer>
               <PinboardFeed
                 feed="u:MrMartineau/t:zm:link/"
@@ -109,8 +118,8 @@ export default class Page extends Component {
                 subtitle="My most recent bookmarks"
               />
             </Spacer>
-          </Inverse>
-        </Container>
+          </Container>
+        </Inverse>
       </MasterLayout>
     )
   }
