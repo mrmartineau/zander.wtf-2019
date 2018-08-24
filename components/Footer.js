@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ds } from '../designsystem/index'
-import Name from './Name'
+import BigType from './BigType'
 import { paddedLinkStyles } from '../designsystem/globalStyles'
 
 const Footer = styled.footer`
@@ -45,6 +45,6 @@ export default () => (
         </LinkListItem>
       ))}
     </LinkList>
-    <Name />
+    <BigType />
   </Footer>
 )

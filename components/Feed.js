@@ -43,9 +43,13 @@ export const FeedItemLink = styled.a`
   color: var(--theme-foreground);
   text-decoration: none;
   cursor: pointer;
+  margin-left: -1rem;
+  margin-right: -1rem;
 
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
+    outline: 0;
     color: ${ds.color('dark')};
     color: var(--theme-background);
     background-color: ${ds.color('bright')};

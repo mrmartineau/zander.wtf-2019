@@ -32,6 +32,11 @@ const Time = styled.time`
 const Article = styled.article`
   a {
     ${linkStyles};
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   img {

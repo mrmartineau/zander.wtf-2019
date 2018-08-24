@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-import dynamic from 'next/dynamic'
-import { injectGlobal } from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 import MasterLayout from '../layouts/master'
 import globalStyles from '../designsystem/globalStyles'
-import BigType from '../components/BigType'
-const BigName = dynamic(import('../components/BigName'), {
-  ssr: false,
-  loading: () => <BigType />,
-})
+import Name from '../components/Name'
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
 import WorkFeed from '../components/WorkFeed'
@@ -20,12 +15,28 @@ injectGlobal`
   ${globalStyles}
 `
 
-export default class Page extends Component {
-  constructor(props) {
-    super(props)
-  }
+const Wtf = styled.h2`
+  text-align: center;
+  font-size: 10vw;
+`
 
-  static async getInitialProps({ req }) {
+const Intro = styled.h1`
+  font-size: 2rem;
+  line-height: 1.3;
+
+  div {
+    font-weight: normal;
+    margin-top: 4vw;
+    font-size: 0.7em;
+  }
+`
+
+const Gig = styled.p`
+  font-size: 1rem;
+`
+
+export default class Page extends Component {
+  static async getInitialProps() {
     const homePageData = await initApi()
       .then(api => {
         return api
@@ -60,19 +71,19 @@ export default class Page extends Component {
   render() {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
-        <BigName />
-        <h3 style={{ textAlign: 'center', fontSize: '30vw' }}>WTF?!</h3>
-        <main id="main" style={{ display: 'block' }} />
-        <Spacer intro>
+        <Name />
+        <Wtf>WTF?!</Wtf>
+        <Spacer intro id="main">
           <Container>
-            <h1>
-              👋 I’m Zander Martineau, <br />
+            <Intro>
+              I’m Zander Martineau, <br />
               a freelance Front-end developer in London.
-            </h1>
-            <h2>
-              I’ve been making the web accessible, easy-to-use & fast since the
-              &lt;blink&gt; tag was cool.
-            </h2>
+              <div>
+                I’ve been making the web accessible, easy-to-use & fast since
+                the &lt;blink&gt; tag was cool.
+              </div>
+            </Intro>
+            <Gig>Current gig: Lead front-end dev @ FairFX</Gig>
           </Container>
         </Spacer>
         <Container>
