@@ -103,6 +103,7 @@ export const linkStyles = css`
 
 export const paddedLinkStyles = css`
   ${linkStyles};
+  text-decoration: none;
   display: inline-block;
   padding: 0.1em 0.6em;
 `
