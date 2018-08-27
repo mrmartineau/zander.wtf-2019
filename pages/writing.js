@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
-import MasterLayout from '../layouts/master'
+import styled, { injectGlobal } from 'styled-components'
+import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
+import MasterLayout from '../layouts/master'
 import { initApi } from '../utils/prismic'
 import Container from '../components/Container'
 import Spacer from '../components/Spacer'
-import styled, { injectGlobal } from 'styled-components'
 import { ds } from '../designsystem'
 import globalStyles, {
   linkStyles,
@@ -14,8 +15,8 @@ import globalStyles, {
   baseline,
 } from '../designsystem/globalStyles'
 import Link from 'next/link'
-import Prismic from 'prismic-javascript'
 import ArticleFeed from '../components/ArticleFeed'
+import { Inverse } from '../components/Inverse'
 
 injectGlobal`
   ${globalStyles}
@@ -32,11 +33,6 @@ const Time = styled.time`
 const Article = styled.article`
   a {
     ${linkStyles};
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-    }
   }
 
   img {
@@ -136,14 +132,17 @@ export default class Writing extends Component {
               <Time datetime={response.data.date}>{response.data.date}</Time>
               {RichText.render(body)}
             </Article>
-            <Hr />
-            <ArticleFeed
-              results={this.props.articles}
-              title="Recent posts"
-              currentId={response.id}
-              TitleTag="h4"
-            />
           </Container>
+          <Inverse>
+            <Container>
+              <ArticleFeed
+                results={this.props.articles}
+                title="Recent posts"
+                currentId={response.id}
+                TitleTag="h4"
+              />
+            </Container>
+          </Inverse>
         </Spacer>
         <BackLinkWrapper>
           <Link href="/#main" passHref prefetch>

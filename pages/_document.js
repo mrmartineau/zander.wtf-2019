@@ -22,16 +22,19 @@ export default class MyDocument extends Document {
             dangerouslySetInnerHTML={{
               __html: `
               @supports (--theme-foreground: #fff) {
-                :root {
+                :root,
+                :root.theme-inverse .inverse {
                   --theme-foreground: #fff;
                   --theme-background: #000;
                 }
 
-                :root.theme-inverse {
+                :root.theme-inverse,
+                :root .inverse {
                   --theme-foreground: #000;
                   --theme-background: #fff;
                 }
               }
+
               /* 16px @ 300px increasing to 25px @ 1000px */
               @media (min-width: 300px) {
                 :root {
