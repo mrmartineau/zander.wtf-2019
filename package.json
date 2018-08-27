@@ -27,21 +27,21 @@
     "prismic-dom": "^2.1.0",
     "prismic-javascript": "^1.5.0",
     "prismic-reactjs": "^0.3.1",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "rss": "^1.2.2",
     "scroll-observer": "^2.1.0",
-    "styled-components": "^3.3.3"
+    "styled-components": "^3.4.5"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.5",
+    "babel-eslint": "^8.2.6",
     "babel-plugin-styled-components": "^1.5.1",
-    "eslint": "^5.0.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint": "^5.4.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-react": "^7.10.0",
-    "prettier": "^1.13.7"
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.14.2"
   }
 }
