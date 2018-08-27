@@ -70,6 +70,8 @@ export const FeedItemDate = styled.div`
   font-size: ${ds.fs('xs')};
   font-family: ${ds.get('type.fontFamily.mono')};
   opacity: 0.6;
+  width: 100px;
+  text-align: right;
 `
 
 export const FeedItemDesc = styled.div`
