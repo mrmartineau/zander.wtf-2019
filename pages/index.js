@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled, { injectGlobal } from 'styled-components'
+import Prismic from 'prismic-javascript'
 import MasterLayout from '../layouts/master'
 import globalStyles from '../designsystem/globalStyles'
 import Name from '../components/Name'
@@ -9,18 +10,13 @@ import WorkFeed from '../components/WorkFeed'
 import Container from '../components/Container'
 import Spacer from '../components/Spacer'
 import { initApi } from '../utils/prismic'
-import Prismic from 'prismic-javascript'
+import { Inverse } from '../components/Inverse'
 
 injectGlobal`
   ${globalStyles}
 `
 
-const Wtf = styled.h2`
-  text-align: center;
-  font-size: 10vw;
-`
-
-const Intro = styled.h1`
+const IntroCopy = styled.h1`
   font-size: 2rem;
   line-height: 1.3;
 
@@ -29,15 +25,6 @@ const Intro = styled.h1`
     margin-top: 4vw;
     font-size: 0.7em;
   }
-`
-
-const Inverse = styled.div`
-  --theme-background: #fff;
-  --theme-foreground: #000;
-
-  background-color: var(--theme-background);
-  color: var(--theme-foreground);
-  padding: 1px 0;
 `
 
 const Gig = styled.p`
@@ -81,17 +68,16 @@ export default class Page extends Component {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
         <Name />
-        <Wtf>WTF?!</Wtf>
         <Spacer intro id="main">
           <Container>
-            <Intro>
+            <IntroCopy>
               I’m Zander Martineau, <br />
               a freelance Front-end developer in London.
               <div>
                 I’ve been making the web accessible, easy-to-use & fast since
                 the &lt;blink&gt; tag was cool.
               </div>
-            </Intro>
+            </IntroCopy>
             <Gig>Current gig: Lead front-end dev @ FairFX</Gig>
           </Container>
         </Spacer>

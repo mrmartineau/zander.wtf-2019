@@ -17,33 +17,29 @@ const LinkList = styled.div`
 
 const LinkListItem = styled.a`
   display: inline-block;
+  margin: 0 0.5rem;
   ${paddedLinkStyles};
 `
-
-const links = [
-  {
-    name: 'GitHub',
-    url: 'https://github.com/mrmartineau',
-  },
-  {
-    name: 'Twitter',
-    url: 'https://twitter.com/mrmartineau',
-  },
-]
 
 export default () => (
   <Footer>
     <LinkList>
-      {links.map(item => (
-        <LinkListItem
-          key={item.name}
-          href={item.url}
-          target="_blank"
-          rel="noopener"
-        >
-          {item.name}
-        </LinkListItem>
-      ))}
+      Zander can also be found on
+      <LinkListItem
+        href="https://github.com/mrmartineau"
+        target="_blank"
+        rel="noopener"
+      >
+        GitHub
+      </LinkListItem>{' '}
+      and{' '}
+      <LinkListItem
+        href="https://twitter.com/mrmartineau"
+        target="_blank"
+        rel="noopener"
+      >
+        Twitter
+      </LinkListItem>
     </LinkList>
     <BigType />
   </Footer>
