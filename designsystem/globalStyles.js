@@ -83,7 +83,7 @@ export default `
 
 export const linkStyles = css`
   word-wrap: break-word;
-  text-decoration: none;
+  text-decoration: underline;
 
   &:link,
   &:visited {
@@ -97,6 +97,7 @@ export const linkStyles = css`
     color: var(--theme-background);
     background-color: ${ds.color('bright')};
     background-color: var(--theme-foreground);
+    text-decoration: none;
   }
 `
 

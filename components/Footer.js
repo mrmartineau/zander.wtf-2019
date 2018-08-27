@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { ds } from '../designsystem/index'
 import BigType from './BigType'
-import { paddedLinkStyles } from '../designsystem/globalStyles'
+import { linkStyles } from '../designsystem/globalStyles'
 
 const Footer = styled.footer`
   margin: 20vw 0 -10vw 0;
@@ -18,7 +18,7 @@ const LinkList = styled.div`
 const LinkListItem = styled.a`
   display: inline-block;
   margin: 0 0.5rem;
-  ${paddedLinkStyles};
+  ${linkStyles};
 `
 
 export default () => (
