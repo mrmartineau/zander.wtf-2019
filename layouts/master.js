@@ -1,7 +1,13 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
+import { createGlobalStyle } from 'styled-components'
 import Footer from '../components/Footer'
 import ThemeSwitch from '../components/ThemeSwitch'
+import globalStyles from '../designsystem/globalStyles'
+
+const GlobalStyles = createGlobalStyle`
+  ${globalStyles}
+`
 
 export default ({
   children,
@@ -26,5 +32,6 @@ export default ({
 
     <Footer />
     <ThemeSwitch />
+    <GlobalStyles />
   </Fragment>
 )

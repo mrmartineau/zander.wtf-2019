@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
 import MasterLayout from '../layouts/master'
@@ -8,7 +8,7 @@ import { initApi } from '../utils/prismic'
 import Container from '../components/Container'
 import Spacer from '../components/Spacer'
 import { ds } from '../designsystem'
-import globalStyles, {
+import {
   linkStyles,
   paddedLinkStyles,
   codeStyles,
@@ -17,10 +17,6 @@ import globalStyles, {
 import Link from 'next/link'
 import ArticleFeed from '../components/ArticleFeed'
 import { Inverse } from '../components/Inverse'
-
-injectGlobal`
-  ${globalStyles}
-`
 
 const Time = styled.time`
   font-size: ${ds.fs('s')};
@@ -42,12 +38,6 @@ const Article = styled.article`
   ${codeStyles};
 `
 
-const Hr = styled.hr`
-  margin: 2rem auto;
-  width: 50%;
-  opacity: 0.5;
-`
-
 const BackLinkWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -62,9 +52,9 @@ const BackLinkWrapper = styled.div`
 
   @media screen and (min-width: 1000px) {
     padding-left: 1rem;
-    right: auto;
   }
 `
+
 const BackLink = styled.a`
   font-family: ${ds.get('type.fontFamily.mono')};
   font-size: ${ds.fs('xs')};
@@ -133,6 +123,8 @@ export default class Writing extends Component {
               {RichText.render(body)}
             </Article>
           </Container>
+        </Spacer>
+        <Spacer>
           <Inverse>
             <Container>
               <ArticleFeed

@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import Prismic from 'prismic-javascript'
 import MasterLayout from '../layouts/master'
-import globalStyles from '../designsystem/globalStyles'
-import Name from '../components/Name'
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
 import WorkFeed from '../components/WorkFeed'
@@ -11,10 +9,8 @@ import Container from '../components/Container'
 import Spacer from '../components/Spacer'
 import { initApi } from '../utils/prismic'
 import { Inverse } from '../components/Inverse'
-
-injectGlobal`
-  ${globalStyles}
-`
+import { linkStyles } from '../designsystem/globalStyles'
+import { ds } from '../designsystem'
 
 const IntroCopy = styled.h1`
   font-size: 2rem;
@@ -29,6 +25,20 @@ const IntroCopy = styled.h1`
 
 const Gig = styled.p`
   font-size: 1rem;
+`
+
+const Links = styled.div`
+  margin: ${ds.spacing(3)} 0;
+`
+
+const LinkListItem = styled.a`
+  display: inline-block;
+  ${linkStyles};
+  margin-right: 1rem;
+
+  &:not(:first-of-type) {
+    margin-left: 1rem;
+  }
 `
 
 export default class Page extends Component {
@@ -67,18 +77,48 @@ export default class Page extends Component {
   render() {
     return (
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
-        <Name />
-        <Spacer intro id="main">
+        <Spacer id="main">
           <Container>
             <IntroCopy>
-              I’m Zander Martineau, <br />
-              a freelance Front-end developer in London.
-              <div>
-                I’ve been making the web accessible, easy-to-use & fast since
-                the &lt;blink&gt; tag was cool.
-              </div>
+              I’m a freelance Front-end developer working with agencies and
+              startups to achieve their goals.
             </IntroCopy>
-            <Gig>Current gig: Lead front-end dev @ FairFX</Gig>
+
+            <Links>
+              <LinkListItem
+                href="https://github.com/mrmartineau"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub
+              </LinkListItem>
+              {' / '}
+              <LinkListItem
+                href="https://toot.cafe/@mrmartineau"
+                target="_blank"
+                rel="noopener"
+              >
+                Mastodon
+              </LinkListItem>{' '}
+              {' / '}
+              <LinkListItem
+                href="https://twitter.com/mrmartineau"
+                target="_blank"
+                rel="noopener"
+              >
+                Twitter
+              </LinkListItem>
+            </Links>
+            <Gig>
+              Current gig: Lead front-end dev @{' '}
+              <LinkListItem
+                href="https://fairfx.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                FairFX
+              </LinkListItem>
+            </Gig>
           </Container>
         </Spacer>
         <Container>
