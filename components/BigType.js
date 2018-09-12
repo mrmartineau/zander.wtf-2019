@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ds } from '../designsystem/index'
 
 const BigType = styled.div`
   position: relative;
@@ -18,13 +17,14 @@ const BigType = styled.div`
 const BigTypeItem = styled.div`
   width: 200%;
   text-align: center;
-  z-index: ${ds.z('high')};
 `
 
 const name = ['Z', 'A', 'N', 'D', 'E', 'R']
 
 export default () => (
-  <BigType innerRef={bigType => (this.bigType = bigType)}>
-    {name.map(item => <BigTypeItem key={item}>{item}</BigTypeItem>)}
+  <BigType>
+    {name.map(item => (
+      <BigTypeItem key={item}>{item}</BigTypeItem>
+    ))}
   </BigType>
 )
