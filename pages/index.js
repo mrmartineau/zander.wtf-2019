@@ -80,23 +80,24 @@ export default class Page extends Component {
         <Spacer id="main">
           <Container>
             <IntroCopy>
-              I’m a freelance Front-end developer working with agencies and
-              startups to achieve their goals.
+              Hey, I'm Zander Martineau.
+              <br /> I’m a freelance Front-end developer working with agencies
+              and startups to achieve their goals.
             </IntroCopy>
 
             <Links>
               <LinkListItem
                 href="https://github.com/mrmartineau"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
               >
                 GitHub
               </LinkListItem>
               {' / '}
               <LinkListItem
-                href="https://toot.cafe/@mrmartineau"
+                href="https://toot.cafe/@zander"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
               >
                 Mastodon
               </LinkListItem>{' '}
@@ -104,7 +105,7 @@ export default class Page extends Component {
               <LinkListItem
                 href="https://twitter.com/mrmartineau"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
               >
                 Twitter
               </LinkListItem>

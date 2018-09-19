@@ -22,26 +22,26 @@
     "jump.js": "^1.0.2",
     "lru-cache": "^4.1.3",
     "modularscale-js": "^3.0.1",
-    "next": "^6.1.2",
+    "next": "^7.0.0",
     "next-routes": "^1.4.2",
     "prismic-dom": "^2.1.0",
     "prismic-javascript": "^1.5.0",
     "prismic-reactjs": "^0.3.1",
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "rss": "^1.2.2",
     "scroll-observer": "^2.1.0",
-    "styled-components": "^4.0.0-beta.3"
+    "styled-components": "^4.0.0-beta.7"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
-    "babel-plugin-styled-components": "^1.7.0",
-    "eslint": "^5.5.0",
+    "babel-plugin-styled-components": "^1.7.1",
+    "eslint": "^5.6.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.3"
   }
 }

@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components'
 import Footer from '../components/Footer'
 import ThemeSwitch from '../components/ThemeSwitch'
 import globalStyles from '../designsystem/globalStyles'
+import Nav from '../components/Nav'
 
 const GlobalStyles = createGlobalStyle`
   ${globalStyles}
@@ -27,6 +28,8 @@ export default ({
         title="RSS Feed"
       />
     </Head>
+
+    <Nav />
 
     {children}
 

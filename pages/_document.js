@@ -36,7 +36,7 @@ export default class MyDocument extends Document {
               }
 
               /* 16px @ 300px increasing to 25px @ 1000px */
-              @media (min-width: 300px) {
+              @media screen and (min-width: 300px) {
                 :root {
                   font-size: calc(1rem + ((1vw - 3px) * 1.2857));
                   /* Where: * 1.2857 = 100 * font_Size_Difference / viewport_Width_Difference */
