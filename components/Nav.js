@@ -29,6 +29,10 @@ const NavLink = styled.a`
   cursor: pointer;
   color: var(--theme-background);
   display: block;
+
+  &:hover {
+    opacity: 0.4;
+  }
 `
 
 export default () => (
