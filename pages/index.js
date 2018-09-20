@@ -16,8 +16,8 @@ const IntroCopy = styled.h1`
   font-size: 2rem;
   line-height: 1.3;
 
+  font-weight: normal;
   div {
-    font-weight: normal;
     margin-top: 4vw;
     font-size: 0.7em;
   }
@@ -34,10 +34,10 @@ const Links = styled.div`
 const LinkListItem = styled.a`
   display: inline-block;
   ${linkStyles};
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 
   &:not(:first-of-type) {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
 `
 
