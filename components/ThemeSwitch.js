@@ -3,29 +3,19 @@ import styled from 'styled-components'
 import { ds } from '../designsystem/index'
 
 const ThemeButton = styled.button`
-  position: fixed;
-  left: 5vw;
-  bottom: 1rem;
   border: 0;
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.3rem;
+  height: 1.3rem;
   overflow: hidden;
-  padding: 0.2rem;
-  z-index: ${ds.z('high')};
-  background-color: var(--theme-background);
-  color: var(--theme-foreground);
+  color: var(--theme-background);
   cursor: pointer;
-  border-radius: 50%;
-
-  @media screen and (min-width: 900px) {
-    left: 1rem;
-  }
+  padding: 0;
+  background-color: transparent;
 
   &:hover,
   &:focus {
     outline: 0;
-    background-color: var(--theme-foreground);
-    color: var(--theme-background);
+    opacity: 0.4;
   }
 `
 
