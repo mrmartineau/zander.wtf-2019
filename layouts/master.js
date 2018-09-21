@@ -2,7 +2,6 @@ import { Fragment } from 'react'
 import Head from 'next/head'
 import { createGlobalStyle } from 'styled-components'
 import Footer from '../components/Footer'
-import ThemeSwitch from '../components/ThemeSwitch'
 import globalStyles from '../designsystem/globalStyles'
 import Nav from '../components/Nav'
 
@@ -34,7 +33,6 @@ export default ({
     {children}
 
     <Footer />
-    <ThemeSwitch />
     <GlobalStyles />
   </Fragment>
 )
