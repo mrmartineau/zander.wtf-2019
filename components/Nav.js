@@ -14,7 +14,9 @@ const Nav = styled.nav`
   left: 0;
   color: var(--theme-background);
   background-color: var(--theme-foreground);
-  padding: 0.4rem;
+  padding: 0.4rem calc(env(safe-area-inset-right) + 0.4rem)
+    calc(env(safe-area-inset-bottom) + 0.4rem)
+    calc(env(safe-area-inset-left) + 0.4rem);
   z-index: ${ds.z('high')};
   text-transform: uppercase;
   font-size: 0.8rem;

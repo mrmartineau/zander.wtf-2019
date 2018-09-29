@@ -83,7 +83,7 @@ export default class MyDocument extends Document {
           {this.props.styleTags}
           <meta
             name="viewport"
-            content="initial-scale=1.0, width=device-width"
+            content="initial-scale=1.0, width=device-width, viewport-fit=cover"
           />
           <link rel="author" href="Zander Martineau" />
           <link
