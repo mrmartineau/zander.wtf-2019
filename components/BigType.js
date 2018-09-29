@@ -7,7 +7,6 @@ const BigType = styled.div`
   font-weight: bold;
   overflow: hidden;
   margin: 0;
-  padding: 0.1em 0 0;
   line-height: 0.72;
   display: flex;
   flex-direction: column;
