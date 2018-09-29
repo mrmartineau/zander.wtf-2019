@@ -81,8 +81,8 @@ export default class Page extends Component {
           <Container>
             <IntroCopy>
               Hey, I'm Zander Martineau.
-              <br /> I’m a freelance Front-end developer working with agencies
-              and startups to achieve their goals.
+              <br /> I’m an experienced freelance front-end developer based in
+              the UK working with agencies and startups to achieve their goals.
             </IntroCopy>
 
             <Links>
