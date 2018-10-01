@@ -66,7 +66,7 @@ const ArticleTitle = styled.h1`
 `
 
 export default class Writing extends Component {
-  static async getInitialProps({ req, query }) {
+  static async getInitialProps({ query }) {
     const response = await initApi()
       .then(api => {
         return api.getByUID('article', query.slug)
