@@ -1,13 +1,8 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
-import { createGlobalStyle } from 'styled-components'
 import Footer from '../components/Footer'
-import globalStyles from '../designsystem/globalStyles'
+import GlobalStyles from '../designsystem/globalStyles'
 import Nav from '../components/Nav'
-
-const GlobalStyles = createGlobalStyle`
-  ${globalStyles}
-`
 
 export default ({
   children,
