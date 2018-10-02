@@ -30,7 +30,7 @@
     "react-dom": "^16.5.2",
     "rss": "^1.2.2",
     "scroll-observer": "^2.1.0",
-    "styled-components": "^3.4.9"
+    "styled-components": "^4.0.0-beta.9"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

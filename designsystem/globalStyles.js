@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css, createGlobalStyle } from 'styled-components'
 import { ds } from './index'
 import { pxTo } from 'design-system-utils'
 // import fluidType, { fluidSpace } from '../utils/fluidType'
@@ -8,7 +8,7 @@ export const baseline = pxTo(35, 25, 'rem')
 // const baseFluidType = fluidSpace('16px', '25px', '320px', '1000px')
 
 // global styles
-export default `
+export default createGlobalStyle`
   html {
     color: ${ds.color('bright')};
     color: var(--theme-foreground);
