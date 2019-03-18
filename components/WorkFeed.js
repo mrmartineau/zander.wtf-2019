@@ -4,7 +4,6 @@ import {
   FeedList,
   FeedTitle,
   FeedItemLinkTitle,
-  FeedItem,
   FeedItemLink,
   FeedItemDesc,
   FeedItemLinkUrl,
@@ -15,7 +14,7 @@ export default props => {
     const linkUrl = item.data.link.url ? item.data.link.url : ''
     const title = item.data.title[0].text
     return (
-      <FeedItem key={`work-${index}`}>
+      <li key={`work-${index}`}>
         <FeedItemLink href={linkUrl} target="_blank" rel="noopener">
           <FeedItemLinkTitle>{title}</FeedItemLinkTitle>
           {item.data.description.length > 0 && (
@@ -23,7 +22,7 @@ export default props => {
           )}
           {linkUrl && <FeedItemLinkUrl>{linkUrl}</FeedItemLinkUrl>}
         </FeedItemLink>
-      </FeedItem>
+      </li>
     )
   })
 

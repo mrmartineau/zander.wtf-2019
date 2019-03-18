@@ -4,7 +4,6 @@ import {
   FeedWrapper,
   FeedList,
   FeedTitle,
-  FeedItem,
   FeedItemLink,
   FeedItemLinkTitle,
   FeedItemBox,
@@ -21,7 +20,7 @@ export default ({ results, title, currentId = null }) => {
     const title = data.title[0].text
 
     return (
-      <FeedItem key={`articleFeedItem-${index}`}>
+      <li key={`articleFeedItem-${index}`}>
         <Link href={`/writing/${item.uid}`} prefetch>
           <FeedItemLink>
             <FeedItemBox>
@@ -35,7 +34,7 @@ export default ({ results, title, currentId = null }) => {
             )}
           </FeedItemLink>
         </Link>
-      </FeedItem>
+      </li>
     )
   })
 

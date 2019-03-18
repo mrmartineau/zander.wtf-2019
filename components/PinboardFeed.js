@@ -7,7 +7,6 @@ import {
   FeedTitle,
   FeedSubtitle,
   FeedList,
-  FeedItem,
   FeedItemLink,
   FeedItemLinkTitle,
   FeedItemDesc,
@@ -56,13 +55,13 @@ export default class Feed extends Component {
 
     const feedItems = newFeedList.map((item, index) => {
       return (
-        <FeedItem key={`feedItem-${index}`}>
+        <li key={`feedItem-${index}`}>
           <FeedItemLink href={item.u} target="_blank" rel="noopener">
             <FeedItemLinkTitle>{item.d}</FeedItemLinkTitle>
             {item.n && <FeedItemDesc>{item.n}</FeedItemDesc>}
             <FeedItemLinkUrl>{item.u}</FeedItemLinkUrl>
           </FeedItemLink>
-        </FeedItem>
+        </li>
       )
     })
 

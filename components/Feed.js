@@ -34,8 +34,6 @@ export const FeedSubtitle = styled.p`
   text-align: center;
 `
 
-export const FeedItem = styled.li``
-
 export const FeedItemLink = styled.a`
   display: block;
   padding: 1rem;
