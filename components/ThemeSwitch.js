@@ -24,7 +24,7 @@ const toggleRootClass = () => {
 }
 
 export default () => (
-  <ThemeButton onClick={toggleRootClass}>
+  <ThemeButton onClick={toggleRootClass} name="switch-theme">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"

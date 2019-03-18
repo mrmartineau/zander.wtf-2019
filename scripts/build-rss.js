@@ -1,11 +1,12 @@
 const RSS = require('rss')
+const Prismic = require('prismic-javascript')
 const PrismicDOM = require('prismic-dom')
 
 const feed = new RSS({
   title: "Zander Martineau's Writing",
   description:
     'Articles and opinion by Zander Martineau, a Front-end developer in London.',
-  feed_url: 'http://zander.wtf/static/atom.xml',
+  feed_url: 'http://zander.wtf/atom.xml',
   site_url: 'http://zander.wtf',
   managingEditor: 'Zander Martineau',
   webMaster: 'Zander Martineau',
@@ -13,7 +14,6 @@ const feed = new RSS({
   language: 'en',
 })
 
-const Prismic = require('prismic-javascript')
 const PRISMIC_ACCESS_TOKEN =
   'MC5XbVNqWkNrQUFBUUo1anA2.77-977-9AO-_ve-_ve-_ve-_vSBicDzvv73vv73vv73vv73vv70G77-9GO-_ve-_vWXvv71Q77-977-9cO-_ve-_ve-_ve-_vUE'
 const PRISMIC_REPO = 'https://zanderwtf.prismic.io/api/v2'
@@ -45,7 +45,7 @@ const getArticles = async () => {
     })
     .catch(err => console.error(err))
 
-  const feedItems = articles.map(item => {
+  return articles.map(item => {
     return feed.item({
       title: item.data.title[0].text,
       url: `https://zander.wtf/writing/${item.uid}`,
@@ -55,8 +55,6 @@ const getArticles = async () => {
       description: PrismicDOM.RichText.asHtml(item.data.body),
     })
   })
-
-  return feedItems
 }
 
 async function main() {

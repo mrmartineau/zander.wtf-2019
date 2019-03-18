@@ -7,10 +7,9 @@
 const next = require('next')
 const express = require('express')
 const LRUCache = require('lru-cache')
-const routes = require('./routes')
 const redirects = require('./redirects')
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
-const handler = routes.getRequestHandler(app)
+const handler = app.getRequestHandler()
 
 const buildRss = require('./scripts/build-rss')
 
@@ -26,16 +25,16 @@ app.prepare().then(() => {
   const server = express()
 
   // Use the `renderAndCache` utility defined below to serve pages
-  server.get('/', (req, res) => {
-    renderAndCache(req, res, '/')
-  })
-
-  server.use(
-    '/static',
-    express.static(__dirname + '/static', {
-      maxAge: '365d',
+  server
+    .get('/', (req, res) => {
+      renderAndCache(req, res, '/')
     })
-  )
+    .use(
+      '/static',
+      express.static(__dirname + '/static', {
+        maxAge: '365d',
+      })
+    )
 
   siteRedirects.forEach(({ from, to, type = 301, method = 'get' }) => {
     server[method](from, (req, res) => {
@@ -43,23 +42,25 @@ app.prepare().then(() => {
     })
   })
 
-  server.get('/atom.xml', (req, res, next) => {
-    buildRss()
-      .then(feed => {
-        res.set('Content-Type', 'text/xml')
-        res.send(feed)
-      })
-      .catch(error => console.error(error))
-  })
-
-  server.get('*', (req, res) => {
-    return handler(req, res)
-  })
-
-  server.listen(3000, err => {
-    if (err) throw err
-    console.log('> Ready on http://localhost:3000')
-  })
+  server
+    .get('/atom.xml', (req, res, next) => {
+      buildRss()
+        .then(feed => {
+          res.set('Content-Type', 'text/xml')
+          res.send(feed)
+        })
+        .catch(error => console.error(error))
+    })
+    .get('/writing/:id', (req, res) => {
+      return app.render(req, res, '/writing', { id: req.params.id })
+    })
+    .get('*', (req, res) => {
+      return handler(req, res)
+    })
+    .listen(3000, err => {
+      if (err) throw err
+      console.log('> Ready on http://localhost:3000')
+    })
 })
 
 /*

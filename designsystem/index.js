@@ -78,7 +78,7 @@ export const myDesignSystem = {
 
   layout: {
     gutter: '20px',
-    maxWidth: '800px',
+    maxWidth: '900px',
     grid: {
       columnCount: 12,
     },

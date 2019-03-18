@@ -1,6 +1,13 @@
 {
+  "version": 2,
   "name": "zander.wtf",
   "alias": "zander.wtf",
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next"
+    }
+  ],
   "scale": {
     "bru1": {
       "min": 1,

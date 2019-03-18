@@ -16,6 +16,7 @@ export default createGlobalStyle`
     background-color: var(--theme-background);
     font-family: ${ds.get('type.fontFamilyBase')};
     line-height: ${ds.get('type.lineHeight.base')};
+    scroll-behavior: smooth;
   }
 
   p {

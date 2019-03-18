@@ -15,12 +15,13 @@ import { ds } from '../designsystem'
 const IntroCopy = styled.h1`
   font-size: 2rem;
   line-height: 1.3;
-
   font-weight: normal;
-  div {
-    margin-top: 4vw;
-    font-size: 0.7em;
-  }
+`
+
+const Description = styled.h2`
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: normal;
 `
 
 const Gig = styled.p`
@@ -79,11 +80,23 @@ export default class Page extends Component {
       <MasterLayout title="Zander Martineau. Front-end developer in London.">
         <Spacer id="main">
           <Container>
-            <IntroCopy>
-              Hey, I'm Zander Martineau.
-              <br /> I’m an experienced freelance front-end developer based in
-              the UK working with agencies and startups to achieve their goals.
-            </IntroCopy>
+            <IntroCopy>Zander Martineau</IntroCopy>
+
+            <Description>
+              A freelance front-end developer based in the UK working with
+              agencies and startups to achieve their goals.
+            </Description>
+
+            <Gig>
+              Currently working with{' '}
+              <LinkListItem
+                href="https://fairfx.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                FairFX
+              </LinkListItem>
+            </Gig>
 
             <Links>
               <LinkListItem
@@ -110,23 +123,14 @@ export default class Page extends Component {
                 Twitter
               </LinkListItem>
             </Links>
-            <Gig>
-              Current gig: Lead front-end dev @{' '}
-              <LinkListItem
-                href="https://fairfx.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                FairFX
-              </LinkListItem>
-            </Gig>
           </Container>
         </Spacer>
-        <Container>
-          {this.props.articles && (
+
+        {this.props.articles && (
+          <Container>
             <ArticleFeed results={this.props.articles} title="Writing" />
-          )}
-        </Container>
+          </Container>
+        )}
 
         {this.props.work && (
           <Inverse>

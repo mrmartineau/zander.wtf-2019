@@ -62,14 +62,14 @@ const BackLink = styled.a`
 `
 
 const ArticleTitle = styled.h1`
-  font-size: 5rem;
+  font-size: 4rem;
 `
 
 export default class Writing extends Component {
   static async getInitialProps({ query }) {
     const response = await initApi()
       .then(api => {
-        return api.getByUID('article', query.slug)
+        return api.getByUID('article', query.id)
       })
       .catch(err => console.error(err))
 
@@ -102,6 +102,7 @@ export default class Writing extends Component {
   render() {
     const response = this.props.response
     const title = response.data.title[0].text
+    const subtitle = response.data.subtitle[0].text
     const body = response.data.body
     const canonical = response.data.original_url.url
       ? response.data.original_url.url
@@ -119,7 +120,9 @@ export default class Writing extends Component {
           <Container>
             <Article>
               <ArticleTitle>{title}</ArticleTitle>
+              <h2>{subtitle}</h2>
               <Time datetime={response.data.date}>{response.data.date}</Time>
+
               {RichText.render(body)}
             </Article>
           </Container>
