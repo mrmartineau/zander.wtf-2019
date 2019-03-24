@@ -8,14 +8,5 @@
       "use": "@now/next"
     }
   ],
-  "scale": {
-    "bru1": {
-      "min": 1,
-      "max": 2
-    },
-    "sfo1": {
-      "min": 1,
-      "max": 2
-    }
-  }
+  "routes": [{ "src": "/writing/(?<id>[^/]+)$", "dest": "/writing?id=$id" }]
 }

@@ -41,8 +41,6 @@ export const FeedItemLink = styled.a`
   color: var(--theme-foreground);
   text-decoration: none;
   cursor: pointer;
-  margin-left: -1rem;
-  margin-right: -1rem;
 
   &:hover,
   &:active,

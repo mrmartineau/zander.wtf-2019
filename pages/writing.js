@@ -8,13 +8,7 @@ import { initApi } from '../utils/prismic'
 import Container from '../components/Container'
 import Spacer from '../components/Spacer'
 import { ds } from '../designsystem'
-import {
-  linkStyles,
-  paddedLinkStyles,
-  codeStyles,
-  baseline,
-} from '../designsystem/globalStyles'
-import Link from 'next/link'
+import { linkStyles, codeStyles, baseline } from '../designsystem/globalStyles'
 import ArticleFeed from '../components/ArticleFeed'
 import { Inverse } from '../components/Inverse'
 
@@ -36,29 +30,6 @@ const Article = styled.article`
   }
 
   ${codeStyles};
-`
-
-const BackLinkWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
-  padding-left: 5vw;
-  background-color: var(--theme-background);
-  z-index: ${ds.z('mid')};
-  opacity: 0.9;
-
-  @media screen and (min-width: 1000px) {
-    padding-left: 1rem;
-  }
-`
-
-const BackLink = styled.a`
-  font-family: ${ds.get('type.fontFamily.mono')};
-  font-size: ${ds.fs('xs')};
-  ${paddedLinkStyles};
 `
 
 const ArticleTitle = styled.h1`
@@ -139,11 +110,6 @@ export default class Writing extends Component {
             </Container>
           </Inverse>
         </Spacer>
-        <BackLinkWrapper>
-          <Link href="/" passHref prefetch>
-            <BackLink>← Back</BackLink>
-          </Link>
-        </BackLinkWrapper>
       </MasterLayout>
     )
   }

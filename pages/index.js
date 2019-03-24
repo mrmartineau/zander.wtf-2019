@@ -59,8 +59,13 @@ export default class Page extends Component {
               'work.date',
             ],
             orderings: '[my.article.date desc, my.work.date desc]',
+            pageSize: 100,
           })
           .then(response => {
+            console.log(
+              'TCL: Page -> staticgetInitialProps -> response',
+              response
+            )
             return response.results
           })
       })
