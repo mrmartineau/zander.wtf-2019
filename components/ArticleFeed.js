@@ -13,12 +13,10 @@ import {
 
 export default ({ results, title, currentId = null }) => {
   const feedItems = results
-    .filter(item => {
-      return item.id !== currentId
-    })
+    .filter(item => item.id !== currentId)
     .map((item, index) => {
-      const data = item.data
-      const title = data.title[0].text
+      const { date, title, subtitle } = item.data
+      const theTitle = title[0].text
 
       return (
         <li key={`articleFeedItem-${index}`}>
@@ -26,17 +24,16 @@ export default ({ results, title, currentId = null }) => {
             href={`/writing/?id=${item.uid}`}
             as={`/writing/${item.uid}`}
             prefetch={index < 5}
-            passHref
           >
             <FeedItemLink>
               <FeedItemBox>
-                {data.title.length && (
-                  <FeedItemLinkTitle>{title}</FeedItemLinkTitle>
+                {theTitle.length && (
+                  <FeedItemLinkTitle>{theTitle}</FeedItemLinkTitle>
                 )}
-                {data.date && <FeedItemDate>{data.date}</FeedItemDate>}
+                {date && <FeedItemDate>{date}</FeedItemDate>}
               </FeedItemBox>
-              {data.subtitle.length && (
-                <FeedItemDesc>{data.subtitle[0].text}</FeedItemDesc>
+              {subtitle.length && (
+                <FeedItemDesc>{subtitle[0].text}</FeedItemDesc>
               )}
             </FeedItemLink>
           </Link>

@@ -62,10 +62,6 @@ export default class Page extends Component {
             pageSize: 100,
           })
           .then(response => {
-            console.log(
-              'TCL: Page -> staticgetInitialProps -> response',
-              response
-            )
             return response.results
           })
       })
@@ -139,9 +135,9 @@ export default class Page extends Component {
 
         {this.props.work && (
           <Inverse>
-            <Container>
+            <Container wide>
               <Spacer>
-                <WorkFeed results={this.props.work} title="Work" />
+                <WorkFeed results={this.props.work} title="Projects" />
               </Spacer>
             </Container>
           </Inverse>
@@ -159,11 +155,7 @@ export default class Page extends Component {
         <Inverse>
           <Container>
             <Spacer>
-              <PinboardFeed
-                feed="u:MrMartineau/t:zm:link/"
-                title="Links"
-                subtitle="My most recent bookmarks"
-              />
+              <PinboardFeed feed="u:MrMartineau/t:zm:link/" title="Bookmarks" />
             </Spacer>
           </Container>
         </Inverse>

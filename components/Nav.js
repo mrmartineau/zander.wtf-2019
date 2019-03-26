@@ -75,14 +75,14 @@ export default () => (
       <Link href="/#Writing">
         <NavLink>Writing</NavLink>
       </Link>
-      <Link href="/#Work">
-        <NavLink>Work</NavLink>
+      <Link href="/#Projects">
+        <NavLink>Projects</NavLink>
       </Link>
       <Link href="/#Reading">
         <NavLink>Reading</NavLink>
       </Link>
-      <Link href="/#Links">
-        <NavLink>Links</NavLink>
+      <Link href="/#Bookmarks">
+        <NavLink>Bookmarks</NavLink>
       </Link>
     </NavLinks>
   </Nav>

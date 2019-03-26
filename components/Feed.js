@@ -28,6 +28,8 @@ export const FeedList = styled.ul`
 export const FeedTitle = styled.h2`
   text-align: center;
   text-transform: uppercase;
+  font-size: ${ds.fs('xxl')};
+  margin: 2rem 0;
 `
 
 export const FeedSubtitle = styled.p`

@@ -1,35 +1,69 @@
 import React from 'react'
+import styled from 'styled-components'
+import { ds } from '../designsystem'
 import {
   FeedWrapper,
-  FeedList,
   FeedTitle,
   FeedItemLinkTitle,
-  FeedItemLink,
   FeedItemDesc,
   FeedItemLinkUrl,
 } from './Feed'
+
+const WorkList = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+`
+
+const WorkItemLink = styled.a`
+  display: block;
+  border: 1px solid;
+  padding: 1rem;
+  color: ${ds.color('bright')};
+  color: var(--theme-foreground);
+  background-color: ${ds.color('dark')};
+  background-color: var(--theme-background);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &:focus {
+    outline: 0;
+    color: ${ds.color('dark')};
+    color: var(--theme-background);
+    background-color: ${ds.color('bright')};
+    background-color: var(--theme-foreground);
+  }
+`
 
 export default props => {
   const feedItems = props.results.map((item, index) => {
     const linkUrl = item.data.link.url ? item.data.link.url : ''
     const title = item.data.title[0].text
     return (
-      <li key={`work-${index}`}>
-        <FeedItemLink href={linkUrl} target="_blank" rel="noopener">
-          <FeedItemLinkTitle>{title}</FeedItemLinkTitle>
-          {item.data.description.length > 0 && (
-            <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>
-          )}
-          {linkUrl && <FeedItemLinkUrl>{linkUrl}</FeedItemLinkUrl>}
-        </FeedItemLink>
-      </li>
+      <WorkItemLink
+        href={linkUrl}
+        target="_blank"
+        rel="noopener"
+        key={`work-${index}`}
+      >
+        <FeedItemLinkTitle>{title}</FeedItemLinkTitle>
+        {item.data.description.length > 0 && (
+          <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>
+        )}
+        {linkUrl && <FeedItemLinkUrl>{linkUrl}</FeedItemLinkUrl>}
+      </WorkItemLink>
     )
   })
 
   return (
     <FeedWrapper>
       <FeedTitle id={encodeURI(props.title)}>{props.title}</FeedTitle>
-      <FeedList>{feedItems}</FeedList>
+      <WorkList>{feedItems}</WorkList>
     </FeedWrapper>
   )
 }

@@ -52,7 +52,6 @@ export default class Feed extends Component {
       this.state.feed.length <= maxDisplayCount
         ? this.state.feed
         : this.state.feed.slice(0, maxDisplayCount)
-
     const feedItems = newFeedList.map((item, index) => {
       return (
         <li key={`feedItem-${index}`}>
@@ -71,16 +70,18 @@ export default class Feed extends Component {
           {this.props.title}
         </FeedTitle>
 
-        <FeedSubtitle>
-          {this.props.subtitle}{' '}
-          <FeedUrl
-            href={`${PINBOARD_PATH}${this.props.feed}`}
-            target="_blank"
-            rel="noopener"
-          >
-            [i]
-          </FeedUrl>
-        </FeedSubtitle>
+        {!!this.props.subtitle && (
+          <FeedSubtitle>
+            {this.props.subtitle}{' '}
+            <FeedUrl
+              href={`${PINBOARD_PATH}${this.props.feed}`}
+              target="_blank"
+              rel="noopener"
+            >
+              [i]
+            </FeedUrl>
+          </FeedSubtitle>
+        )}
         <FeedList>{feedItems}</FeedList>
         <Center>
           <FeedUrl
@@ -88,7 +89,7 @@ export default class Feed extends Component {
             target="_blank"
             rel="noopener"
           >
-            See all 👉
+            See all <span role="img">👉</span>
           </FeedUrl>
         </Center>
       </FeedWrapper>
