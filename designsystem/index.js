@@ -1,4 +1,3 @@
-import colorPalette from './colorPalette'
 import DesignSystem from 'design-system-utils'
 import ms from 'modularscale-js'
 
@@ -7,7 +6,7 @@ const fontFamily = {
     Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
     "Helvetica Neue", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-  sans: `'iA Writer Duospace', Colfax, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+  sans: `'iA Writer Duospace', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   serif: 'Georgia, "Times New Roman", Times, serif',
   mono: `Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif`,
 }
@@ -54,7 +53,21 @@ export const myDesignSystem = {
   },
 
   colors: {
-    colorPalette,
+    colorPalette: {
+      bright: {
+        base: '#f1f1f3',
+      },
+
+      dark: {
+        base: '#15181C',
+        lighter: '#444',
+      },
+
+      link: {
+        base: '#DB4E87',
+        over: '#B4406F',
+      },
+    },
 
     brand: {},
   },

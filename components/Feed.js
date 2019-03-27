@@ -67,7 +67,6 @@ export const FeedItemBox = styled.div`
 
 export const FeedItemDate = styled.div`
   font-size: ${ds.fs('xs')};
-  font-family: ${ds.get('type.fontFamily.mono')};
   opacity: 0.6;
   width: 100px;
   text-align: right;
@@ -75,7 +74,7 @@ export const FeedItemDate = styled.div`
 `
 
 export const FeedItemDesc = styled.div`
-  opacity: 0.6;
+  opacity: 0.8;
   margin-top: ${pxTo(8, 25, 'rem')};
   font-size: ${ds.fs('s')};
 `
@@ -85,5 +84,4 @@ export const FeedItemLinkUrl = styled.div`
   margin-top: ${pxTo(8, 25, 'rem')};
   word-wrap: break-word;
   font-size: ${ds.fs('xs')};
-  font-family: ${ds.get('type.fontFamily.mono')};
 `

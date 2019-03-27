@@ -57,7 +57,6 @@ export default class Writing extends Component {
         return api.getByUID('article', query.id)
       })
       .catch(err => console.error(err))
-    console.log('TCL: Writing -> staticgetInitialProps -> response', response)
 
     const articles = await initApi()
       .then(api => {
@@ -101,7 +100,6 @@ export default class Writing extends Component {
       firstPublished,
       updated,
     } = this.props
-    console.log('TCL: render -> this.props', this.props)
     /* const title = response.data.title[0].text
     const subtitle = response.data.subtitle[0].text
     const body = response.data.body

@@ -9,17 +9,17 @@ export const baseline = pxTo(35, 20, 'rem')
 
 // global styles
 export default createGlobalStyle`
-  @supports (--theme-foreground: #F7F7F9) {
+  @supports (--theme-foreground: ${ds.color('bright')}) {
     :root,
     :root.theme-inverse .inverse {
-      --theme-foreground: #F7F7F9;
-      --theme-background: #161a1d;
+      --theme-foreground: ${ds.color('bright')};
+      --theme-background: ${ds.color('dark')};
     }
 
     :root.theme-inverse,
     :root .inverse {
-      --theme-foreground: #161a1d;
-      --theme-background: #F7F7F9;
+      --theme-foreground: ${ds.color('dark')};
+      --theme-background: ${ds.color('bright')};
     }
   }
 
@@ -144,13 +144,13 @@ export default createGlobalStyle`
   }
 
   ::-moz-selection {
-    background: var(--theme-foreground);
-    color: var(--theme-background);
+    background: ${ds.color('link')};
+    color: ${ds.color('bright')};
   }
 
   ::selection {
-    background: var(--theme-foreground);
-    color: var(--theme-background);
+    background: ${ds.color('link')};
+    color: ${ds.color('bright')};
   }
 `
 
