@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 import Prismic from 'prismic-javascript'
@@ -8,21 +8,27 @@ import { initApi } from '../utils/prismic'
 import Container from '../components/Container'
 import Spacer from '../components/Spacer'
 import { ds } from '../designsystem'
-import { linkStyles, codeStyles, baseline } from '../designsystem/globalStyles'
+import {
+  paddedLinkStyles,
+  codeStyles,
+  baseline,
+} from '../designsystem/globalStyles'
 import ArticleFeed from '../components/ArticleFeed'
 import { Inverse } from '../components/Inverse'
+import { format } from 'date-fns'
 
-const Time = styled.time`
-  font-size: ${ds.fs('s')};
-  font-family: ${ds.get('type.fontFamily.mono')};
-  margin-bottom: ${baseline};
-  display: block;
+const TimeWrapper = styled.div`
   opacity: 0.6;
+  font-size: ${ds.fs('s')};
+  margin-bottom: ${baseline};
+`
+const Time = styled.time`
+  display: inline-block;
 `
 
 const Article = styled.article`
   a {
-    ${linkStyles};
+    ${paddedLinkStyles};
   }
 
   img {
@@ -33,7 +39,15 @@ const Article = styled.article`
 `
 
 const ArticleTitle = styled.h1`
-  font-size: 4rem;
+  font-size: ${ds.fs('xxl')};
+  font-weight: normal;
+  font-style: italic;
+`
+
+const ArticleSubtitle = styled.h1`
+  font-size: ${ds.fs('xl')};
+  font-weight: 300;
+  opacity: 0.7;
 `
 
 export default class Writing extends Component {
@@ -43,6 +57,7 @@ export default class Writing extends Component {
         return api.getByUID('article', query.id)
       })
       .catch(err => console.error(err))
+    console.log('TCL: Writing -> staticgetInitialProps -> response', response)
 
     const articles = await initApi()
       .then(api => {
@@ -65,19 +80,34 @@ export default class Writing extends Component {
 
     return {
       query,
-      response,
+      title: response.data.title[0].text,
+      subtitle: response.data.subtitle[0].text,
+      body: response.data.body,
+      canonical: response.data.original_url.url,
+      articleId: response.id,
+      firstPublished: response.first_publication_date,
+      updated: response.last_publication_date,
       articles,
     }
   }
 
   render() {
-    const response = this.props.response
-    const title = response.data.title[0].text
+    const {
+      title,
+      subtitle,
+      body,
+      canonical,
+      articleId,
+      firstPublished,
+      updated,
+    } = this.props
+    console.log('TCL: render -> this.props', this.props)
+    /* const title = response.data.title[0].text
     const subtitle = response.data.subtitle[0].text
     const body = response.data.body
     const canonical = response.data.original_url.url
       ? response.data.original_url.url
-      : null
+      : null */
     return (
       <MasterLayout
         title={title}
@@ -91,8 +121,21 @@ export default class Writing extends Component {
           <Container>
             <Article>
               <ArticleTitle>{title}</ArticleTitle>
-              <h2>{subtitle}</h2>
-              <Time datetime={response.data.date}>{response.data.date}</Time>
+              <ArticleSubtitle>{subtitle}</ArticleSubtitle>
+              <TimeWrapper>
+                First published:{' '}
+                <Time datetime={firstPublished} itemprop="datePublished">
+                  {format(new Date(firstPublished), 'PP')}
+                </Time>
+                {!!updated && (
+                  <Fragment>
+                    {'. '}Updated:{' '}
+                    <Time datetime={updated} itemprop="dateModified">
+                      {format(new Date(updated), 'PP')}
+                    </Time>
+                  </Fragment>
+                )}
+              </TimeWrapper>
 
               {RichText.render(body)}
             </Article>
@@ -104,8 +147,7 @@ export default class Writing extends Component {
               <ArticleFeed
                 results={this.props.articles}
                 title="Recent posts"
-                currentId={response.id}
-                TitleTag="h4"
+                currentId={articleId}
               />
             </Container>
           </Inverse>

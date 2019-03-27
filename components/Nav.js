@@ -18,7 +18,6 @@ const Nav = styled.nav`
     calc(env(safe-area-inset-bottom) + 0.4rem)
     calc(env(safe-area-inset-left) + 0.4rem);
   z-index: ${ds.z('high')};
-  text-transform: uppercase;
   font-size: 0.8rem;
 `
 
@@ -30,8 +29,9 @@ const NavLinks = styled.div`
 const NavLink = styled.a`
   margin: 0 0.4rem;
   cursor: pointer;
-  display: block;
   height: 1rem;
+  line-height: 1rem;
+  font-style: italic;
 
   &:link,
   &:visited {
@@ -39,7 +39,7 @@ const NavLink = styled.a`
   }
 
   &:hover {
-    opacity: 0.4;
+    color: ${ds.color('link')};
   }
 
   svg {

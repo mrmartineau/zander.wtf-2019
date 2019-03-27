@@ -20,7 +20,6 @@ const WorkList = styled.div`
 
 const WorkItemLink = styled.a`
   display: block;
-  border: 1px solid;
   padding: 1rem;
   color: ${ds.color('bright')};
   color: var(--theme-foreground);
@@ -40,6 +39,13 @@ const WorkItemLink = styled.a`
   }
 `
 
+const WorkFeedTitle = styled(FeedItemLinkTitle)`
+  background-color: var(--theme-foreground);
+  color: var(--theme-background);
+  margin: -1rem -1rem 1rem -1rem;
+  padding: 1rem;
+`
+
 export default props => {
   const feedItems = props.results.map((item, index) => {
     const linkUrl = item.data.link.url ? item.data.link.url : ''
@@ -51,7 +57,7 @@ export default props => {
         rel="noopener"
         key={`work-${index}`}
       >
-        <FeedItemLinkTitle>{title}</FeedItemLinkTitle>
+        <WorkFeedTitle>{title}</WorkFeedTitle>
         {item.data.description.length > 0 && (
           <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>
         )}

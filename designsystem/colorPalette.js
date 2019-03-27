@@ -1,15 +1,15 @@
 export default {
   bright: {
-    base: '#F9FAFB',
+    base: '#F7F7F9',
   },
 
   dark: {
-    base: '#000',
+    base: '#15181C',
     lighter: '#444',
   },
 
   link: {
-    base: '#fff',
-    over: '#02C39A',
+    base: '#DB4E87',
+    over: '#B4406F',
   },
 }

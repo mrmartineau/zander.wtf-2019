@@ -9,17 +9,19 @@ import Container from '../components/Container'
 import Spacer from '../components/Spacer'
 import { initApi } from '../utils/prismic'
 import { Inverse } from '../components/Inverse'
-import { linkStyles } from '../designsystem/globalStyles'
+import { paddedLinkStyles } from '../designsystem/globalStyles'
 import { ds } from '../designsystem'
 
 const IntroCopy = styled.h1`
-  font-size: 2rem;
+  font-size: ${ds.fs('xxl')};
   line-height: 1.3;
   font-weight: normal;
+  font-style: italic;
 `
 
 const Description = styled.h2`
-  font-size: 1.5rem;
+  font-size: ${ds.fs('m')};
+  line-height: 1.3;
   line-height: 1.3;
   font-weight: normal;
 `
@@ -34,7 +36,7 @@ const Links = styled.div`
 
 const LinkListItem = styled.a`
   display: inline-block;
-  ${linkStyles};
+  ${paddedLinkStyles};
   margin-right: 0.5rem;
 
   &:not(:first-of-type) {

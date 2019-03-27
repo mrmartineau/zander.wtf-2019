@@ -15,7 +15,7 @@ const ThemeButton = styled.button`
   &:hover,
   &:focus {
     outline: 0;
-    opacity: 0.4;
+    color: ${ds.color('link')};
   }
 `
 

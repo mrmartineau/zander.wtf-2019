@@ -7,7 +7,7 @@ const fontFamily = {
     Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
     "Helvetica Neue", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-  sans: `Colfax, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+  sans: `'iA Writer Duospace', Colfax, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   serif: 'Georgia, "Times New Roman", Times, serif',
   mono: `Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif`,
 }
@@ -18,22 +18,23 @@ const transitions = {
 }
 
 const modularscale = {
-  base: [25], // should be the same as baseFontSize
+  base: [20], // should be the same as baseFontSize
   ratio: 1.25,
 }
 
 export const myDesignSystem = {
   type: {
-    baseFontSize: '25px',
+    baseFontSize: '20px',
 
     sizes: {
+      xxs: `${ms(-3, modularscale)}px`,
       xs: `${ms(-2, modularscale)}px`,
       s: `${ms(-1, modularscale)}px`,
       base: `${ms(0, modularscale)}px`, // [default] p, h5, h6
       m: `${ms(1, modularscale)}px`, // h4
       l: `${ms(2, modularscale)}px`, // h3
       xl: `${ms(3, modularscale)}px`, // h2
-      xxl: `${ms(4, modularscale)}px`, // h1
+      xxl: `${ms(5, modularscale)}px`, // h1
     },
 
     fontFamily,
@@ -41,8 +42,8 @@ export const myDesignSystem = {
     fontFamilyHeadings: fontFamily.sans,
 
     lineHeight: {
-      headings: 1.1,
-      base: 1.4,
+      headings: 1.3,
+      base: 1.7,
     },
 
     fontWeight: {

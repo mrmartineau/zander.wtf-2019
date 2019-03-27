@@ -7,15 +7,13 @@ export const FeedWrapper = styled.div`
   margin: ${pxTo(80, 25, 'rem')} 0;
 `
 export const FeedUrl = styled.a`
-  font-size: ${ds.fs('xs')};
-  font-family: ${ds.get('type.fontFamily.mono')};
+  font-size: ${ds.fs('s')};
   font-weight: normal;
   display: inline-block;
   text-decoration: none;
   text-align: center;
   line-height: 1.4;
   margin-left: 0.5rem;
-
   ${paddedLinkStyles};
 `
 
@@ -27,9 +25,10 @@ export const FeedList = styled.ul`
 
 export const FeedTitle = styled.h2`
   text-align: center;
-  text-transform: uppercase;
   font-size: ${ds.fs('xxl')};
   margin: 2rem 0;
+  font-style: italic;
+  font-weight: normal;
 `
 
 export const FeedSubtitle = styled.p`
@@ -55,7 +54,9 @@ export const FeedItemLink = styled.a`
   }
 `
 export const FeedItemLinkTitle = styled.div`
-  font-weight: bold;
+  font-style: italic;
+  font-size: ${ds.fs('m')};
+  line-height: ${ds.get('type.lineHeight.headings')};
 `
 
 export const FeedItemBox = styled.div`
@@ -70,6 +71,7 @@ export const FeedItemDate = styled.div`
   opacity: 0.6;
   width: 100px;
   text-align: right;
+  flex-shrink: 0;
 `
 
 export const FeedItemDesc = styled.div`

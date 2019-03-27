@@ -17,68 +17,6 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `
-              @supports (--theme-foreground: #fff) {
-                :root,
-                :root.theme-inverse .inverse {
-                  --theme-foreground: #fff;
-                  --theme-background: #000;
-                }
-
-                :root.theme-inverse,
-                :root .inverse {
-                  --theme-foreground: #000;
-                  --theme-background: #fff;
-                }
-              }
-
-              /* 16px @ 300px increasing to 25px @ 1000px */
-              @media screen and (min-width: 300px) {
-                :root {
-                  font-size: calc(1rem + ((1vw - 3px) * 1.2857));
-                  /* Where: * 1.2857 = 100 * font_Size_Difference / viewport_Width_Difference */
-                }
-              }
-              /* Prevent font scaling beyond this breakpoint */
-              @media (min-width: 1000px) {
-                :root {
-                  font-size: 25px;
-                }
-              }
-
-              html {
-                box-sizing: border-box;
-                text-size-adjust: 100%;
-                text-rendering: optimizeLegibility;
-              }
-
-              *,
-              *::before,
-              *::after {
-                box-sizing: inherit;
-              }
-
-              body {
-                margin: 0;
-              }
-
-              @font-face {
-                font-family: 'Colfax';
-                font-weight: normal;
-                src: url('/static/fonts/ColfaxWebRegularSub.woff') format('woff');
-              }
-
-              @font-face {
-                font-family: 'Colfax';
-                font-weight: bold;
-                src: url('/static/fonts/ColfaxWebBoldSub.woff') format('woff');
-              }
-            }
-          `,
-            }}
-          />
           {this.props.styleTags}
           <meta
             name="viewport"
