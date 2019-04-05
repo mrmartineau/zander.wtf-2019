@@ -123,13 +123,13 @@ export default class Writing extends Component {
               <TimeWrapper>
                 First published:{' '}
                 <Time datetime={firstPublished} itemprop="datePublished">
-                  {format(new Date(firstPublished), 'PP')}
+                  {format(new Date(firstPublished.split('+')[0]), 'PP')}
                 </Time>
                 {!!updated && (
                   <Fragment>
                     {'. '}Updated:{' '}
                     <Time datetime={updated} itemprop="dateModified">
-                      {format(new Date(updated), 'PP')}
+                      {format(new Date(updated.split('+')[0]), 'PP')}
                     </Time>
                   </Fragment>
                 )}
