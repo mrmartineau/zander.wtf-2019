@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import GlobalStyles from '../designsystem/globalStyles'
 import Age from '../components/Age'
@@ -10,47 +10,36 @@ const H1 = styled.h1`
   margin-top: 0;
 `
 
-class AgeCalc extends Component {
-  constructor(props) {
-    super(props)
+const AgeCalc = () => {
+  const [counter, setCounter] = useState(30)
+  const r = useRef(null)
+  r.current = { counter, setCounter }
 
-    this.state = {
-      secondsElapsed: 0,
+  useEffect(() => {
+    const id = setInterval(() => {
+      r.current.setCounter(r.current.counter + 1)
+    }, 1000)
+    return () => {
+      clearInterval(id)
     }
-  }
+  }, ['once'])
 
-  componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 5000)
-  }
+  return (
+    <Fragment>
+      <Head>
+        <title>Bamber Moses Martineau</title>
+      </Head>
 
-  componentWillUnmount() {
-    clearInterval(this.interval)
-  }
+      <Spacer id="main">
+        <Container>
+          <H1>Bamber Moses Martineau</H1>
+          <Age dob="2017-08-23T06:24" />
+        </Container>
+      </Spacer>
 
-  tick() {
-    this.setState(prevState => ({
-      secondsElapsed: prevState.secondsElapsed + 1,
-    }))
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <Head>
-          <title>Bamber Martineau</title>
-        </Head>
-
-        <Spacer id="main">
-          <Container>
-            <H1>Bamber's Age</H1>
-            <Age age="2017-08-23T06:24" />
-          </Container>
-        </Spacer>
-
-        <GlobalStyles />
-      </Fragment>
-    )
-  }
+      <GlobalStyles />
+    </Fragment>
+  )
 }
 
 export default AgeCalc
