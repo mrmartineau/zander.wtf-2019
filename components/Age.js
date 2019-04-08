@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import {
   format,
-  differenceInMilliseconds,
   differenceInSeconds,
   differenceInMinutes,
   differenceInHours,
@@ -21,8 +20,6 @@ const Age = ({ dob }) => {
   const diffHours = differenceInHours(today, hisDob)
   const diffMins = differenceInMinutes(today, hisDob)
   const diffSecs = differenceInSeconds(today, hisDob)
-  const diffMilSecs = differenceInMilliseconds(today, hisDob)
-  // const longString = `${diffYears} year, ${diffMonths} months, ${diffDays} days, ${diffHours} hours, ${diffMins} mins, ${diffSecs} seconds and ${diffMilSecs} milliseconds`
 
   // Years + Months
   const years = `${diffYears} year${diffYears > 1 ? 's' : ''}`
@@ -47,7 +44,6 @@ const Age = ({ dob }) => {
         <div>{formatNumber()(diffHours)} hours</div>
         <div>{formatNumber()(diffMins)} minutes</div>
         <div>{formatNumber()(diffSecs)} seconds</div>
-        <div>{formatNumber()(diffMilSecs)} milliseconds</div>
       </h3>
     </Fragment>
   )

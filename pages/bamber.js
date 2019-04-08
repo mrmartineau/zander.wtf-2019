@@ -18,7 +18,7 @@ const AgeCalc = () => {
   useEffect(() => {
     const id = setInterval(() => {
       r.current.setCounter(r.current.counter + 1)
-    }, 1000)
+    }, 3000)
     return () => {
       clearInterval(id)
     }
