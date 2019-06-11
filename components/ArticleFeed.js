@@ -24,6 +24,7 @@ export default ({ results, title, currentId = null }) => {
             href={`/writing/?id=${item.uid}`}
             as={`/writing/${item.uid}`}
             prefetch={index < 5}
+            passHref
           >
             <FeedItemLink>
               <FeedItemBox>

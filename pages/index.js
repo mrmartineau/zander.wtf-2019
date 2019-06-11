@@ -131,7 +131,7 @@ export default class Page extends Component {
 
         {this.props.articles && (
           <Container>
-            <ArticleFeed results={this.props.articles} title="Writing" />
+            <ArticleFeed results={this.props.articles} title="Words" />
           </Container>
         )}
 

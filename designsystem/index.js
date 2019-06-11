@@ -100,6 +100,7 @@ export const myDesignSystem = {
 
   motion: {
     transitions,
+    default: `all ${transitions.duration} ${transitions.timing}`,
   },
 }
 
