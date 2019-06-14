@@ -68,7 +68,7 @@ export default props => {
 
   return (
     <FeedWrapper>
-      <FeedTitle id={encodeURI(props.title)}>{props.title}</FeedTitle>
+      <FeedTitle>{props.title}</FeedTitle>
       <WorkList>{feedItems}</WorkList>
     </FeedWrapper>
   )

@@ -4,7 +4,8 @@ import Link from 'next/link'
 import Footer from '../components/Footer'
 import GlobalStyles from '../designsystem/globalStyles'
 import Nav from '../components/Nav'
-import { MasterLogo, Logo, MassiveLogo } from '../components/Logo'
+import { MasterLogo, Logo } from '../components/Logo'
+import ThemeSwitch from '../components/ThemeSwitch'
 
 export default ({
   children,
@@ -27,19 +28,18 @@ export default ({
 
     <Link href="/" passHref>
       <MasterLogo aria-label="Go home">
-        <Logo size="50px" />
+        <Logo size="3rem" />
       </MasterLogo>
     </Link>
-
-    <MassiveLogo>
-      <Logo size="100vh" fill="transparent" stroke="var(--theme-foreground)" />
-    </MassiveLogo>
 
     <Nav />
 
     {children}
 
     <Footer />
+
+    <ThemeSwitch />
+
     <GlobalStyles />
   </Fragment>
 )

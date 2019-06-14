@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { ds } from '../designsystem'
 
 export const Logo = ({
-  size = '1em',
+  size = '1rem',
   fill = 'currentColor',
   stroke = 'none',
 }) => (
@@ -24,14 +24,16 @@ export const Logo = ({
 
 export const MasterLogo = styled.a`
   position: fixed;
-  top: 50px;
+  top: 2rem;
   left: 50%;
   transform: translateX(-50%);
+  color: ${ds.color('bright')};
   color: var(--theme-foreground);
-  z-index: ${ds.z('high')};
+  z-index: ${ds.z('mid')};
   cursor: pointer;
   transition: ${ds.get('motion.default')};
-  mix-blend-mode: exclusion;
+  mix-blend-mode: difference;
+  max-width: 3rem;
 
   &:hover {
     color: ${ds.color('link')};
@@ -39,10 +41,21 @@ export const MasterLogo = styled.a`
 `
 
 export const MassiveLogo = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   color: var(--theme-foreground);
-  opacity: 0.1;
+  background-color: var(--theme-background);
+  opacity: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  z-index: ${ds.z('mid')};
+
+  svg {
+    width: 50vh;
+  }
 `

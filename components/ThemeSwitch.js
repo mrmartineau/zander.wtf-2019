@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { ds } from '../designsystem/index'
 
 const ThemeButton = styled.button`
-  position: absolute;
-  top: 4px;
-  right: 5px;
+  position: fixed;
+  top: calc(1rem + 4px);
+  right: calc(1rem + 5px);
   border: 0;
   width: 1.1rem;
   height: 1.1rem;
@@ -14,6 +14,8 @@ const ThemeButton = styled.button`
   cursor: pointer;
   padding: 0;
   background-color: transparent;
+  z-index: ${ds.z('high')};
+  mix-blend-mode: exclusion;
 `
 
 const toggleRootClass = () => {

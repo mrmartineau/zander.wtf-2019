@@ -6,4 +6,6 @@ export default styled.div`
   padding-right: 1rem;
   max-width: ${p => (p.wide ? '1500px' : ds.get('layout.maxWidth'))};
   margin: 0 auto;
+  padding-top: 8vmax;
+  padding-bottom: 8vmax;
 `

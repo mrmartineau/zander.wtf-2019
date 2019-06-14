@@ -44,7 +44,7 @@ export default ({ results, title, currentId = null }) => {
 
   return (
     <FeedWrapper>
-      <FeedTitle id={encodeURI(title)}>{title}</FeedTitle>
+      <FeedTitle>{title}</FeedTitle>
       <FeedList>{feedItems}</FeedList>
     </FeedWrapper>
   )
