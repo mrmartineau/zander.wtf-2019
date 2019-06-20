@@ -34,11 +34,11 @@ export default ({
 
     <Nav />
 
+    <ThemeSwitch />
+
     {children}
 
     <Footer />
-
-    <ThemeSwitch />
 
     <GlobalStyles />
   </Fragment>
