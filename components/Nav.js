@@ -9,7 +9,7 @@ const Nav = styled.nav`
   right: 0;
   bottom: 0;
   z-index: ${ds.z('high')};
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: var(--theme-background);
   background-color: var(--theme-foreground);
   padding: 0.4rem calc(env(safe-area-inset-right) + 0.4rem)
@@ -19,7 +19,8 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: ${ds.bp('m')}) {
+    font-size: 0.8rem;
     top: 1rem;
     right: 1rem;
     bottom: unset;
@@ -41,7 +42,8 @@ const NavLink = styled.a`
   text-transform: uppercase;
 
   &:link,
-  &:visited {
+  &:visited,
+  &:focus {
     color: var(--theme-background);
   }
 
@@ -54,23 +56,28 @@ const NavLink = styled.a`
     height: 1rem;
   }
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: ${ds.bp('m')}) {
     &:link,
-    &:visited {
+    &:visited,
+    &:focus {
       color: var(--theme-foreground);
+    }
+
+    &:hover {
+      color: ${ds.color('link')};
     }
   }
 `
 
 const HorizontalNav = styled.div`
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: ${ds.bp('m')}) {
     position: absolute;
     right: 2rem;
   }
 `
 
 const VerticalNav = styled.div`
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: ${ds.bp('m')}) {
     transform: rotate(90deg);
     transform-origin: 0 0;
     position: absolute;
