@@ -4,8 +4,8 @@ import { ds } from '../designsystem/index'
 
 const ThemeButton = styled.button`
   position: fixed;
-  top: calc(1rem + 4px);
-  right: calc(1rem + 5px);
+  top: 1rem;
+  right: 1rem;
   border: 0;
   width: 1.1rem;
   height: 1.1rem;
@@ -16,6 +16,11 @@ const ThemeButton = styled.button`
   background-color: transparent;
   z-index: ${ds.z('high')};
   mix-blend-mode: exclusion;
+
+  @media screen and (min-width: ${ds.bp('m')}) {
+    top: calc(1rem + 4px);
+    right: calc(1rem + 5px);
+  }
 `
 
 const toggleRootClass = () => {
