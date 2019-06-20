@@ -51,12 +51,7 @@ export default props => {
     const linkUrl = item.data.link.url ? item.data.link.url : ''
     const title = item.data.title[0].text
     return (
-      <WorkItemLink
-        href={linkUrl}
-        target="_blank"
-        rel="noopener"
-        key={`work-${index}`}
-      >
+      <WorkItemLink href={linkUrl} key={`work-${index}`}>
         <WorkFeedTitle>{title}</WorkFeedTitle>
         {item.data.description.length > 0 && (
           <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>

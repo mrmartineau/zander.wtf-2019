@@ -127,23 +127,13 @@ export default class Page extends Component {
 
           <Gig>
             Currently working with{' '}
-            <LinkListItem
-              href="https://fairfx.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              FairFX
-            </LinkListItem>
+            <LinkListItem href="https://fairfx.com">FairFX</LinkListItem>
           </Gig>
 
           <Links>
             {globalInfo.link_list.map((item, index, arr) => (
               <Fragment key={index}>
-                <LinkListItem
-                  href={item.link_list_href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <LinkListItem href={item.link_list_href}>
                   {item.link_list_copy}
                 </LinkListItem>
                 {arr.length - 1 !== index && ' / '}

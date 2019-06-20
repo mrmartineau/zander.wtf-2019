@@ -55,7 +55,7 @@ export default class Feed extends Component {
     const feedItems = newFeedList.map((item, index) => {
       return (
         <li key={`feedItem-${index}`}>
-          <FeedItemLink href={item.u} target="_blank" rel="noopener">
+          <FeedItemLink href={item.u}>
             <FeedItemLinkTitle>{item.d}</FeedItemLinkTitle>
             {item.n && <FeedItemDesc>{item.n}</FeedItemDesc>}
             <FeedItemLinkUrl>{item.u}</FeedItemLinkUrl>
@@ -73,22 +73,12 @@ export default class Feed extends Component {
         {!!this.props.subtitle && (
           <FeedSubtitle>
             {this.props.subtitle}{' '}
-            <FeedUrl
-              href={`${PINBOARD_PATH}${this.props.feed}`}
-              target="_blank"
-              rel="noopener"
-            >
-              [i]
-            </FeedUrl>
+            <FeedUrl href={`${PINBOARD_PATH}${this.props.feed}`}>[i]</FeedUrl>
           </FeedSubtitle>
         )}
         <FeedList>{feedItems}</FeedList>
         <Center>
-          <FeedUrl
-            href={`${PINBOARD_PATH}${this.props.feed}`}
-            target="_blank"
-            rel="noopener"
-          >
+          <FeedUrl href={`${PINBOARD_PATH}${this.props.feed}`}>
             See all <span role="img">👉</span>
           </FeedUrl>
         </Center>
