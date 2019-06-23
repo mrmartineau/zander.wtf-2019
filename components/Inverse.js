@@ -7,6 +7,8 @@ const InverseElement = styled.div`
   padding: 1px 0;
 `
 
-export const Inverse = ({ children }) => (
-  <InverseElement className="inverse">{children}</InverseElement>
+export const Inverse = ({ children, ...rest }) => (
+  <InverseElement className="inverse" {...rest}>
+    {children}
+  </InverseElement>
 )

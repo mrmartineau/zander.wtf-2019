@@ -24,6 +24,7 @@ export default ({ results, title, currentId = null }) => {
             href={`/writing/?id=${item.uid}`}
             as={`/writing/${item.uid}`}
             prefetch={index < 5}
+            passHref
           >
             <FeedItemLink>
               <FeedItemBox>
@@ -43,7 +44,7 @@ export default ({ results, title, currentId = null }) => {
 
   return (
     <FeedWrapper>
-      <FeedTitle id={encodeURI(title)}>{title}</FeedTitle>
+      <FeedTitle>{title}</FeedTitle>
       <FeedList>{feedItems}</FeedList>
     </FeedWrapper>
   )

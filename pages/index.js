@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import Prismic from 'prismic-javascript'
+import subIn from 'sub-in'
+import randomArray from '@libshin/random-array'
 import MasterLayout from '../layouts/master'
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
 import WorkFeed from '../components/WorkFeed'
 import Container from '../components/Container'
-import Spacer from '../components/Spacer'
 import { initApi } from '../utils/prismic'
 import { Inverse } from '../components/Inverse'
 import { paddedLinkStyles } from '../designsystem/globalStyles'
 import { ds } from '../designsystem'
+import { MassiveLogo, Logo } from '../components/Logo'
+import { FeedTitle } from '../components/Feed'
 
-const IntroCopy = styled.h1`
-  font-size: ${ds.fs('xxl')};
-  line-height: 1.3;
-  font-weight: normal;
-  font-style: italic;
+const IntroCopy = styled(FeedTitle)`
+  text-align: left;
 `
 
 const Description = styled.h2`
@@ -44,25 +44,42 @@ const LinkListItem = styled.a`
   }
 `
 
+const FullHeight = styled.div`
+  min-height: 100vh;
+`
+
 export default class Page extends Component {
   static async getInitialProps() {
     const homePageData = await initApi()
       .then(api => {
         return api
-          .query(Prismic.Predicates.any('document.type', ['article', 'work']), {
-            fetch: [
-              'article.title',
-              'article.uid',
-              'article.date',
-              'article.subtitle',
-              'work.title',
-              'work.description',
-              'work.link',
-              'work.date',
-            ],
-            orderings: '[my.article.date desc, my.work.date desc]',
-            pageSize: 100,
-          })
+          .query(
+            Prismic.Predicates.any('document.type', [
+              'article',
+              'work',
+              'global',
+            ]),
+            {
+              fetch: [
+                'article.title',
+                'article.uid',
+                'article.date',
+                'article.subtitle',
+                'work.title',
+                'work.description',
+                'work.link',
+                'work.date',
+                'global.intro_title',
+                'global.intro_copy',
+                'global.link_list',
+                'global.site_name',
+                'global.site_description',
+                'global.descriptor',
+              ],
+              orderings: '[my.article.date desc, my.work.date desc]',
+              pageSize: 100,
+            }
+          )
           .then(response => {
             return response.results
           })
@@ -71,94 +88,81 @@ export default class Page extends Component {
 
     const articles = homePageData.filter(item => item.type === 'article')
     const work = homePageData.filter(item => item.type === 'work')
+    const globalInfo = homePageData.filter(item => item.type === 'global')[0]
+      .data
+    const descriptors = globalInfo.descriptor.reduce((accumulator, item) => {
+      return [...accumulator, item.descriptor_copy] //accumulator.push(item.descriptor_copy)
+    }, [])
 
     return {
-      articles: articles,
-      work: work,
+      articles,
+      work,
+      globalInfo,
+      descriptors: randomArray(descriptors),
     }
   }
 
   render() {
+    const { work, articles, globalInfo, descriptors } = this.props
+
     return (
-      <MasterLayout title="Zander Martineau. Front-end developer in London.">
-        <Spacer id="main">
-          <Container>
-            <IntroCopy>Zander Martineau</IntroCopy>
+      <MasterLayout
+        title={globalInfo.site_name}
+        description={globalInfo.site_description}
+      >
+        <FullHeight>
+          <MassiveLogo>
+            <Logo size="50vh" fill="var(--theme-foreground)" />
+          </MassiveLogo>
+        </FullHeight>
 
-            <Description>
-              A freelance front-end developer based in the UK working with
-              agencies and startups to achieve their goals.
-            </Description>
+        <Container id="info">
+          <IntroCopy>{globalInfo.intro_title}</IntroCopy>
 
-            <Gig>
-              Currently working with{' '}
-              <LinkListItem
-                href="https://fairfx.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                FairFX
-              </LinkListItem>
-            </Gig>
+          <Description>{subIn(globalInfo.intro_copy, descriptors)}</Description>
 
-            <Links>
-              <LinkListItem
-                href="https://github.com/mrmartineau"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </LinkListItem>
-              {' / '}
-              <LinkListItem
-                href="https://toot.cafe/@zander"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Mastodon
-              </LinkListItem>{' '}
-              {' / '}
-              <LinkListItem
-                href="https://twitter.com/mrmartineau"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </LinkListItem>
-            </Links>
-          </Container>
-        </Spacer>
+          <Gig>
+            Currently working with{' '}
+            <LinkListItem href="https://fairfx.com">FairFX</LinkListItem>
+          </Gig>
 
-        {this.props.articles && (
-          <Container>
-            <ArticleFeed results={this.props.articles} title="Writing" />
+          <Links>
+            {globalInfo.link_list.map((item, index, arr) => (
+              <Fragment key={index}>
+                <LinkListItem href={item.link_list_href}>
+                  {item.link_list_copy}
+                </LinkListItem>
+                {arr.length - 1 !== index && ' / '}
+              </Fragment>
+            ))}
+          </Links>
+        </Container>
+
+        {!!articles && (
+          <Container id="words">
+            <ArticleFeed results={articles} title="Words" />
           </Container>
         )}
 
-        {this.props.work && (
-          <Inverse>
+        {!!work && (
+          <Inverse id="projects">
             <Container wide>
-              <Spacer>
-                <WorkFeed results={this.props.work} title="Projects" />
-              </Spacer>
+              <WorkFeed results={work} title="Projects" />
             </Container>
           </Inverse>
         )}
-        <Container>
-          <Spacer>
-            <PinboardFeed
-              feed="u:MrMartineau/t:zm:reading/"
-              title="Reading"
-              subtitle="Interesting articles that I've read recently"
-            />
-          </Spacer>
+
+        <Container id="reading">
+          <PinboardFeed
+            feed="u:MrMartineau/t:zm:reading/"
+            title="Reading"
+            subtitle="Interesting articles that I've read recently"
+          />
         </Container>
 
-        <Inverse>
+        <Inverse id="bookmarks">
           <Container>
-            <Spacer>
-              <PinboardFeed feed="u:MrMartineau/t:zm:link/" title="Bookmarks" />
-            </Spacer>
+            <PinboardFeed feed="u:MrMartineau/t:zm:link/" title="Bookmarks" />
           </Container>
         </Inverse>
       </MasterLayout>
