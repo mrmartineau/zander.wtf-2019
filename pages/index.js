@@ -48,10 +48,6 @@ const FullHeight = styled.div`
   min-height: 100vh;
 `
 
-const getRandomInt = max => {
-  return Math.floor(Math.random() * Math.floor(max))
-}
-
 export default class Page extends Component {
   static async getInitialProps() {
     const homePageData = await initApi()

@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "export": "next export",
-    "lint": "eslint **/*.js",
+    "lint": "eslint 'pages/**/*.js' 'utils/**/*.js' 'components/**/*.js' 'designsystem/**/*.js'",
     "fix:js": "eslint --fix **/*.js",
     "format": "prettier --write **/*.js"
   },
@@ -30,18 +30,18 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "rss": "^1.2.2",
-    "styled-components": "^4.3.1",
+    "styled-components": "^4.3.2",
     "sub-in": "^1.0.2"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "babel-plugin-styled-components": "^1.10.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
+    "babel-eslint": "^10.0.2",
+    "babel-plugin-styled-components": "^1.10.1",
+    "eslint": "^6.0.0",
+    "eslint-config-prettier": "^5.0.0",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react": "^7.14.0",
     "prettier": "^1.18.2"
   }
 }
