@@ -13,7 +13,7 @@ import {
   FeedItemLinkUrl,
 } from './Feed'
 
-const FEED_PATH = 'https://pinboard-api-cache.now.sh/json/'
+const FEED_PATH = '/api/pinboard?tag='
 const PINBOARD_PATH = 'https://pinboard.in/'
 
 const Center = styled.div`
@@ -32,7 +32,7 @@ export default class Feed extends Component {
   }
 
   componentDidMount() {
-    fetch(`${FEED_PATH}${this.props.feed}?count=${this.props.count}`)
+    fetch(`${FEED_PATH}${this.props.tag}`)
       .then(response => {
         if (response.status >= 400) {
           throw new Error('Bad response from server')

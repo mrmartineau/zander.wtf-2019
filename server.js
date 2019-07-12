@@ -51,9 +51,6 @@ app.prepare().then(() => {
         })
         .catch(error => console.error(error))
     })
-    .get('/writing/:id', (req, res) => {
-      return app.render(req, res, '/writing', { id: req.params.id })
-    })
     .get('*', (req, res) => {
       return handler(req, res)
     })

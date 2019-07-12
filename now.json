@@ -8,6 +8,5 @@
       "use": "@now/next"
     }
   ],
-  "routes": [{ "src": "/writing/(?<id>[^/]+)", "dest": "/writing?id=$id" }],
   "scope": "zander"
 }
