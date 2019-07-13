@@ -49,7 +49,11 @@ const FullHeight = styled.div`
 `
 
 export default class Page extends Component {
-  static async getInitialProps() {
+  static async getInitialProps({ res }) {
+    if (res) {
+      res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
+    }
+
     const homePageData = await initApi()
       .then(api => {
         return api
@@ -67,8 +71,11 @@ export default class Page extends Component {
                 'article.subtitle',
                 'work.title',
                 'work.description',
+                'work.short_description',
+                'work.long_description',
                 'work.link',
                 'work.date',
+                'work.image',
                 'global.intro_title',
                 'global.intro_copy',
                 'global.link_list',
@@ -154,7 +161,7 @@ export default class Page extends Component {
 
         <Container id="reading">
           <PinboardFeed
-            feed="u:MrMartineau/t:zm:reading/"
+            tag="zm:reading"
             title="Reading"
             subtitle="Interesting articles that I've read recently"
           />
@@ -162,7 +169,7 @@ export default class Page extends Component {
 
         <Inverse id="bookmarks">
           <Container>
-            <PinboardFeed feed="u:MrMartineau/t:zm:link/" title="Bookmarks" />
+            <PinboardFeed tag="zm:link" title="Bookmarks" />
           </Container>
         </Inverse>
       </MasterLayout>
