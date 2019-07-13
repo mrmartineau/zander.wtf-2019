@@ -20,7 +20,7 @@
   ],
   "builds": [
     {
-      "src": "package.json",
+      "src": "next.config.js",
       "use": "@now/next"
     },
     { "src": "scripts/build-rss.js", "use": "@now/node" }
