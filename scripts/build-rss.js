@@ -57,9 +57,13 @@ const getArticles = async () => {
   })
 }
 
-async function main() {
+async function buildRss() {
   await getArticles()
   return feed.xml()
 }
 
-module.exports = main
+module.exports = async (req, res) => {
+  const feed = await buildRss()
+  res.setHeader('content-type', 'text/xml')
+  res.send(feed)
+}

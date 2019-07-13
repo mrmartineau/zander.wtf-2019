@@ -49,7 +49,11 @@ const FullHeight = styled.div`
 `
 
 export default class Page extends Component {
-  static async getInitialProps() {
+  static async getInitialProps({ res }) {
+    if (res) {
+      res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
+    }
+
     const homePageData = await initApi()
       .then(api => {
         return api

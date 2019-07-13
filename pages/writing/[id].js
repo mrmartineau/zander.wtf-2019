@@ -115,7 +115,11 @@ const Writing = ({
   )
 }
 
-Writing.getInitialProps = async ({ query }) => {
+Writing.getInitialProps = async ({ query, res }) => {
+  if (res) {
+    res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
+  }
+
   const response = await initApi()
     .then(api => {
       return api.getByUID('article', query.id)
