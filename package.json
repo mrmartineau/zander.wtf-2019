@@ -10,7 +10,9 @@
     "export": "next export",
     "lint": "eslint 'pages/**/*.js' 'utils/**/*.js' 'components/**/*.js' 'designsystem/**/*.js'",
     "fix:js": "eslint --fix **/*.js",
-    "format": "prettier --write **/*.js"
+    "format": "prettier --write **/*.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Zander Martineau",
   "license": "MIT",
@@ -34,7 +36,8 @@
     "react-dom": "^16.8.6",
     "rss": "^1.2.2",
     "styled-components": "^4.3.2",
-    "sub-in": "^1.0.2"
+    "sub-in": "^1.0.2",
+    "snyk": "^1.193.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
@@ -46,5 +49,6 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.2",
     "prettier": "^1.18.2"
-  }
+  },
+  "snyk": true
 }
