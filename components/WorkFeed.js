@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { RichText } from 'prismic-reactjs-custom'
 import { ds } from '../designsystem'
 import {
   FeedWrapper,
@@ -7,6 +8,7 @@ import {
   FeedItemLinkTitle,
   FeedItemDesc,
   FeedItemLinkUrl,
+  FeedList,
 } from './Feed'
 
 const WorkList = styled.div`
@@ -39,32 +41,84 @@ const WorkItemLink = styled.a`
   }
 `
 
-const WorkFeedTitle = styled(FeedItemLinkTitle)`
-  background-color: var(--theme-foreground);
-  color: var(--theme-background);
-  margin: -1rem -1rem 1rem -1rem;
+const WorkFeedItem = styled.li`
+  margin-bottom: 1px;
+`
+
+const WorkDetails = styled.details`
   padding: 1rem;
+
+  &:hover {
+    background-color: var(--theme-foreground);
+    color: var(--theme-background);
+  }
+`
+
+const WorkSummary = styled.summary`
+  cursor: default;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+`
+
+const WorkImg = styled.img`
+  max-width: 100%;
+  display: block;
+`
+
+const WorkContent = styled.div`
+  margin-top: 1rem;
 `
 
 export default props => {
   const feedItems = props.results.map((item, index) => {
-    const linkUrl = item.data.link.url ? item.data.link.url : ''
-    const title = item.data.title[0].text
+    const {
+      link,
+      title,
+      short_description,
+      long_description,
+      image,
+    } = item.data
+    const linkUrl = link.url ? link.url : ''
+    const projectTitle = title[0].text
+    const hasDetailsContent =
+      !!long_description.length || (!!image && image.url)
     return (
-      <WorkItemLink href={linkUrl} key={`work-${index}`}>
-        <WorkFeedTitle>{title}</WorkFeedTitle>
-        {item.data.description.length > 0 && (
-          <FeedItemDesc>{item.data.description[0].text}</FeedItemDesc>
-        )}
-        {linkUrl && <FeedItemLinkUrl>{linkUrl}</FeedItemLinkUrl>}
-      </WorkItemLink>
+      <WorkFeedItem key={`work-${index}`}>
+        <WorkDetails as={hasDetailsContent ? 'details' : 'div'}>
+          <WorkSummary>
+            <FeedItemLinkTitle>{projectTitle}</FeedItemLinkTitle>
+
+            {short_description && (
+              <FeedItemDesc>{short_description}</FeedItemDesc>
+            )}
+
+            {linkUrl && (
+              <FeedItemLinkUrl as="a" href={linkUrl}>
+                {linkUrl}
+              </FeedItemLinkUrl>
+            )}
+          </WorkSummary>
+
+          {hasDetailsContent && (
+            <WorkContent>
+              {!!long_description && <RichText richText={long_description} />}
+
+              {!!image && image.url && (
+                <WorkImg src={image.url} alt={projectTitle} />
+              )}
+            </WorkContent>
+          )}
+        </WorkDetails>
+      </WorkFeedItem>
     )
   })
 
   return (
     <FeedWrapper>
       <FeedTitle>{props.title}</FeedTitle>
-      <WorkList>{feedItems}</WorkList>
+      <FeedList>{feedItems}</FeedList>
     </FeedWrapper>
   )
 }

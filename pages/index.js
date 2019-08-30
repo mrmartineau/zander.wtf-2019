@@ -153,7 +153,7 @@ export default class Page extends Component {
 
         {!!work && (
           <Inverse id="projects">
-            <Container wide>
+            <Container>
               <WorkFeed results={work} title="Projects" />
             </Container>
           </Inverse>
