@@ -52,6 +52,10 @@ const WorkDetails = styled.details`
     background-color: var(--theme-foreground);
     color: var(--theme-background);
   }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
 `
 
 const WorkSummary = styled.summary`
