@@ -20,12 +20,7 @@ export default ({ results, title, currentId = null }) => {
 
       return (
         <li key={`articleFeedItem-${index}`}>
-          <Link
-            href={`/writing/[id]`}
-            as={`/writing/${item.uid}`}
-            prefetch={index < 5}
-            passHref
-          >
+          <Link href={`/writing/[id]`} as={`/writing/${item.uid}`} passHref>
             <FeedItemLink>
               <FeedItemBox>
                 {theTitle.length && (

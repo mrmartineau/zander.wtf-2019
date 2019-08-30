@@ -84,4 +84,15 @@ export const FeedItemLinkUrl = styled.div`
   margin-top: ${pxTo(8, 25, 'rem')};
   word-wrap: break-word;
   font-size: ${ds.fs('xs')};
+
+  &:link,
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    opacity: 1;
+  }
 `
