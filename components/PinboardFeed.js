@@ -73,12 +73,14 @@ export default class Feed extends Component {
         {!!this.props.subtitle && (
           <FeedSubtitle>
             {this.props.subtitle}{' '}
-            <FeedUrl href={`${PINBOARD_PATH}${this.props.feed}`}>[i]</FeedUrl>
+            <FeedUrl href={`${PINBOARD_PATH}u:MrMartineau/t:${this.props.tag}`}>
+              [i]
+            </FeedUrl>
           </FeedSubtitle>
         )}
         <FeedList>{feedItems}</FeedList>
         <Center>
-          <FeedUrl href={`${PINBOARD_PATH}${this.props.feed}`}>
+          <FeedUrl href={`${PINBOARD_PATH}u:MrMartineau/t:${this.props.tag}`}>
             See all <span role="img">👉</span>
           </FeedUrl>
         </Center>
