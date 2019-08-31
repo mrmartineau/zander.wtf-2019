@@ -53,10 +53,11 @@ export const FeedItemLink = styled.a`
     background-color: var(--theme-foreground);
   }
 `
-export const FeedItemLinkTitle = styled.div`
+export const FeedItemLinkTitle = styled.h3`
   font-style: italic;
   font-size: ${ds.fs('m')};
   line-height: ${ds.get('type.lineHeight.headings')};
+  margin-bottom: 0;
 `
 
 export const FeedItemBox = styled.div`

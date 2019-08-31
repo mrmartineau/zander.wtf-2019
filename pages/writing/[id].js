@@ -2,17 +2,13 @@ import React, { Fragment } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 import Prismic from 'prismic-javascript'
-import { RichText } from 'prismic-reactjs-custom'
+import { RichText } from '../../components/RichText'
 import MasterLayout from '../../layouts/master'
 import { initApi } from '../../utils/prismic'
 import Container from '../../components/Container'
 import Spacer from '../../components/Spacer'
 import { ds } from '../../designsystem'
-import {
-  paddedLinkStyles,
-  codeStyles,
-  baseline,
-} from '../../designsystem/globalStyles'
+import { codeStyles, baseline } from '../../designsystem/globalStyles'
 import ArticleFeed from '../../components/ArticleFeed'
 import { Inverse } from '../../components/Inverse'
 import { format } from 'date-fns'
@@ -27,14 +23,6 @@ const Time = styled.time`
 `
 
 const Article = styled.article`
-  a {
-    ${paddedLinkStyles};
-  }
-
-  img {
-    max-width: 100%;
-  }
-
   ${codeStyles};
 `
 
@@ -51,15 +39,15 @@ const ArticleSubtitle = styled.h1`
 `
 
 const Writing = ({
-    title,
-    subtitle,
-    body,
-    canonical,
-    articleId,
-    firstPublished,
-    updated,
-    articles,
-  }) => {
+  title,
+  subtitle,
+  body,
+  canonical,
+  articleId,
+  firstPublished,
+  updated,
+  articles,
+}) => {
   /* const title = response.data.title[0].text
   const subtitle = response.data.subtitle[0].text
   const body = response.data.body
@@ -96,7 +84,7 @@ const Writing = ({
               )}
             </TimeWrapper>
 
-            <RichText richText={body} />
+            <RichText text={body} />
           </Article>
         </Container>
       </Spacer>

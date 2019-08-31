@@ -169,6 +169,7 @@ export const linkStyles = css`
   &:active,
   &:focus {
     background-color: ${ds.color('link')};
+    color: ${ds.color('bright')};
     outline: 0;
   }
 `
