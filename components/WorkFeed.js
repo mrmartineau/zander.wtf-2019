@@ -38,6 +38,11 @@ const WorkImg = styled.img`
 
 const WorkContent = styled.div`
   margin-top: 1rem;
+
+  p {
+    font-size: ${ds.fs('s')};
+    margin-bottom: 0.8rem;
+  }
 `
 
 const WorkDl = styled.dl`
