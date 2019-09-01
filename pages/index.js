@@ -120,7 +120,7 @@ export default class Page extends Component {
       >
         <FullHeight>
           <MassiveLogo>
-            <Logo size="50vh" fill="var(--theme-foreground)" />
+            <Logo size="50vmin" fill="var(--theme-foreground)" />
           </MassiveLogo>
         </FullHeight>
 
