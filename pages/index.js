@@ -76,6 +76,7 @@ export default class Page extends Component {
                 'work.link',
                 'work.date',
                 'work.image',
+                'work.project_metadata',
                 'global.intro_title',
                 'global.intro_copy',
                 'global.link_list',
@@ -119,7 +120,7 @@ export default class Page extends Component {
       >
         <FullHeight>
           <MassiveLogo>
-            <Logo size="50vh" fill="var(--theme-foreground)" />
+            <Logo size="50vmin" fill="var(--theme-foreground)" />
           </MassiveLogo>
         </FullHeight>
 

@@ -1,69 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
-import { RichText } from 'prismic-reactjs-custom'
+import { RichText } from './RichText'
+import { FeedWrapper, FeedTitle, FeedItemLinkTitle, FeedItemDesc } from './Feed'
+import { Link } from './Link'
 import { ds } from '../designsystem'
-import {
-  FeedWrapper,
-  FeedTitle,
-  FeedItemLinkTitle,
-  FeedItemDesc,
-  FeedItemLinkUrl,
-  FeedList,
-} from './Feed'
 
-const WorkList = styled.div`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-`
-
-const WorkItemLink = styled.a`
-  display: block;
-  padding: 1rem;
-  color: ${ds.color('bright')};
-  color: var(--theme-foreground);
-  background-color: ${ds.color('dark')};
-  background-color: var(--theme-background);
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover,
-  &:active,
-  &:focus {
-    outline: 0;
-    color: ${ds.color('dark')};
-    color: var(--theme-background);
-    background-color: ${ds.color('bright')};
-    background-color: var(--theme-foreground);
-  }
-`
-
-const WorkFeedItem = styled.li`
-  margin-bottom: 1px;
-`
-
-const WorkDetails = styled.details`
-  padding: 1rem;
-
-  &:hover {
-    background-color: var(--theme-foreground);
-    color: var(--theme-background);
+const WorkFeedItem = styled.article`
+  &:not(:last-child) {
+    margin-bottom: 2rem;
   }
 
   p:last-child {
     margin-bottom: 0;
   }
+
+  details {
+    margin-top: 0.5rem;
+  }
+
+  summary {
+    font-size: ${ds.fs('s')};
+  }
 `
 
-const WorkSummary = styled.summary`
-  cursor: default;
+const WorkTitle = styled(FeedItemLinkTitle)`
+  font-size: ${ds.fs('l')};
+`
 
-  &::-webkit-details-marker {
-    display: none;
-  }
+const WorkLink = styled(Link)`
+  font-size: ${ds.fs('s')};
 `
 
 const WorkImg = styled.img`
@@ -73,8 +38,38 @@ const WorkImg = styled.img`
 
 const WorkContent = styled.div`
   margin-top: 1rem;
+
+  p {
+    font-size: ${ds.fs('s')};
+    margin-bottom: 0.8rem;
+  }
 `
 
+const WorkDl = styled.dl`
+  font-size: ${ds.fs('s')};
+`
+
+const WorkDt = styled.dt`
+  font-weight: bold;
+
+  @media screen and (min-width: ${ds.bp('m')}) {
+    display: block;
+    width: 150px;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+  }
+`
+
+const WorkDd = styled.dd`
+  margin: 0 0 0.5rem;
+`
+
+const WorkMeta = styled.div`
+  @media screen and (min-width: ${ds.bp('m')}) {
+    display: flex;
+  }
+`
 export default props => {
   const feedItems = props.results.map((item, index) => {
     const {
@@ -83,38 +78,64 @@ export default props => {
       short_description,
       long_description,
       image,
+      project_metadata,
     } = item.data
     const linkUrl = link.url ? link.url : ''
     const projectTitle = title[0].text
-    const hasDetailsContent =
-      !!long_description.length || (!!image && image.url)
+    const hasLongDescription =
+      !!long_description.length && !!long_description[0].text.length
+    const hasImage = !!image && image.url
+    const hasMetadata =
+      !!project_metadata.length && !!project_metadata[0].project_metadata_key
+    const hasDetailsContent = hasLongDescription || hasImage || hasMetadata
+
     return (
       <WorkFeedItem key={`work-${index}`}>
-        <WorkDetails as={hasDetailsContent ? 'details' : 'div'}>
-          <WorkSummary>
-            <FeedItemLinkTitle>{projectTitle}</FeedItemLinkTitle>
+        <WorkTitle>{projectTitle}</WorkTitle>
 
-            {short_description && (
-              <FeedItemDesc>{short_description}</FeedItemDesc>
-            )}
+        {short_description && <FeedItemDesc>{short_description}</FeedItemDesc>}
 
-            {linkUrl && (
-              <FeedItemLinkUrl as="a" href={linkUrl}>
-                {linkUrl}
-              </FeedItemLinkUrl>
-            )}
-          </WorkSummary>
+        {linkUrl && <WorkLink href={linkUrl}>{linkUrl}</WorkLink>}
 
-          {hasDetailsContent && (
+        {hasDetailsContent && (
+          <details>
+            <summary>More info</summary>
+
             <WorkContent>
-              {!!long_description && <RichText richText={long_description} />}
+              {hasLongDescription && <RichText text={long_description} />}
 
-              {!!image && image.url && (
-                <WorkImg src={image.url} alt={projectTitle} />
+              {hasImage && <WorkImg src={image.url} alt={projectTitle} />}
+
+              {hasMetadata && (
+                <WorkDl>
+                  {project_metadata.map(
+                    (
+                      {
+                        project_metadata_key,
+                        project_metadata_value,
+                        project_metadata_link,
+                      },
+                      index
+                    ) => (
+                      <WorkMeta key={index}>
+                        <WorkDt>{project_metadata_key}</WorkDt>
+                        <WorkDd>
+                          {project_metadata_link ? (
+                            <Link href={project_metadata_link}>
+                              {project_metadata_value}
+                            </Link>
+                          ) : (
+                            project_metadata_value
+                          )}
+                        </WorkDd>
+                      </WorkMeta>
+                    )
+                  )}
+                </WorkDl>
               )}
             </WorkContent>
-          )}
-        </WorkDetails>
+          </details>
+        )}
       </WorkFeedItem>
     )
   })
@@ -122,7 +143,7 @@ export default props => {
   return (
     <FeedWrapper>
       <FeedTitle>{props.title}</FeedTitle>
-      <FeedList>{feedItems}</FeedList>
+      {feedItems}
     </FeedWrapper>
   )
 }
