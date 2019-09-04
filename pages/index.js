@@ -14,6 +14,7 @@ import { paddedLinkStyles } from '../designsystem/globalStyles'
 import { ds } from '../designsystem'
 import { MassiveLogo, Logo } from '../components/Logo'
 import { FeedTitle } from '../components/Feed'
+import { RichText } from '../components/RichText'
 
 const IntroCopy = styled(FeedTitle)`
   text-align: left;
@@ -83,6 +84,7 @@ export default class Page extends Component {
                 'global.site_name',
                 'global.site_description',
                 'global.descriptor',
+                'global.now',
               ],
               orderings: '[my.article.date desc, my.work.date desc]',
               pageSize: 100,
@@ -129,10 +131,11 @@ export default class Page extends Component {
 
           <Description>{subIn(globalInfo.intro_copy, descriptors)}</Description>
 
-          <Gig>
-            Currently working with{' '}
-            <LinkListItem href="https://fairfx.com">FairFX</LinkListItem>
-          </Gig>
+          {!!globalInfo.now.length && (
+            <Gig>
+              <RichText text={globalInfo.now} />
+            </Gig>
+          )}
 
           <Links>
             {globalInfo.link_list.map((item, index, arr) => (
