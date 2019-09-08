@@ -9,7 +9,9 @@ import {
   FeedItemBox,
   FeedItemDate,
   FeedItemDesc,
+  FeedSubtitle,
 } from './Feed'
+import { Link as MyLink } from '../components/Link'
 
 export default ({ results, title, currentId = null }) => {
   const feedItems = results
@@ -40,7 +42,12 @@ export default ({ results, title, currentId = null }) => {
   return (
     <FeedWrapper>
       <FeedTitle>{title}</FeedTitle>
+
       <FeedList>{feedItems}</FeedList>
+
+      <FeedSubtitle>
+        <MyLink href="/atom.xml">RSS Feed</MyLink>
+      </FeedSubtitle>
     </FeedWrapper>
   )
 }

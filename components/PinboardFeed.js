@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import 'fetch-everywhere'
 import {
   FeedWrapper,
-  FeedUrl,
   FeedTitle,
   FeedSubtitle,
   FeedList,
@@ -12,15 +10,10 @@ import {
   FeedItemDesc,
   FeedItemLinkUrl,
 } from './Feed'
+import { Link } from './Link'
 
 const FEED_PATH = '/api/pinboard?tag='
 const PINBOARD_PATH = 'https://pinboard.in/'
-
-const Center = styled.div`
-  text-align: center;
-  margin-top: 1vmax;
-  margin-bottom: 1vmax;
-`
 
 export default class Feed extends Component {
   constructor(props) {
@@ -73,17 +66,21 @@ export default class Feed extends Component {
         {!!this.props.subtitle && (
           <FeedSubtitle>
             {this.props.subtitle}{' '}
-            <FeedUrl href={`${PINBOARD_PATH}u:MrMartineau/t:${this.props.tag}`}>
+            <Link href={`${PINBOARD_PATH}u:MrMartineau/t:${this.props.tag}`}>
               [i]
-            </FeedUrl>
+            </Link>
           </FeedSubtitle>
         )}
         <FeedList>{feedItems}</FeedList>
-        <Center>
-          <FeedUrl href={`${PINBOARD_PATH}u:MrMartineau/t:${this.props.tag}`}>
-            See all <span role="img">👉</span>
-          </FeedUrl>
-        </Center>
+
+        <FeedSubtitle>
+          <Link href={`${PINBOARD_PATH}u:MrMartineau/t:${this.props.tag}`}>
+            See all{' '}
+            <span role="img" aria-label="Right pointing hand emoji">
+              👉
+            </span>
+          </Link>
+        </FeedSubtitle>
       </FeedWrapper>
     )
   }
