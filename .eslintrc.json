@@ -1,5 +1,5 @@
 {
-  "plugins": ["prettier", "jsx-a11y", "react"],
+  "plugins": ["prettier", "jsx-a11y"],
   "rules": {
     "no-console": "off",
     "prettier/prettier": "error",

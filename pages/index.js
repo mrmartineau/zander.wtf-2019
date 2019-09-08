@@ -14,7 +14,7 @@ import { paddedLinkStyles } from '../designsystem/globalStyles'
 import { ds } from '../designsystem'
 import { MassiveLogo, Logo } from '../components/Logo'
 import { FeedTitle } from '../components/Feed'
-import { RichText } from '../components/RichText'
+import { Gig } from '../components/Gig'
 
 const IntroCopy = styled(FeedTitle)`
   text-align: left;
@@ -25,10 +25,6 @@ const Description = styled.h2`
   line-height: 1.3;
   line-height: 1.3;
   font-weight: normal;
-`
-
-const Gig = styled.p`
-  font-size: 1rem;
 `
 
 const Links = styled.div`
@@ -128,14 +124,7 @@ export default class Page extends Component {
 
         <Container id="info">
           <IntroCopy>{globalInfo.intro_title}</IntroCopy>
-
           <Description>{subIn(globalInfo.intro_copy, descriptors)}</Description>
-
-          {!!globalInfo.now.length && (
-            <Gig>
-              <RichText text={globalInfo.now} />
-            </Gig>
-          )}
 
           <Links>
             {globalInfo.link_list.map((item, index, arr) => (
@@ -147,6 +136,8 @@ export default class Page extends Component {
               </Fragment>
             ))}
           </Links>
+
+          {!!globalInfo.now.length && <Gig text={globalInfo.now} />}
         </Container>
 
         {!!articles && (

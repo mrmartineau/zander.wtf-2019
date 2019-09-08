@@ -9,7 +9,7 @@ const H1 = styled.h1`
   margin-top: 0;
 `
 
-const AgeCalc = () => (
+export default () => (
   <Fragment>
     <Head>
       <title>Bamber Moses Martineau</title>
@@ -23,5 +23,3 @@ const AgeCalc = () => (
     <GlobalStyles />
   </Fragment>
 )
-
-export default AgeCalc

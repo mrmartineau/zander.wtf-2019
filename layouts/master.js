@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import Footer from '../components/Footer'
+import { Footer } from '../components/Footer'
 import GlobalStyles from '../designsystem/globalStyles'
 import Nav from '../components/Nav'
 import { MasterLogo, Logo } from '../components/Logo'
@@ -26,8 +26,8 @@ export default ({
       />
     </Head>
 
-    <Link href="/" passHref>
-      <MasterLogo aria-label="Go home">
+    <Link href="/">
+      <MasterLogo aria-label="Go home" href="/">
         <Logo size="3rem" />
       </MasterLogo>
     </Link>

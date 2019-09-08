@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html lang="en">
+      <html lang="en" prefix="og: http://ogp.me/ns#">
         <Head>
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
