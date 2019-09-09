@@ -10,11 +10,12 @@ import WorkFeed from '../components/WorkFeed'
 import Container from '../components/Container'
 import { initApi } from '../utils/prismic'
 import { Inverse } from '../components/Inverse'
-import { paddedLinkStyles } from '../designsystem/globalStyles'
 import { ds } from '../designsystem'
 import { MassiveLogo, Logo } from '../components/Logo'
 import { FeedTitle } from '../components/Feed'
-import { RichText } from '../components/RichText'
+import { Gig } from '../components/Gig'
+import { links } from '../data/links'
+import { Link } from '../components/Link'
 
 const IntroCopy = styled(FeedTitle)`
   text-align: left;
@@ -27,22 +28,8 @@ const Description = styled.h2`
   font-weight: normal;
 `
 
-const Gig = styled.p`
-  font-size: 1rem;
-`
-
 const Links = styled.div`
   margin: ${ds.spacing(3)} 0;
-`
-
-const LinkListItem = styled.a`
-  display: inline-block;
-  ${paddedLinkStyles};
-  margin-right: 0.5rem;
-
-  &:not(:first-of-type) {
-    margin-left: 0.5rem;
-  }
 `
 
 const FullHeight = styled.div`
@@ -80,7 +67,6 @@ export default class Page extends Component {
                 'work.project_metadata',
                 'global.intro_title',
                 'global.intro_copy',
-                'global.link_list',
                 'global.site_name',
                 'global.site_description',
                 'global.descriptor',
@@ -128,25 +114,18 @@ export default class Page extends Component {
 
         <Container id="info">
           <IntroCopy>{globalInfo.intro_title}</IntroCopy>
-
           <Description>{subIn(globalInfo.intro_copy, descriptors)}</Description>
 
-          {!!globalInfo.now.length && (
-            <Gig>
-              <RichText text={globalInfo.now} />
-            </Gig>
-          )}
-
           <Links>
-            {globalInfo.link_list.map((item, index, arr) => (
+            {links.map((item, index, arr) => (
               <Fragment key={index}>
-                <LinkListItem href={item.link_list_href}>
-                  {item.link_list_copy}
-                </LinkListItem>
+                <Link href={item.href}>{item.copy}</Link>
                 {arr.length - 1 !== index && ' / '}
               </Fragment>
             ))}
           </Links>
+
+          {!!globalInfo.now.length && <Gig text={globalInfo.now} />}
         </Container>
 
         {!!articles && (

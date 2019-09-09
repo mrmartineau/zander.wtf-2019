@@ -1,14 +1,9 @@
-import React from 'react'
 import styled from 'styled-components'
 
-const InverseElement = styled.div`
+export const Inverse = styled.div.attrs(() => ({
+  className: 'inverse',
+}))`
   background-color: var(--theme-background);
   color: var(--theme-foreground);
   padding: 1px 0;
 `
-
-export const Inverse = ({ children, ...rest }) => (
-  <InverseElement className="inverse" {...rest}>
-    {children}
-  </InverseElement>
-)

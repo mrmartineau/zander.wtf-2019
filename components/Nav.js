@@ -17,16 +17,11 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
 
-  @supports (padding: constant(safe-area-inset-bottom)) {
-    padding: 0.4rem calc(constant(safe-area-inset-right) + 0.4rem)
-      calc(constant(safe-area-inset-bottom, 30px) + 0.4rem)
-      calc(constant(safe-area-inset-left) + 0.4rem);
-  }
-
-  @supports (padding: env(safe-area-inset-bottom)) {
-    padding: 0.4rem calc(env(safe-area-inset-right) + 0.4rem)
-      calc(env(safe-area-inset-bottom) + 0.4rem)
-      calc(env(safe-area-inset-left) + 0.4rem);
+  @supports (padding: max(0px)) {
+    padding-top: 0.4rem;
+    padding-right: calc(max(12px, env(safe-area-inset-right)) + 0.4rem);
+    padding-bottom: calc(max(12px, env(safe-area-inset-bottom)) + 0.4rem);
+    padding-left: calc(max(12px, env(safe-area-inset-left)) + 0.4rem);
   }
 
   @media screen and (min-width: ${ds.bp('m')}) {

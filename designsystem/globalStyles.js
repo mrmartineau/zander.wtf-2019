@@ -10,6 +10,7 @@ export const baseline = pxTo(35, 20, 'rem')
 // global styles
 export default createGlobalStyle`
   @supports (--theme-foreground: ${ds.color('bright')}) {
+
     :root,
     :root.theme-inverse .inverse {
       --theme-foreground: ${ds.color('bright')};
@@ -20,6 +21,20 @@ export default createGlobalStyle`
     :root .inverse {
       --theme-foreground: ${ds.color('dark')};
       --theme-background: ${ds.color('bright')};
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root,
+      :root.theme-inverse .inverse {
+        --theme-foreground: ${ds.color('dark')};
+        --theme-background: ${ds.color('bright')};
+      }
+
+      :root.theme-inverse,
+      :root .inverse {
+        --theme-foreground: ${ds.color('bright')};
+        --theme-background: ${ds.color('dark')};
+      }
     }
   }
 
@@ -156,21 +171,38 @@ export default createGlobalStyle`
 
 export const linkStyles = css`
   word-wrap: break-word;
-  text-decoration: none;
 
   &:link,
   &:visited {
     color: ${ds.color('bright')};
     color: var(--theme-foreground);
+    text-decoration: none;
     border-bottom: 2px solid ${ds.color('link')};
+
+    @supports (text-decoration-thickness: 2px) {
+      text-decoration-style: solid;
+      text-decoration-line: underline;
+      text-decoration-color: ${ds.color('link')};
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+      text-decoration-skip: ink;
+      border: 0;
+    }
   }
 
   &:hover,
-  &:active,
+  &:active {
+    border-color: ${ds.color('bright')};
+    border-color: var(--theme-foreground);
+
+    @supports (text-decoration-thickness: 2px) {
+      text-decoration-color: var(--theme-foreground);
+    }
+  }
+
   &:focus {
-    background-color: ${ds.color('link')};
-    color: ${ds.color('bright')};
     outline: 0;
+    background-color: ${ds.color('link')};
   }
 `
 

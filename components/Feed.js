@@ -6,16 +6,6 @@ import { paddedLinkStyles } from '../designsystem/globalStyles'
 export const FeedWrapper = styled.div`
   margin: ${pxTo(80, 25, 'rem')} 0;
 `
-export const FeedUrl = styled.a`
-  font-size: ${ds.fs('s')};
-  font-weight: normal;
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-  line-height: 1.4;
-  margin-left: 0.5rem;
-  ${paddedLinkStyles};
-`
 
 export const FeedList = styled.ul`
   list-style-type: none;
@@ -33,6 +23,7 @@ export const FeedTitle = styled.h2`
 
 export const FeedSubtitle = styled.p`
   text-align: center;
+  margin: 2rem 0;
 `
 
 export const FeedItemLink = styled.a`
@@ -53,6 +44,7 @@ export const FeedItemLink = styled.a`
     background-color: var(--theme-foreground);
   }
 `
+
 export const FeedItemLinkTitle = styled.h3`
   font-style: italic;
   font-size: ${ds.fs('m')};
