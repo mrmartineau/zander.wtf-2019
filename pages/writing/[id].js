@@ -47,6 +47,7 @@ const Writing = ({
   firstPublished,
   updated,
   articles,
+  path,
 }) => {
   /* const title = response.data.title[0].text
   const subtitle = response.data.subtitle[0].text
@@ -56,12 +57,18 @@ const Writing = ({
     : null */
   return (
     <MasterLayout
-      title={title}
-      description="An article by Zander Martineau"
+      title={`"${title}" — An article by Zander Martineau`}
+      description={subtitle}
       canonical={canonical}
     >
       <Head>
         <meta property="og:type" content="article" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={subtitle} />
+        <meta
+          property="og:url"
+          content={`https://zander.wtf/writing/${path}`}
+        />
       </Head>
       <Spacer>
         <Container>
@@ -143,6 +150,7 @@ Writing.getInitialProps = async ({ query, res }) => {
     firstPublished: response.first_publication_date,
     updated: response.last_publication_date,
     articles,
+    path: query.id,
   }
 }
 
