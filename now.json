@@ -11,11 +11,11 @@
       "dest": "/scripts/build-rss.js"
     },
     {
-      "src": "/static/(.*)",
+      "src": "/public/(.*)",
       "headers": {
         "cache-control": "s-maxage=31536000,immutable"
       },
-      "dest": "/static/$1"
+      "dest": "/public/$1"
     }
   ],
   "builds": [

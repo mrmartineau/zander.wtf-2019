@@ -52,75 +52,70 @@ export default class MyDocument extends Document {
           <meta name="geo.region" content="GB" />
           <meta name="geo.placename" content="London" />
           <link rel="dns-prefetch" href="https://zanderwtf.prismic.io" />
-          <link rel="dns-prefetch" href="https://pinboard-api.now.sh" />
-          <link rel="preconnect" href="https://pinboard-api.now.sh" />
           <link rel="preconnect" href="https://zanderwtf.prismic.io" />
           <link
             rel="prefetch"
-            href="https://zander.wtf/static/fonts/iAWriterDuospace/iAWriterDuospace-Regular.woff2"
+            href="/public/fonts/iAWriterDuospace/iAWriterDuospace-Regular.woff2"
           />
           <link
             rel="prefetch"
-            href="https://zander.wtf/static/fonts/iAWriterDuospace/iAWriterDuospace-Italic.woff2"
+            href="/public/fonts/iAWriterDuospace/iAWriterDuospace-Italic.woff2"
           />
           <link
             rel="prefetch"
-            href="https://zander.wtf/static/fonts/iAWriterDuospace/iAWriterDuospace-Bold.woff2"
+            href="/public/fonts/iAWriterDuospace/iAWriterDuospace-Bold.woff2"
           />
           <link
             rel="prefetch"
-            href="https://zander.wtf/static/fonts/iAWriterDuospace/iAWriterDuospace-BoldItalic.woff2"
+            href="/public/fonts/iAWriterDuospace/iAWriterDuospace-BoldItalic.woff2"
           />
 
           <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="https://zander.wtf/static/favicon/apple-touch-icon.png?v=4769nKP32b"
+            href="/public/favicon/apple-touch-icon.png?v=4769nKP32b"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="https://zander.wtf/static/favicon/favicon-32x32.png?v=4769nKP32b"
+            href="/public/favicon/favicon-32x32.png?v=4769nKP32b"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="https://zander.wtf/static/favicon/favicon-16x16.png?v=4769nKP32b"
+            href="/public/favicon/favicon-16x16.png?v=4769nKP32b"
           />
           <link
             rel="manifest"
-            href="https://zander.wtf/static/favicon/site.webmanifest?v=4769nKP32b"
+            href="/public/favicon/site.webmanifest?v=4769nKP32b"
           />
           <link
             rel="mask-icon"
-            href="https://zander.wtf/static/favicon/safari-pinned-tab.svg?v=4769nKP32b"
+            href="/public/favicon/safari-pinned-tab.svg?v=4769nKP32b"
             color="#15181c"
           />
           <link
             rel="shortcut icon"
-            href="https://zander.wtf/static/favicon/favicon.ico?v=4769nKP32b"
+            href="/public/favicon/favicon.ico?v=4769nKP32b"
           />
           <meta name="apple-mobile-web-app-title" content="zander.wtf" />
           <meta name="application-name" content="zander.wtf" />
           <meta name="msapplication-TileColor" content="#15181c" />
           <meta
             name="msapplication-config"
-            content="https://zander.wtf/static/favicon/browserconfig.xml?v=4769nKP32b"
+            content="/public/favicon/browserconfig.xml?v=4769nKP32b"
           />
           <meta name="theme-color" content="#15181c"></meta>
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@mrmartineau" />
           <meta property="og:locale" content="en_GB" />
-          <meta
-            property="og:image"
-            content="https://zander.wtf/static/opengraph.jpg"
-          />
+          <meta property="og:image" content="/public/opengraph.jpg" />
           <meta property="og:url" content="https://zander.wtf" />
           <link
             rel="alternate"
-            href="https://zander.wtf/atom.xml"
+            href="/atom.xml"
             type="application/atom+xml"
             title="RSS Feed"
           />
