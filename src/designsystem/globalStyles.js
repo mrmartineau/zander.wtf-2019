@@ -72,27 +72,27 @@ export default createGlobalStyle`
   @font-face {
     font-family: 'iA Writer Duospace';
     font-weight: normal;
-    src: url('/static/fonts/iAWriterDuospace/iAWriterDuospace-Regular.woff2') format('woff2');
+    src: url('/fonts/iAWriterDuospace/iAWriterDuospace-Regular.woff2') format('woff2');
   }
 
   @font-face {
     font-family: 'iA Writer Duospace';
     font-weight: normal;
     font-style: italic;
-    src: url('/static/fonts/iAWriterDuospace/iAWriterDuospace-Italic.woff2') format('woff2');
+    src: url('/fonts/iAWriterDuospace/iAWriterDuospace-Italic.woff2') format('woff2');
   }
 
   @font-face {
     font-family: 'iA Writer Duospace';
     font-weight: bold;
-    src: url('/static/fonts/iAWriterDuospace/iAWriterDuospace-Bold.woff2') format('woff2');
+    src: url('/fonts/iAWriterDuospace/iAWriterDuospace-Bold.woff2') format('woff2');
   }
 
   @font-face {
     font-family: 'iA Writer Duospace';
     font-weight: bold;
     font-style: italic;
-    src: url('/static/fonts/iAWriterDuospace/iAWriterDuospace-BoldItalic.woff2') format('woff2');
+    src: url('/fonts/iAWriterDuospace/iAWriterDuospace-BoldItalic.woff2') format('woff2');
   }
 
   html {
