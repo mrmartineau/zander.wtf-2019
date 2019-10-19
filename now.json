@@ -15,7 +15,7 @@
       "headers": {
         "cache-control": "s-maxage=31536000,immutable"
       },
-      "dest": "/public/$1"
+      "dest": "/$1"
     }
   ],
   "builds": [
