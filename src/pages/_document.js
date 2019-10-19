@@ -3,7 +3,6 @@ import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    console.log('TCL: MyDocument -> getInitialProps -> ctx.asPath', ctx.asPath)
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 

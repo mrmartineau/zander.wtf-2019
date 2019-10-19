@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { ds } from '../designsystem'
 import { pxTo } from 'design-system-utils'
-import { paddedLinkStyles } from '../designsystem/globalStyles'
 
 export const FeedWrapper = styled.div`
   margin: ${pxTo(80, 25, 'rem')} 0;
