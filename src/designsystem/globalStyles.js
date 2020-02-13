@@ -22,20 +22,6 @@ export default createGlobalStyle`
       --theme-foreground: ${ds.color('dark')};
       --theme-background: ${ds.color('bright')};
     }
-
-    @media (prefers-color-scheme: dark) {
-      :root,
-      :root.theme-inverse .inverse {
-        --theme-foreground: ${ds.color('dark')};
-        --theme-background: ${ds.color('bright')};
-      }
-
-      :root.theme-inverse,
-      :root .inverse {
-        --theme-foreground: ${ds.color('bright')};
-        --theme-background: ${ds.color('dark')};
-      }
-    }
   }
 
   /* https://websemantics.uk/tools/responsive-font-calculator/ */
