@@ -38,6 +38,7 @@ const getArticles = async () => {
             'article.body',
           ],
           orderings: '[my.article.date desc]',
+          pageSize: 3,
         })
         .then(response => {
           return response.results
