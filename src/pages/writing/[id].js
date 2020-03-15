@@ -48,18 +48,14 @@ const Writing = ({
   updated,
   articles,
   path,
+  links,
 }) => {
-  /* const title = response.data.title[0].text
-  const subtitle = response.data.subtitle[0].text
-  const body = response.data.body
-  const canonical = response.data.original_url.url
-    ? response.data.original_url.url
-    : null */
   return (
     <MasterLayout
       title={`"${title}" — An article by Zander Martineau`}
       description={subtitle}
       canonical={canonical}
+      links={links}
     >
       <Head>
         <meta property="og:type" content="article" />
@@ -110,14 +106,15 @@ const Writing = ({
   )
 }
 
-Writing.getInitialProps = async ({ query, res }) => {
+export async function getStaticProps({ params, res }) {
+  console.log('getStaticProps -> params', params)
   if (res) {
     res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
   }
 
   const response = await initApi()
     .then(api => {
-      return api.getByUID('article', query.id)
+      return api.getByUID('article', params.id)
     })
     .catch(err => console.error(err))
 
@@ -140,17 +137,55 @@ Writing.getInitialProps = async ({ query, res }) => {
     })
     .catch(err => console.error(err))
 
+  const links = await initApi()
+    .then(api => {
+      return api
+        .query(Prismic.Predicates.at('document.type', 'global'), {
+          fetch: ['global.link_list'],
+        })
+        .then(response => {
+          return response.results
+        })
+    })
+    .catch(err => console.error(err))
+
   return {
-    query,
-    title: response.data.title[0].text,
-    subtitle: response.data.subtitle[0].text,
-    body: response.data.body,
-    canonical: response.data.original_url.url,
-    articleId: response.id,
-    firstPublished: response.first_publication_date,
-    updated: response.last_publication_date,
-    articles,
-    path: query.id,
+    props: {
+      title: response.data.title[0].text,
+      subtitle: response.data.subtitle[0].text,
+      body: response.data.body,
+      canonical: response.data.original_url.url || null,
+      articleId: response.uid,
+      firstPublished: response.first_publication_date,
+      updated: response.last_publication_date,
+      path: params.id,
+      articles,
+      links: links[0].data.link_list,
+    },
+  }
+}
+
+export async function getStaticPaths() {
+  const articles = await initApi()
+    .then(api => {
+      return api
+        .query(Prismic.Predicates.at('document.type', 'article'), {
+          fetch: ['article.uid'],
+          pageSize: 100,
+        })
+        .then(response => {
+          return response.results
+        })
+    })
+    .catch(err => console.log(err))
+
+  const paths = articles.map(post => ({
+    params: { id: post.uid },
+  }))
+
+  return {
+    paths,
+    fallback: false,
   }
 }
 

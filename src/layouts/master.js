@@ -12,6 +12,7 @@ export default ({
   title = 'This is the default title',
   description = 'Personal website for Zander Martineau',
   canonical = null,
+  links = [],
 }) => (
   <Fragment>
     <Head>
@@ -34,7 +35,7 @@ export default ({
 
     {children}
 
-    <Footer />
+    <Footer links={links} />
 
     <GlobalStyles />
   </Fragment>

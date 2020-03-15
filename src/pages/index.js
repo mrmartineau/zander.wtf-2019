@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import Prismic from 'prismic-javascript'
-import subIn from 'sub-in'
-import randomArray from '@libshin/random-array'
 import MasterLayout from '../layouts/master'
 import PinboardFeed from '../components/PinboardFeed'
 import ArticleFeed from '../components/ArticleFeed'
@@ -14,7 +12,6 @@ import { ds } from '../designsystem'
 import { MassiveLogo, Logo } from '../components/Logo'
 import { FeedTitle } from '../components/Feed'
 import { Gig } from '../components/Gig'
-import { links } from '../data/links'
 import { Link } from '../components/Link'
 
 const IntroCopy = styled(FeedTitle)`
@@ -71,6 +68,7 @@ export default class Page extends Component {
                 'global.site_description',
                 'global.descriptor',
                 'global.now',
+                'global.link_list',
               ],
               orderings: '[my.article.date desc, my.work.date desc]',
               pageSize: 100,
@@ -86,25 +84,22 @@ export default class Page extends Component {
     const work = homePageData.filter(item => item.type === 'work')
     const globalInfo = homePageData.filter(item => item.type === 'global')[0]
       .data
-    const descriptors = globalInfo.descriptor.reduce((accumulator, item) => {
-      return [...accumulator, item.descriptor_copy] //accumulator.push(item.descriptor_copy)
-    }, [])
 
     return {
       articles,
       work,
       globalInfo,
-      descriptors: randomArray(descriptors),
     }
   }
 
   render() {
-    const { work, articles, globalInfo, descriptors } = this.props
+    const { work, articles, globalInfo } = this.props
 
     return (
       <MasterLayout
         title={globalInfo.site_name}
         description={globalInfo.site_description}
+        links={globalInfo.link_list}
       >
         <FullHeight>
           <MassiveLogo>
@@ -114,16 +109,18 @@ export default class Page extends Component {
 
         <Container id="info">
           <IntroCopy>{globalInfo.intro_title}</IntroCopy>
-          <Description>{subIn(globalInfo.intro_copy, descriptors)}</Description>
+          <Description>{globalInfo.intro_copy}</Description>
 
-          <Links>
-            {links.map((item, index, arr) => (
-              <Fragment key={index}>
-                <Link href={item.href}>{item.copy}</Link>
-                {arr.length - 1 !== index && ' / '}
-              </Fragment>
-            ))}
-          </Links>
+          {globalInfo.link_list.length && (
+            <Links>
+              {globalInfo.link_list.map((item, index, arr) => (
+                <Fragment key={index}>
+                  <Link href={item.link_list_href}>{item.link_list_copy}</Link>
+                  {arr.length - 1 !== index && ' / '}
+                </Fragment>
+              ))}
+            </Links>
+          )}
 
           {!!globalInfo.now.length && <Gig text={globalInfo.now} />}
         </Container>
