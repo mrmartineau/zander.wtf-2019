@@ -32,127 +32,115 @@ const Links = styled.div`
 const FullHeight = styled.div`
   min-height: 100vh;
 `
+const Home = ({ work, articles, globalInfo }) => (
+  <MasterLayout
+    title={globalInfo.site_name}
+    description={globalInfo.site_description}
+    links={globalInfo.link_list}
+  >
+    <FullHeight>
+      <MassiveLogo>
+        <Logo size="50vmin" fill="var(--theme-foreground)" />
+      </MassiveLogo>
+    </FullHeight>
 
-export default class Page extends Component {
-  static async getInitialProps({ res }) {
-    if (res) {
-      res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
-    }
+    <Container id="info">
+      <IntroCopy>{globalInfo.intro_title}</IntroCopy>
+      <Description>{globalInfo.intro_copy}</Description>
 
-    const homePageData = await initApi()
-      .then(api => {
-        return api
-          .query(
-            Prismic.Predicates.any('document.type', [
-              'article',
-              'work',
-              'global',
-            ]),
-            {
-              fetch: [
-                'article.title',
-                'article.uid',
-                'article.date',
-                'article.subtitle',
-                'work.title',
-                'work.description',
-                'work.short_description',
-                'work.long_description',
-                'work.link',
-                'work.date',
-                'work.image',
-                'work.project_metadata',
-                'global.intro_title',
-                'global.intro_copy',
-                'global.site_name',
-                'global.site_description',
-                'global.descriptor',
-                'global.now',
-                'global.link_list',
-              ],
-              orderings: '[my.article.date desc, my.work.date desc]',
-              pageSize: 100,
-            }
-          )
-          .then(response => {
-            return response.results
-          })
-      })
-      .catch(err => console.log(err))
+      {globalInfo.link_list.length && (
+        <Links>
+          {globalInfo.link_list.map((item, index, arr) => (
+            <Fragment key={index}>
+              <Link href={item.link_list_href}>{item.link_list_copy}</Link>
+              {arr.length - 1 !== index && ' / '}
+            </Fragment>
+          ))}
+        </Links>
+      )}
 
-    const articles = homePageData.filter(item => item.type === 'article')
-    const work = homePageData.filter(item => item.type === 'work')
-    const globalInfo = homePageData.filter(item => item.type === 'global')[0]
-      .data
+      {!!globalInfo.now.length && <Gig text={globalInfo.now} />}
+    </Container>
 
-    return {
-      articles,
-      work,
-      globalInfo,
-    }
-  }
+    {!!articles && (
+      <Container id="words">
+        <ArticleFeed results={articles} title="Words" />
+      </Container>
+    )}
 
-  render() {
-    const { work, articles, globalInfo } = this.props
-
-    return (
-      <MasterLayout
-        title={globalInfo.site_name}
-        description={globalInfo.site_description}
-        links={globalInfo.link_list}
-      >
-        <FullHeight>
-          <MassiveLogo>
-            <Logo size="50vmin" fill="var(--theme-foreground)" />
-          </MassiveLogo>
-        </FullHeight>
-
-        <Container id="info">
-          <IntroCopy>{globalInfo.intro_title}</IntroCopy>
-          <Description>{globalInfo.intro_copy}</Description>
-
-          {globalInfo.link_list.length && (
-            <Links>
-              {globalInfo.link_list.map((item, index, arr) => (
-                <Fragment key={index}>
-                  <Link href={item.link_list_href}>{item.link_list_copy}</Link>
-                  {arr.length - 1 !== index && ' / '}
-                </Fragment>
-              ))}
-            </Links>
-          )}
-
-          {!!globalInfo.now.length && <Gig text={globalInfo.now} />}
+    {!!work && (
+      <Inverse id="projects">
+        <Container>
+          <WorkFeed results={work} title="Projects" />
         </Container>
+      </Inverse>
+    )}
 
-        {!!articles && (
-          <Container id="words">
-            <ArticleFeed results={articles} title="Words" />
-          </Container>
-        )}
+    <Container id="reading">
+      <PinboardFeed
+        tag="zm:reading"
+        title="Reading"
+        subtitle="Interesting articles that I've read recently"
+      />
+    </Container>
 
-        {!!work && (
-          <Inverse id="projects">
-            <Container>
-              <WorkFeed results={work} title="Projects" />
-            </Container>
-          </Inverse>
-        )}
+    <Inverse id="bookmarks">
+      <Container>
+        <PinboardFeed tag="zm:link" title="Bookmarks" />
+      </Container>
+    </Inverse>
+  </MasterLayout>
+)
 
-        <Container id="reading">
-          <PinboardFeed
-            tag="zm:reading"
-            title="Reading"
-            subtitle="Interesting articles that I've read recently"
-          />
-        </Container>
+export async function getStaticProps() {
+  const homePageData = await initApi()
+    .then(api => {
+      return api
+        .query(
+          Prismic.Predicates.any('document.type', [
+            'article',
+            'work',
+            'global',
+          ]),
+          {
+            fetch: [
+              'article.title',
+              'article.uid',
+              'article.date',
+              'article.subtitle',
+              'work.title',
+              'work.description',
+              'work.short_description',
+              'work.long_description',
+              'work.link',
+              'work.date',
+              'work.image',
+              'work.project_metadata',
+              'global.intro_title',
+              'global.intro_copy',
+              'global.site_name',
+              'global.site_description',
+              'global.descriptor',
+              'global.now',
+              'global.link_list',
+            ],
+            orderings: '[my.article.date desc, my.work.date desc]',
+            pageSize: 100,
+          }
+        )
+        .then(response => {
+          return response.results
+        })
+    })
+    .catch(err => console.log(err))
 
-        <Inverse id="bookmarks">
-          <Container>
-            <PinboardFeed tag="zm:link" title="Bookmarks" />
-          </Container>
-        </Inverse>
-      </MasterLayout>
-    )
+  const articles = homePageData.filter(item => item.type === 'article')
+  const work = homePageData.filter(item => item.type === 'work')
+  const globalInfo = homePageData.filter(item => item.type === 'global')[0].data
+
+  return {
+    props: { articles, work, globalInfo },
   }
 }
+
+export default Home

@@ -49,69 +49,59 @@ const Writing = ({
   articles,
   path,
   links,
-}) => {
-  return (
-    <MasterLayout
-      title={`"${title}" — An article by Zander Martineau`}
-      description={subtitle}
-      canonical={canonical}
-      links={links}
-    >
-      <Head>
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={subtitle} />
-        <meta
-          property="og:url"
-          content={`https://zander.wtf/writing/${path}`}
-        />
-      </Head>
-      <Spacer>
+}) => (
+  <MasterLayout
+    title={`"${title}" — An article by Zander Martineau`}
+    description={subtitle}
+    canonical={canonical}
+    links={links}
+  >
+    <Head>
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={subtitle} />
+      <meta property="og:url" content={`https://zander.wtf/writing/${path}`} />
+    </Head>
+    <Spacer>
+      <Container>
+        <Article>
+          <ArticleTitle>{title}</ArticleTitle>
+          <ArticleSubtitle>{subtitle}</ArticleSubtitle>
+
+          <TimeWrapper>
+            First published:{' '}
+            <Time datetime={firstPublished} itemprop="datePublished">
+              {format(new Date(firstPublished.split('+')[0]), 'PP')}
+            </Time>
+            {!!updated && (
+              <Fragment>
+                {'. '}Updated:{' '}
+                <Time datetime={updated} itemprop="dateModified">
+                  {format(new Date(updated.split('+')[0]), 'PP')}
+                </Time>
+              </Fragment>
+            )}
+          </TimeWrapper>
+
+          <RichText text={body} />
+        </Article>
+      </Container>
+    </Spacer>
+    <Spacer>
+      <Inverse>
         <Container>
-          <Article>
-            <ArticleTitle>{title}</ArticleTitle>
-            <ArticleSubtitle>{subtitle}</ArticleSubtitle>
-
-            <TimeWrapper>
-              First published:{' '}
-              <Time datetime={firstPublished} itemprop="datePublished">
-                {format(new Date(firstPublished.split('+')[0]), 'PP')}
-              </Time>
-              {!!updated && (
-                <Fragment>
-                  {'. '}Updated:{' '}
-                  <Time datetime={updated} itemprop="dateModified">
-                    {format(new Date(updated.split('+')[0]), 'PP')}
-                  </Time>
-                </Fragment>
-              )}
-            </TimeWrapper>
-
-            <RichText text={body} />
-          </Article>
+          <ArticleFeed
+            results={articles}
+            title="Recent posts"
+            currentId={articleId}
+          />
         </Container>
-      </Spacer>
-      <Spacer>
-        <Inverse>
-          <Container>
-            <ArticleFeed
-              results={articles}
-              title="Recent posts"
-              currentId={articleId}
-            />
-          </Container>
-        </Inverse>
-      </Spacer>
-    </MasterLayout>
-  )
-}
+      </Inverse>
+    </Spacer>
+  </MasterLayout>
+)
 
-export async function getStaticProps({ params, res }) {
-  console.log('getStaticProps -> params', params)
-  if (res) {
-    res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
-  }
-
+export async function getStaticProps({ params }) {
   const response = await initApi()
     .then(api => {
       return api.getByUID('article', params.id)

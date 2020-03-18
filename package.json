@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "export": "next export",
+    "start": "next start",
     "lint": "eslint 'src/**/*.js'",
     "fix:js": "eslint --fix **/*.js",
     "format": "prettier --write **/*.js"
