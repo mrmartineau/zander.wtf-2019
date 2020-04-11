@@ -18,7 +18,7 @@ const PRISMIC_ACCESS_TOKEN =
   'MC5XbVNqWkNrQUFBUUo1anA2.77-977-9AO-_ve-_ve-_ve-_vSBicDzvv73vv73vv73vv73vv70G77-9GO-_ve-_vWXvv71Q77-977-9cO-_ve-_ve-_ve-_vUE'
 const PRISMIC_REPO = 'https://zanderwtf.prismic.io/api/v2'
 
-const initApi = req => {
+const initApi = (req) => {
   return Prismic.getApi(PRISMIC_REPO, {
     accessToken: PRISMIC_ACCESS_TOKEN,
     req: req,
@@ -27,7 +27,7 @@ const initApi = req => {
 
 const getArticles = async () => {
   const articles = await initApi()
-    .then(api => {
+    .then((api) => {
       return api
         .query(Prismic.Predicates.any('document.type', ['article']), {
           fetch: [
@@ -40,13 +40,13 @@ const getArticles = async () => {
           orderings: '[my.article.date desc]',
           pageSize: 3,
         })
-        .then(response => {
+        .then((response) => {
           return response.results
         })
     })
-    .catch(err => console.error(err))
+    .catch((err) => console.error(err))
 
-  return articles.map(item => {
+  return articles.map((item) => {
     return feed.item({
       title: item.data.title[0].text,
       url: `https://zander.wtf/writing/${item.uid}`,

@@ -26,13 +26,13 @@ export default class Feed extends Component {
 
   componentDidMount() {
     fetch(`${FEED_PATH}${this.props.tag}`)
-      .then(response => {
+      .then((response) => {
         if (response.status >= 400) {
           throw new Error('Bad response from server')
         }
         return response.json()
       })
-      .then(response => {
+      .then((response) => {
         this.setState({
           feed: response,
         })

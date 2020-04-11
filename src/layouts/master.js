@@ -25,7 +25,7 @@ export default ({
 
     <Link href="/">
       <MasterLogo aria-label="Go home" href="/">
-        <Logo size="3rem" />
+        <Logo size="4rem" />
       </MasterLogo>
     </Link>
 

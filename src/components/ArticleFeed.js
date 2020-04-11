@@ -15,7 +15,7 @@ import { Link as MyLink } from '../components/Link'
 
 export default ({ results, title, currentId = null }) => {
   const feedItems = results
-    .filter(item => item.id !== currentId)
+    .filter((item) => item.id !== currentId)
     .map((item, index) => {
       const { date, title, subtitle } = item.data
       const theTitle = title[0].text

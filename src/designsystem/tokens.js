@@ -33,7 +33,7 @@ export const myDesignSystem = {
       m: `${ms(1, modularscale)}px`, // h4
       l: `${ms(2, modularscale)}px`, // h3
       xl: `${ms(3, modularscale)}px`, // h2
-      xxl: `${ms(5, modularscale)}px`, // h1
+      xxl: `${ms(4, modularscale)}px`, // h1
     },
 
     fontFamily,

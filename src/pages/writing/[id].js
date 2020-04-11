@@ -30,12 +30,17 @@ const ArticleTitle = styled.h1`
   font-size: ${ds.fs('xxl')};
   font-weight: normal;
   font-style: italic;
+  margin-bottom: 1rem;
+  line-height: 1.1;
 `
 
-const ArticleSubtitle = styled.h1`
-  font-size: ${ds.fs('xl')};
+const ArticleSubtitle = styled.h2`
+  font-size: ${ds.fs('l')};
   font-weight: 300;
   opacity: 0.7;
+  margin-top: 0;
+  line-height: 1.1;
+  margin-bottom: 1rem;
 `
 
 const Writing = ({
@@ -103,13 +108,13 @@ const Writing = ({
 
 export async function getStaticProps({ params }) {
   const response = await initApi()
-    .then(api => {
+    .then((api) => {
       return api.getByUID('article', params.id)
     })
-    .catch(err => console.error(err))
+    .catch((err) => console.error(err))
 
   const articles = await initApi()
-    .then(api => {
+    .then((api) => {
       return api
         .query(Prismic.Predicates.at('document.type', 'article'), {
           fetch: [
@@ -121,23 +126,23 @@ export async function getStaticProps({ params }) {
           orderings: '[my.article.date desc]',
           pageSize: 4,
         })
-        .then(response => {
+        .then((response) => {
           return response.results
         })
     })
-    .catch(err => console.error(err))
+    .catch((err) => console.error(err))
 
   const links = await initApi()
-    .then(api => {
+    .then((api) => {
       return api
         .query(Prismic.Predicates.at('document.type', 'global'), {
           fetch: ['global.link_list'],
         })
-        .then(response => {
+        .then((response) => {
           return response.results
         })
     })
-    .catch(err => console.error(err))
+    .catch((err) => console.error(err))
 
   return {
     props: {
@@ -157,19 +162,19 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const articles = await initApi()
-    .then(api => {
+    .then((api) => {
       return api
         .query(Prismic.Predicates.at('document.type', 'article'), {
           fetch: ['article.uid'],
           pageSize: 100,
         })
-        .then(response => {
+        .then((response) => {
           return response.results
         })
     })
-    .catch(err => console.log(err))
+    .catch((err) => console.log(err))
 
-  const paths = articles.map(post => ({
+  const paths = articles.map((post) => ({
     params: { id: post.uid },
   }))
 

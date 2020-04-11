@@ -41,21 +41,25 @@ export const MasterLogo = styled.a`
 `
 
 export const MassiveLogo = styled.div`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--theme-foreground);
-  background-color: var(--theme-background);
-  opacity: 1;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  z-index: ${ds.z('mid')};
+  display: none;
 
-  svg {
-    width: 50vh;
+  @media screen and (min-width: ${ds.bp('m')}) {
+    display: block;
+    color: var(--theme-foreground);
+    background-color: var(--theme-background);
+    opacity: 1;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: ${ds.z('mid')};
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    min-height: 100vh;
+    svg {
+      width: 50vh;
+    }
   }
 `

@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 import { RichText } from './RichText'
-import { Inverse } from './Inverse'
 
 const GigWrapper = styled.div`
+  margin-top: 2rem;
   padding: 1rem;
+  border: 2px solid var(--theme-foreground);
+  line-height: 1.4;
+  border-right-width: 0;
+  border-left-width: 0;
+  text-align: center;
 
   p:last-child {
     margin-bottom: 0;
@@ -11,13 +16,7 @@ const GigWrapper = styled.div`
 `
 
 export const Gig = ({ text }) => (
-  <Inverse
-    css={`
-      margin: 2rem 0;
-    `}
-  >
-    <GigWrapper>
-      <RichText text={text} />
-    </GigWrapper>
-  </Inverse>
+  <GigWrapper>
+    <RichText text={text} />
+  </GigWrapper>
 )

@@ -22,7 +22,7 @@ const name = ['Z', 'A', 'N', 'D', 'E', 'R']
 
 export default () => (
   <BigType>
-    {name.map(item => (
+    {name.map((item) => (
       <BigTypeItem key={item}>{item}</BigTypeItem>
     ))}
   </BigType>

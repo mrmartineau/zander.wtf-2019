@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import Prismic from 'prismic-javascript'
 import MasterLayout from '../layouts/master'
@@ -16,21 +16,30 @@ import { Link } from '../components/Link'
 
 const IntroCopy = styled(FeedTitle)`
   text-align: left;
+  line-height: 1.2;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
 `
 
-const Description = styled.h2`
-  font-size: ${ds.fs('m')};
-  line-height: 1.3;
-  line-height: 1.3;
+const Description = styled.h3`
+  font-size: ${ds.fs('base')};
+  line-height: 1.5;
   font-weight: normal;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
 `
 
 const Links = styled.div`
   margin: ${ds.spacing(3)} 0;
+  text-align: center;
 `
 
 const FullHeight = styled.div`
-  min-height: 100vh;
+  @media screen and (min-width: ${ds.bp('m')}) {
+    min-height: 100vh;
+  }
 `
 const Home = ({ work, articles, globalInfo }) => (
   <MasterLayout
@@ -94,7 +103,7 @@ const Home = ({ work, articles, globalInfo }) => (
 
 export async function getStaticProps() {
   const homePageData = await initApi()
-    .then(api => {
+    .then((api) => {
       return api
         .query(
           Prismic.Predicates.any('document.type', [
@@ -128,15 +137,16 @@ export async function getStaticProps() {
             pageSize: 100,
           }
         )
-        .then(response => {
+        .then((response) => {
           return response.results
         })
     })
-    .catch(err => console.log(err))
+    .catch((err) => console.log(err))
 
-  const articles = homePageData.filter(item => item.type === 'article')
-  const work = homePageData.filter(item => item.type === 'work')
-  const globalInfo = homePageData.filter(item => item.type === 'global')[0].data
+  const articles = homePageData.filter((item) => item.type === 'article')
+  const work = homePageData.filter((item) => item.type === 'work')
+  const globalInfo = homePageData.filter((item) => item.type === 'global')[0]
+    .data
 
   return {
     props: { articles, work, globalInfo },

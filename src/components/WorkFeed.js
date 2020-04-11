@@ -70,7 +70,7 @@ const WorkMeta = styled.div`
     display: flex;
   }
 `
-export default props => {
+export default (props) => {
   const feedItems = props.results.map((item, index) => {
     const {
       link,

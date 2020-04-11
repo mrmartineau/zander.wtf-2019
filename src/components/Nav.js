@@ -12,16 +12,16 @@ const Nav = styled.nav`
   font-size: 0.7rem;
   color: var(--theme-background);
   background-color: var(--theme-foreground);
-  padding: 0.4rem 0.4rem 1.4rem 0.4rem;
+  padding: 1.4rem 0.4rem 1.4rem 0.4rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   @supports (padding: max(0px)) {
-    padding-top: 0.4rem;
-    padding-right: calc(max(12px, env(safe-area-inset-right)) + 0.4rem);
+    padding-top: calc(max(12px, env(safe-area-inset-bottom)) + 0.4rem);
+    padding-right: calc(max(12px, 0.4rem));
     padding-bottom: calc(max(12px, env(safe-area-inset-bottom)) + 0.4rem);
-    padding-left: calc(max(12px, env(safe-area-inset-left)) + 0.4rem);
+    padding-left: calc(max(12px, 0.4rem));
   }
 
   @media screen and (min-width: ${ds.bp('m')}) {
@@ -39,7 +39,7 @@ const Nav = styled.nav`
 `
 
 const NavLink = styled.a`
-  margin: 0 0.4rem;
+  margin: 0 0.3rem;
   cursor: pointer;
   height: 1rem;
   line-height: 1rem;
@@ -110,6 +110,9 @@ export default () => (
       </Link>
       <Link href="/#bookmarks" passHref>
         <NavLink>Bookmarks</NavLink>
+      </Link>
+      <Link href="https://notes.zander.wtf" passHref>
+        <NavLink>Notes</NavLink>
       </Link>
     </VerticalNav>
   </Nav>

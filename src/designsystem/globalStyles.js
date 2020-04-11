@@ -1,16 +1,12 @@
 import { css, createGlobalStyle } from 'styled-components'
 import { ds } from './index'
 import { pxTo } from 'design-system-utils'
-// import fluidType, { fluidSpace } from '../utils/fluidType'
 
 export const baseline = pxTo(35, 20, 'rem')
-// const baseFluidType = fluidType('15px', '20px', '320px', '1000px')
-// const baseFluidType = fluidSpace('16px', '25px', '320px', '1000px')
 
 // global styles
 export default createGlobalStyle`
   @supports (--theme-foreground: ${ds.color('bright')}) {
-
     :root,
     :root.theme-inverse .inverse {
       --theme-foreground: ${ds.color('bright')};
@@ -156,10 +152,11 @@ export default createGlobalStyle`
 `
 
 export const linkStyles = css`
-  word-wrap: break-word;
-
   &:link,
   &:visited {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
     color: ${ds.color('bright')};
     color: var(--theme-foreground);
     text-decoration: none;
